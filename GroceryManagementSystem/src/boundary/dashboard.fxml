@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller">
+   <children>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
+        <items>
+          <Button mnemonicParsing="false" text="Thông tin cá nhân" />
+            <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutY="6.0" mnemonicParsing="false" text="Đăng xuất" />
+        </items>
+      </ToolBar>
+      <TabPane layoutX="5.0" layoutY="45.0" prefHeight="631.0" prefWidth="1062.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Đồ ăn sắp hết hạn">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="tb_expiring" prefWidth="75.0" text="Thứ tự" />
+                      <TableColumn prefWidth="374.0" text="Tên" />
+                        <TableColumn prefWidth="397.0" text="Thời gian còn lại" />
+                        <TableColumn prefWidth="108.0" text="số lượng" />
+                        <TableColumn prefWidth="108.0" text="Đơn vị" />
+                    </columns>
+                  </TableView>
+               </content>
+          </Tab>
+          <Tab text="Tủ lạnh">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView prefHeight="501.0" prefWidth="1062.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Thứ tự" />
+                            <TableColumn prefWidth="374.0" text="Tên" />
+                              <TableColumn prefWidth="397.0" text="Ngày hết hạn" />
+                              <TableColumn prefWidth="109.0" text="Số lượng" />
+                              <TableColumn prefWidth="107.0" text="Đơn vị" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Black" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="1.0" left="14.0" right="14.0" top="1.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+            <Tab text="Nhóm">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="655.0" prefWidth="1062.0">
+                     <children>
+                        <ComboBox layoutX="4.0" layoutY="14.0" prefHeight="31.0" prefWidth="429.0" promptText="Chọn nhóm" />
+                        <TableView layoutX="4.0" layoutY="54.0" prefHeight="412.0" prefWidth="429.0">
+                          <columns>
+                            <TableColumn prefWidth="302.0" text="Tên" />
+                            <TableColumn prefWidth="126.0" text="Vai trò" />
+                          </columns>
+                        </TableView>
+                        <TableView layoutX="445.0" layoutY="54.0" prefHeight="412.0" prefWidth="612.0">
+                          <columns>
+                            <TableColumn prefWidth="289.0" text="Tên thực phẩm" />
+                              <TableColumn prefWidth="107.0" text="Số lượng" />
+                              <TableColumn prefWidth="215.0" text="Ngày hết hạn" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="193.0" layoutY="475.0" minHeight="-Infinity" mnemonicParsing="false" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Black" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="1.0" left="14.0" right="14.0" top="1.0" />
+                           </padding>
+                        </Button>
+                        <Button layoutX="725.0" layoutY="475.0" minHeight="-Infinity" mnemonicParsing="false" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Black" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="1.0" left="14.0" right="14.0" top="1.0" />
+                           </padding>
+                        </Button>
+                        <Button layoutX="445.0" layoutY="14.0" mnemonicParsing="false" text="Tạo nhóm" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Công thức món ăn">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="14.0" layoutY="47.0" prefHeight="249.0" prefWidth="482.0">
+                          <columns>
+                            <TableColumn prefWidth="108.0" text="Tên" />
+                            <TableColumn prefWidth="247.0" text="Nguyên liệu " />
+                          </columns>
+                        </TableView>
+                        <TableView layoutX="540.0" layoutY="47.0" prefHeight="249.0" prefWidth="508.0">
+                           <columns>
+                              <TableColumn prefWidth="108.0" text="Tên" />
+                              <TableColumn prefWidth="247.0" text="Nguyên liệu " />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

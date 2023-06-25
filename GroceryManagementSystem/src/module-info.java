@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Helscarthe
- *
- */
-module GroceryManagementSystem {
-}

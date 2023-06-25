@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="111.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin cá nhân">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="55.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
+      <Text layoutX="55.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <Text layoutX="55.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mật khẩu" />
+      <Text layoutX="55.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" />
+      <Text layoutX="55.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
+      <Text layoutX="55.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điện thoại" />
+      <TextField layoutX="164.0" layoutY="63.0" />
+      <TextField layoutX="164.0" layoutY="118.0" />
+      <TextField layoutX="164.0" layoutY="180.0" />
+      <TextField layoutX="164.0" layoutY="244.0" />
+      <TextField layoutX="164.0" layoutY="308.0" />
+      <TextField layoutX="164.0" layoutY="364.0" />
+      <Button layoutX="152.0" layoutY="428.0" mnemonicParsing="false" text="Thoát" />
+      <Button layoutX="243.0" layoutY="428.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="64.0" text="Sửa" />
+   </children>
+</AnchorPane>
