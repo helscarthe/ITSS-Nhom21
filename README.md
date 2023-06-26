@@ -24,5 +24,11 @@ Nhớ đường dẫn cài đặt cho cả hai thứ.
 	 - Trong Eclipse, Windows > Preferences > JavaFX
 	 - Ở SceneBuilder executable, chọn Browse
 	 - Trỏ đến file .exe trong đường dẫn cài đặt. (Thường sẽ ở `C:\Users\<tên máy>\AppData\Local\SceneBuilder\SceneBuilder.exe`)
+	 - Thoát bằng nút Apply and Close.
+ 4. Cấu hình **e(fx)clipse**:
+	 - Trong Eclipse, Help > Eclipse Marketplace
+	 - Ô Find, tìm `fx` và Enter
+	 - Click Install e(fx)clipse bản mới nhất
+	 - Tiếp tục Confirm để tải
 
-Các bước để cấu hình chạy SQLite sẽ được thêm sau.
+Các bước để cấu hình chạy SQLite sẽ được thêm sau. Lỗi inb tuấn hihi
