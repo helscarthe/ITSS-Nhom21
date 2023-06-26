@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="90.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đăng nhập tài khoản">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField layoutX="71.0" layoutY="74.0" prefHeight="26.0" prefWidth="185.0" promptText="Tên đăng nhập" />
+      <TextField layoutX="72.0" layoutY="112.0" prefHeight="26.0" prefWidth="186.0" promptText="Mật khẩu" />
+      <Button layoutX="73.0" layoutY="163.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="186.0" text="Đăng nhập" />
+      <Hyperlink layoutX="180.0" layoutY="142.0" text="Quên mật khẩu?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>
