@@ -6,7 +6,9 @@ Theo sát các bước này để cấu hình project trên Eclipse. Các bướ
 ## Yêu cầu cài đặt trước
 
 Cài **Adoptium OpenJDK 11**: [Latest Releases | Adoptium](https://adoptium.net/temurin/releases/?version=11). Tải bản JDK .msi.
+
 Cài **Scene Builder**: [Scene Builder - Gluon (gluonhq.com)](https://gluonhq.com/products/scene-builder/#download). Tải bản 20, Windows Installer. 
+
 Nhớ đường dẫn cài đặt cho cả hai thứ.
 
 ## Cấu hình project
