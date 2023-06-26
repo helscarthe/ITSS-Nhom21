@@ -8,15 +8,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="449.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="147.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin món định nấu">
+      <Text layoutX="159.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm món định nấu">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="46.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên người dùng" wrappingWidth="92.009765625" />
-      <Button layoutX="46.0" layoutY="288.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Sửa thông tin" />
+      <Text layoutX="46.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID người dùng" wrappingWidth="92.009765625" />
       <TextField layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
-      <Button layoutX="178.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xóa " />
+      <Button layoutX="148.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
       <Button layoutX="300.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Thoát" />
       <Text layoutX="46.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Món định nấu" wrappingWidth="92.009765625" />
       <TextField layoutX="148.0" layoutY="107.0" prefHeight="25.0" prefWidth="256.0" />

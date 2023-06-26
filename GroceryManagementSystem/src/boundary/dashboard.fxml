@@ -203,10 +203,11 @@
                            <columns>
                               <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
                               <TableColumn prefWidth="68.00003814697266" text="ID" />
-                              <TableColumn prefWidth="291.46669006347656" text="Tên người dùng" />
-                              <TableColumn prefWidth="209.33334350585938" text="Ngày" />
-                              <TableColumn prefWidth="131.7332763671875" text="Số món" />
-                              <TableColumn prefWidth="251.7333984375" text="Món ăn yêu thích" />
+                              <TableColumn prefWidth="236.53343200683594" text="Tên người dùng" />
+                              <TableColumn prefWidth="240.00003051757812" text="Món định nấu" />
+                              <TableColumn prefWidth="140.53338623046875" text="Ngày " />
+                              <TableColumn prefWidth="121.33319091796875" text="Số món" />
+                              <TableColumn prefWidth="141.60002441406255" text="Món yêu thích" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
