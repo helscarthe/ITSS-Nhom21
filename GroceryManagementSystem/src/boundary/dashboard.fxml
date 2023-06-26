@@ -184,6 +184,66 @@
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Quản lý món định nấu">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="908.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm món định nấu" />
+                              <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
+                              <Button layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <TableView layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
+                           <columns>
+                              <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
+                              <TableColumn prefWidth="68.00003814697266" text="ID" />
+                              <TableColumn prefWidth="291.46669006347656" text="Tên người dùng" />
+                              <TableColumn prefWidth="209.33334350585938" text="Ngày" />
+                              <TableColumn prefWidth="131.7332763671875" text="Số món" />
+                              <TableColumn prefWidth="251.7333984375" text="Món ăn yêu thích" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Quản lý danh sách cần mua">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="960.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
+                                    <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
+                                    <Button layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <TableView layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
+                                 <columns>
+                                    <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
+                                    <TableColumn prefWidth="68.00003814697266" text="ID" />
+                                    <TableColumn prefWidth="291.46669006347656" text="Tên người dùng" />
+                                    <TableColumn prefWidth="209.33334350585938" text="Loại thực phẩm" />
+                                    <TableColumn prefWidth="131.7332763671875" text="Đơn vị" />
+                                    <TableColumn prefWidth="251.7333984375" text="Số lượng" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
