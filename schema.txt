@@ -1,0 +1,86 @@
+CREATE TABLE users(
+    user_id INTEGER PRIMARY KEY,
+    username VARCHAR(64) NOT NULL,
+    is_admin INTEGER NOT NULL,
+    password_hash BLOB(32) NOT NULL
+);
+
+CREATE TABLE groups(
+    group_id INTEGER PRIMARY KEY,
+    leader_id INTEGER NOT NULL,
+    group_name VARCHAR(64) NOT NULL,
+    FOREIGN KEY (leader_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE raw_foods(
+    raw_food_id INTEGER PRIMARY KEY,
+    raw_food_name VARCHAR(64) NOT NULL,
+    food_type INTEGER NOT NULL,
+    unit VARCHAR(64) NOT NULL
+);
+# Ở đây, food_type là một enum, với 1, 2, 3, v.v... tương ứng với Thịt, Rau, Tinh bột, v.v...
+# Trong code cần cài đặt enum này.
+# Có thể thêm giá trị 4, 5, 6, v.v... tùy theo yêu cầu sử dụng.
+
+CREATE TABLE dishes(
+    dish_id INTEGER PRIMARY KEY,
+    dish_name VARCHAR(64) NOT NULL,
+    recipe TEXT NOT NULL
+);
+
+CREATE TABLE group_member(
+    group_id INTEGER,
+    user_id INTEGER,
+    PRIMARY KEY (group_id, user_id),
+    FOREIGN KEY (group_id) REFERENCES groups(group_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE group_shopping_list(
+    group_id INTEGER,
+    food_id INTEGER,
+    number INTEGER,
+    PRIMARY KEY (group_id, food_id),
+    FOREIGN KEY (group_id) REFERENCES groups(group_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (food_id) REFERENCES raw_foods(raw_food_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE shopping_list(
+    user_id INTEGER,
+    food_id INTEGER,
+    number INTEGER,
+    PRIMARY KEY (user_id, food_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (food_id) REFERENCES raw_foods(raw_food_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE fav_dish(
+    user_id INTEGER,
+    dish_id INTEGER,
+    PRIMARY KEY (user_id, dish_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (dish_id) REFERENCES dishes(dish_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE meal_plan(
+    meal_plan_id INTEGER PRIMARY KEY,
+    user_id INTEGER,
+    date TEXT NOT NULL,
+    meal_number INTEGER NOT NULL,
+    dish_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (dish_id) REFERENCES dishes(dish_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+# Ở đây, meal_number là một enum, với 1, 2 và 3 tương ứng với bữa sáng, trưa và tối.
+# Trong code cần cài đặt enum này.
+# Có thể thêm giá trị 4, 5, 6, v.v... tùy theo yêu cầu sử dụng.
+
+CREATE TABLE fridge_food(
+    fridge_food_id INTEGER PRIMARY KEY,
+    user_id INTEGER,
+    food_id INTEGER,
+    number INTEGER NOT NULL,
+    expiry_date TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (food_id) REFERENCES raw_foods(raw_food_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
