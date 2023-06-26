@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="209.0" layoutY="66.0" />
-      <Text layoutX="60.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên thực phẩm" />
-      <Text layoutX="65.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày hết hạn" />
-      <TextField layoutX="209.0" layoutY="127.0" />
-      <Text layoutX="65.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng" />
-      <TextField layoutX="209.0" layoutY="178.0" />
-      <Text layoutX="65.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <TextField layoutX="209.0" layoutY="240.0" />
-      <Text layoutX="160.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin thực phẩm" />
-      <Button layoutX="172.0" layoutY="335.0" mnemonicParsing="false" text="Thoát" />
-      <Button layoutX="244.0" layoutY="335.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="58.0" text="Xóa" />
-      <Button layoutX="318.0" layoutY="335.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="58.0" text="Sửa" />
+      <TextField editable="false" layoutX="189.0" layoutY="63.0" prefHeight="25.0" prefWidth="173.0" />
+      <Text layoutX="41.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên thực phẩm" />
+      <Text layoutX="41.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày hết hạn" wrappingWidth="79.669921875" />
+      <Text layoutX="41.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng" wrappingWidth="79.669921875" />
+      <TextField layoutX="189.0" layoutY="202.0" prefHeight="25.0" prefWidth="173.0" />
+      <Text layoutX="41.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị" wrappingWidth="79.669921875" />
+      <Text layoutX="96.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin thực phẩm cần mua">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <Button layoutX="257.0" layoutY="301.0" mnemonicParsing="false" text="Thoát" />
+      <Button layoutX="179.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="Xóa" />
+      <Button layoutX="100.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="Sửa" />
+      <Text layoutX="41.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại thực phẩm" wrappingWidth="87.669921875" />
+      <TextField editable="false" layoutX="189.0" layoutY="156.0" prefHeight="25.0" prefWidth="173.0" />
+      <TextField editable="false" layoutX="189.0" layoutY="109.0" prefHeight="25.0" prefWidth="173.0" />
+      <TextField editable="false" layoutX="189.0" layoutY="249.0" prefHeight="25.0" prefWidth="173.0" />
    </children>
 </AnchorPane>
