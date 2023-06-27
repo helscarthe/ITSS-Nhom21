@@ -70,7 +70,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="655.0" prefWidth="1062.0">
                      <children>
-                        <ComboBox layoutX="4.0" layoutY="14.0" prefHeight="31.0" prefWidth="429.0" promptText="Chọn nhóm" />
+                        <ComboBox layoutX="4.0" layoutY="14.0" prefHeight="25.0" prefWidth="429.0" promptText="Chọn nhóm" />
                         <TableView layoutX="4.0" layoutY="54.0" prefHeight="412.0" prefWidth="429.0">
                           <columns>
                             <TableColumn prefWidth="302.0" text="Tên" />
@@ -97,7 +97,7 @@
                      <children>
                         <TableView layoutX="5.0" layoutY="58.0" prefHeight="468.0" prefWidth="334.0">
                           <columns>
-                            <TableColumn prefWidth="333.0" text="Tên món ăn" />
+                            <TableColumn prefWidth="333.0" text="Tên món ăn yêu thích" />
                           </columns>
                         </TableView>
                         <TextArea layoutX="367.0" layoutY="84.0" prefHeight="442.0" prefWidth="687.0" />
@@ -122,9 +122,9 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="26.0" layoutY="24.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tên thực phẩm" />
-                        <Button layoutX="495.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
-                        <ComboBox layoutX="353.0" layoutY="25.0" prefHeight="26.0" prefWidth="131.0" promptText="Loại thực phẩm" />
+                        <TextField layoutX="29.0" layoutY="24.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tên thực phẩm" />
+                        <Button layoutX="498.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
+                        <ComboBox layoutX="356.0" layoutY="24.0" prefHeight="26.0" prefWidth="131.0" promptText="Loại thực phẩm" />
                         <TableView layoutX="29.0" layoutY="77.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn prefWidth="91.20003128051758" text="Thứ tự" />
@@ -133,7 +133,7 @@
                               <TableColumn prefWidth="212.7999267578125" text="Đơn vị" />
                            </columns>
                         </TableView>
-                        <Button layoutX="902.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm thực phẩm" />
+                        <Button layoutX="909.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm thực phẩm" />
                      </children>
                   </AnchorPane>
               </content>
@@ -151,7 +151,7 @@
                            </columns>
                         </TableView>
                         <Button layoutX="908.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm người dùng" />
-                        <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm công thức món ăn" />
+                        <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tài khoản người dùng" />
                         <Button layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                            <font>
                               <Font name="System Bold" size="12.0" />
