@@ -118,14 +118,14 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Quản lý dữ liệu thực thẩm">
+            <Tab id="tabQuanLyDuLieuThucPham" text="Dữ liệu thực thẩm">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField layoutX="29.0" layoutY="24.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tên thực phẩm" />
-                        <Button layoutX="498.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
-                        <ComboBox layoutX="356.0" layoutY="24.0" prefHeight="26.0" prefWidth="131.0" promptText="Loại thực phẩm" />
-                        <TableView layoutX="29.0" layoutY="77.0" prefHeight="460.0" prefWidth="1007.0">
+                        <Button id="btnTimKiem" layoutX="498.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
+                        <ComboBox id="cbLoaiThucPham" layoutX="356.0" layoutY="24.0" prefHeight="26.0" prefWidth="131.0" promptText="Loại thực phẩm" />
+                        <TableView id="tblDulieuThucPham" layoutX="29.0" layoutY="77.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn prefWidth="91.20003128051758" text="Thứ tự" />
                               <TableColumn prefWidth="447.19993591308594" text="Tên" />
@@ -133,16 +133,16 @@
                               <TableColumn prefWidth="212.7999267578125" text="Đơn vị" />
                            </columns>
                         </TableView>
-                        <Button layoutX="909.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm thực phẩm" />
+                        <Button id="btnThemThucPham" layoutX="909.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm thực phẩm" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Quản lý tài khoản người dùng">
+            <Tab id="tabQuanLyTaiKhoanNguoiDung" text="Tài khoản người dùng">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="30.0" layoutY="93.0" prefHeight="460.0" prefWidth="1007.0">
+                        <TableView id="tblQuanLytaiKhoanNguoiDung" layoutX="30.0" layoutY="93.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn prefWidth="91.20003128051758" text="Thứ tự" />
                               <TableColumn prefWidth="405.6000442504883" text="Tên đăng nhập" />
@@ -150,9 +150,9 @@
                               <TableColumn prefWidth="212.7999267578125" text="Quản trị viên" />
                            </columns>
                         </TableView>
-                        <Button layoutX="908.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm người dùng" />
-                        <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tài khoản người dùng" />
-                        <Button layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                        <Button id="btnThemNguoiDung" layoutX="908.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm người dùng" />
+                        <TextField id="txtTimKiemTaiKhoanNguoiDung" layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tài khoản người dùng" />
+                        <Button id="btnTimKiemTaiKhoanNguoiDung" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -161,17 +161,17 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Quản lý công thức món ăn">
+            <Tab id="txtQuanLyCongThucMonAn" text="Công thức món ăn">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="341.0" layoutY="39.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm công thức món ăn" />
-                        <Button layoutX="622.0" layoutY="39.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                        <TextField id="txtTimKiemCongThucMonAn" layoutX="341.0" layoutY="39.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm công thức món ăn" />
+                        <Button id="btnTimKiemCongThucMonAn" layoutX="622.0" layoutY="39.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <TableView layoutX="32.0" layoutY="90.0" prefHeight="460.0" prefWidth="1007.0">
+                        <TableView id="btlQuanLyCongThucMonAn" layoutX="32.0" layoutY="90.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn prefWidth="91.20003128051758" text="Thứ tự" />
                               <TableColumn prefWidth="447.19993591308594" text="Tên" />
@@ -179,27 +179,27 @@
                               <TableColumn prefWidth="212.7999267578125" text="Đơn vị" />
                            </columns>
                         </TableView>
-                        <Button layoutX="910.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm người dùng" />
+                        <Button id="btnThemCongThuc" layoutX="910.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm công thức" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Quản lý món định nấu">
+            <Tab id="tabQuanLyMonDinhNau" text="Món định nấu">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="908.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm món định nấu" />
-                              <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
-                              <Button layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                              <Button id="btnThemMonDinhNau" layoutX="908.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm món định nấu" />
+                              <TextField id="txtTimKiemMonDinhNau" layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
+                              <Button id="btnTimKiemMonDinhNau" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
                            </children>
                         </AnchorPane>
-                        <TableView layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
+                        <TableView id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
                               <TableColumn prefWidth="68.00003814697266" text="ID" />
@@ -213,7 +213,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Quản lý danh sách cần mua">
+            <Tab id="tabQuanLyDanhSachCanMua" text="Danh sách cần mua">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -221,16 +221,16 @@
                            <children>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Button layoutX="960.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
-                                    <TextField layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
-                                    <Button layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                                    <Button id="btnThemDoCanMua" layoutX="960.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
+                                    <TextField id="txtTimKiemDocanMua" layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
+                                    <Button id="txtTimKiemDoCanMua" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <TableView layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
+                              <TableView id="tblDanhSachcanMua" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
                                  <columns>
                                     <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
                                     <TableColumn prefWidth="68.00003814697266" text="ID" />
