@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="144.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thực phẩm mẫu ">
+      <Text layoutX="158.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mẫu thực phẩm">
          <font>
             <Font size="16.0" />
          </font>

@@ -15,16 +15,16 @@
          </font>
       </Text>
       <Text layoutX="46.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID người dùng" wrappingWidth="92.009765625" />
-      <TextField layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
-      <Button layoutX="148.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
-      <Button layoutX="300.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xóa" />
+      <TextField id="txt_ID_NguoiDung" layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
+      <Button id="btnXacNhan(Them/Sua)ThongTinMonDinhNau" layoutX="148.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
+      <Button id="btnXoaThongTinMonDinhNau" layoutX="300.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xóa" />
       <Text layoutX="46.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Món định nấu" wrappingWidth="92.009765625" />
-      <TextField layoutX="148.0" layoutY="107.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField id="txtMonDinhNau" layoutX="148.0" layoutY="107.0" prefHeight="25.0" prefWidth="256.0" />
       <Text layoutX="46.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày" wrappingWidth="92.009765625" />
       <Text layoutX="46.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số món" wrappingWidth="92.009765625" />
-      <TextField layoutX="148.0" layoutY="198.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField id="txtSoMonDinhNau" layoutX="148.0" layoutY="198.0" prefHeight="25.0" prefWidth="256.0" />
       <Text layoutX="45.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Món yêu thích" wrappingWidth="92.009765625" />
-      <TextField layoutX="147.0" layoutY="241.0" prefHeight="25.0" prefWidth="256.0" />
-      <DatePicker layoutX="148.0" layoutY="154.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField id="txtMonYeuThich" layoutX="147.0" layoutY="241.0" prefHeight="25.0" prefWidth="256.0" />
+      <DatePicker id="dpNgayDinhNau" layoutX="148.0" layoutY="154.0" prefHeight="25.0" prefWidth="256.0" />
    </children>
 </AnchorPane>

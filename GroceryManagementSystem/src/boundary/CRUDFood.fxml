@@ -22,8 +22,8 @@
       <TextField id="txtTenThucPham" layoutX="190.0" layoutY="76.0" prefHeight="26.0" prefWidth="168.0" />
       <TextField id="txtSoLuong" layoutX="190.0" layoutY="214.0" prefHeight="26.0" prefWidth="168.0" />
       <Text layoutX="59.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị" />
-      <Button id="btnHuy" layoutX="190.0" layoutY="303.0" mnemonicParsing="false" text="Xác nhận" />
-      <Button id="btnXacNhanThem" layoutX="293.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Xóa" />
+      <Button id="btnXacNhan(Sua/Them)ThongTinThucPham" layoutX="190.0" layoutY="303.0" mnemonicParsing="false" text="Xác nhận" />
+      <Button id="btnXoaThongTinThucPham" layoutX="293.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Xóa" />
       <DatePicker id="dpNgayHetHan" layoutX="190.0" layoutY="167.0" prefHeight="26.0" prefWidth="168.0" />
       <ComboBox id="cbLoaiThucPham" layoutX="190.0" layoutY="119.0" prefHeight="26.0" prefWidth="168.0" />
       <ComboBox id="cbDonVi" layoutX="190.0" layoutY="260.0" prefHeight="26.0" prefWidth="168.0" />
