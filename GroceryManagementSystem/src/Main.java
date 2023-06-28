@@ -10,7 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage){
 		// TODO Auto-generated method stub
 		try {
-	    	Parent login = FXMLLoader.load(Main.class.getResource("/boundary/Login.fxml"));
+	    	Parent login = FXMLLoader.load(Main.class.getResource("/fxml/Login.fxml"));
 			Scene scene = new Scene(login);
 	//		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

@@ -1,4 +1,4 @@
-package boundary;
+package view;
 
 import java.io.IOException;
 
@@ -12,24 +12,28 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginController {
-
-	@FXML
-    private TextField password;
+public class LoginHandler {
 
     @FXML
-    private Button submit;
+    private Button btnDangNhap;
 
     @FXML
-    private TextField username;
+    private TextField txtTenDangNhap;
+
+    @FXML
+    private Hyperlink hyperlinkQuenMatKhau;
+
+    @FXML
+    private TextField txtMatKhau;
 
     @FXML
     void submit(ActionEvent event) {
-    	String pass = password.getText().toString();
-    	String user = username.getText();
+    	String pass = txtMatKhau.getText().toString();
+    	String user = txtTenDangNhap.getText();
     	
     	if(!pass.equals("admin") || !user.equals("admin")) {
     		Alert a = new Alert(AlertType.WARNING, "nunu baby", ButtonType.OK);
@@ -41,7 +45,7 @@ public class LoginController {
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	Parent login = null;
 		try {
-			login = FXMLLoader.load(getClass().getResource("/boundary/dashboard.fxml"));
+			login = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
