@@ -35,6 +35,6 @@ Nhớ đường dẫn cài đặt cho cả hai thứ.
      - Trong Eclipse, vào Run > Run Configurations... > Java Application
      - Chuột phải Java Application, chọn New Launch Configuration, đặt tên bất kỳ.
      - Tab Main, đảm bảo Project được chọn là GroceryManagementProject
-     - Tab Arguments, mục VM Arguments, thêm `--module-path lib/win/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml`
+     - Tab Arguments, mục VM Arguments, thêm `--module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml`
 
 Các bước để cấu hình chạy SQLite sẽ được thêm sau. Lỗi inb tuấn hihi
