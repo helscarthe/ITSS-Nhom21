@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="152.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thực phẩm mới ">
+      <Text layoutX="168.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thực phẩm ">
          <font>
             <Font size="16.0" />
          </font>
@@ -19,13 +19,13 @@
       <Text layoutX="59.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại thực phẩm " />
       <Text layoutX="59.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày hết hạn " />
       <Text layoutX="59.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng " />
-      <TextField layoutX="190.0" layoutY="76.0" prefHeight="26.0" prefWidth="168.0" />
-      <TextField layoutX="190.0" layoutY="214.0" prefHeight="26.0" prefWidth="168.0" />
+      <TextField id="txtTenThucPham" layoutX="190.0" layoutY="76.0" prefHeight="26.0" prefWidth="168.0" />
+      <TextField id="txtSoLuong" layoutX="190.0" layoutY="214.0" prefHeight="26.0" prefWidth="168.0" />
       <Text layoutX="59.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị" />
-      <Button layoutX="190.0" layoutY="315.0" mnemonicParsing="false" text="Hủy " />
-      <Button layoutX="262.0" layoutY="315.0" mnemonicParsing="false" text="Xác nhận thêm" />
-      <DatePicker layoutX="190.0" layoutY="167.0" prefHeight="26.0" prefWidth="168.0" />
-      <ComboBox layoutX="190.0" layoutY="119.0" prefHeight="26.0" prefWidth="168.0" />
-      <ComboBox layoutX="190.0" layoutY="260.0" prefHeight="26.0" prefWidth="168.0" />
+      <Button id="btnHuy" layoutX="190.0" layoutY="303.0" mnemonicParsing="false" text="Xác nhận" />
+      <Button id="btnXacNhanThem" layoutX="293.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Xóa" />
+      <DatePicker id="dpNgayHetHan" layoutX="190.0" layoutY="167.0" prefHeight="26.0" prefWidth="168.0" />
+      <ComboBox id="cbLoaiThucPham" layoutX="190.0" layoutY="119.0" prefHeight="26.0" prefWidth="168.0" />
+      <ComboBox id="cbDonVi" layoutX="190.0" layoutY="260.0" prefHeight="26.0" prefWidth="168.0" />
    </children>
 </AnchorPane>

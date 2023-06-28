@@ -16,15 +16,14 @@
          </font>
       </Text>
       <Text layoutX="46.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên nhóm" wrappingWidth="92.009765625" />
-      <Button layoutX="299.0" layoutY="147.0" mnemonicParsing="false" text="Thêm thành viên" />
+      <Button layoutX="299.0" layoutY="160.0" mnemonicParsing="false" text="Thêm thành viên" />
       <TextField layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
       <TableView layoutX="46.0" layoutY="107.0" prefHeight="225.0" prefWidth="233.0">
          <columns>
             <TableColumn prefWidth="233.0" text="Thành viên" />
          </columns>
       </TableView>
-      <Button layoutX="299.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xóa thành viên" />
-      <Button layoutX="299.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Chỉnh sửa" />
-      <Button layoutX="299.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Thoát" />
+      <Button layoutX="299.0" layoutY="203.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xóa thành viên" />
+      <Button layoutX="299.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
    </children>
 </AnchorPane>

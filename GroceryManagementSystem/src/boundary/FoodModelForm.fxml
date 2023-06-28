@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="144.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thực phẩm mẫu ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="47.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Tên thực phẩm" />
+      <Text layoutX="51.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại thực phẩm " />
+      <TextField id="txtTenThucPham" layoutX="182.0" layoutY="74.0" prefHeight="26.0" prefWidth="168.0" />
+      <Text layoutX="51.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị" />
+      <Button id="btnHuy" layoutX="285.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Xóa" />
+      <Button id="btnXacNhanThem" layoutX="182.0" layoutY="209.0" mnemonicParsing="false" text="Xác nhận" />
+      <ComboBox id="cbLoaiThucPham" layoutX="182.0" layoutY="117.0" prefHeight="26.0" prefWidth="168.0" />
+      <ComboBox id="cbDonVi" layoutX="182.0" layoutY="162.0" prefHeight="26.0" prefWidth="168.0" />
+   </children>
+</AnchorPane>
