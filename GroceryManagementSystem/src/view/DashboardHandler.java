@@ -2,7 +2,6 @@ package view;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -195,8 +194,16 @@ public class DashboardHandler {
     public void clickTabGroup () throws SQLException {
     	Connection connection = SqliteConnection.Connector();
     	String query = "select group_name from groups";
-    	PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-	    ResultSet rs = preparedStatement.executeQuery();
+    	
+    	Statement sttm = null;
+    	
+    	try {
+        	sttm = connection.createStatement();
+
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+		}
+	    ResultSet rs = sttm.executeQuery(query);
     	
     	ObservableList<String> li = FXCollections.observableArrayList();
     	
@@ -213,7 +220,7 @@ public class DashboardHandler {
     	Stage stage = new Stage();
     	Parent formCreateTeam = null;
     	try {
-			formCreateTeam = FXMLLoader.load(getClass().getResource("/fxml/TeamInfo.fxml"));
+			formCreateTeam = FXMLLoader.load(getClass().getResource("/fxml/GroupInfo.fxml"));
 		} catch (IOException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -230,7 +237,7 @@ public class DashboardHandler {
     	Stage stage = new Stage();
     	Parent formCreateTeam = null;
     	try {
-			formCreateTeam = FXMLLoader.load(getClass().getResource("/fxml/TeamInfo.fxml"));
+			formCreateTeam = FXMLLoader.load(getClass().getResource("/fxml/GroupInfo.fxml"));
 		} catch (IOException e) {
 			// TODO: handle exception
 			e.printStackTrace();
