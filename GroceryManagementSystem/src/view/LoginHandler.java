@@ -43,16 +43,19 @@ public class LoginHandler {
     	}
     	
     	
-    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	Parent login = null;
+    	Parent dashboard = null;
 		try {
-			login = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
+	    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    	dashboard = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
+			stage.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
-		Scene scene = new Scene(login);
+		
+		Stage stage = new Stage();
+		Scene scene = new Scene(dashboard);
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();

@@ -70,7 +70,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="655.0" prefWidth="1062.0">
                      <children>
-                        <ComboBox fx:id="cbChonNhom" layoutX="66.0" layoutY="14.0" onContextMenuRequested="#selectItemTeam" prefHeight="26.0" prefWidth="212.0" promptText="Chọn nhóm" />
+                        <ComboBox fx:id="cbChonNhom" layoutX="66.0" layoutY="14.0" prefHeight="26.0" prefWidth="212.0" promptText="Chọn nhóm" />
                         <TableView fx:id="tblThanhVienNhom" layoutX="4.0" layoutY="54.0" prefHeight="412.0" prefWidth="429.0">
                           <columns>
                             <TableColumn prefWidth="302.0" text="Tên" />

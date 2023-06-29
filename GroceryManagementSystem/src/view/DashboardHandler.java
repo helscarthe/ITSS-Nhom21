@@ -1,6 +1,11 @@
 package view;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import service.SqliteConnection;
 
 public class DashboardHandler {
 
@@ -164,7 +170,7 @@ public class DashboardHandler {
 
     @FXML
     private TextField txtTimKiemThucPhamTrongTuLanh;
-    
+        
     @FXML
     public void addFoodIntoFridge(ActionEvent event) {
     	Stage stage = new Stage();
@@ -186,11 +192,20 @@ public class DashboardHandler {
     // Tab Nhóm
     
     @FXML
-    public void clickTabGroup () {
-    	ObservableList<String> li = FXCollections.observableArrayList("Gia đình nhà Minh", "Khối quân sự NATO", "Liên bang Nga");
+    public void clickTabGroup () throws SQLException {
+    	Connection connection = SqliteConnection.Connector();
+    	String query = "select group_name from groups";
+    	PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+	    ResultSet rs = preparedStatement.executeQuery();
     	
-    	cbChonNhom.setValue("Khối quân sự NATO");
+    	ObservableList<String> li = FXCollections.observableArrayList();
+    	
+    	while(rs.next()) {
+    		li.add(rs.getString("group_name"));
+    	}
+    	cbChonNhom.setValue(li.get(0));
     	cbChonNhom.setItems(li);
+    	
     }
     
     @FXML
