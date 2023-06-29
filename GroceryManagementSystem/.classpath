@@ -6,6 +6,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="H:/Code/ITSS/ITSS-Nhom21/GroceryManagementSystem/lib/sqlite-jdbc-3.42.0.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/javafx-sdk-11.0.2/lib/javafx.controls.jar"/>
 	<classpathentry kind="lib" path="lib/javafx-sdk-11.0.2/lib/javafx.fxml.jar"/>
 	<classpathentry kind="lib" path="lib/javafx-sdk-11.0.2/lib/javafx.graphics.jar"/>

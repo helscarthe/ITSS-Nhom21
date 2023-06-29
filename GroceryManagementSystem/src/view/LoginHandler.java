@@ -36,11 +36,12 @@ public class LoginHandler {
     	String user = txtTenDangNhap.getText();
     	
     	if(!pass.equals("admin") || !user.equals("admin")) {
-    		Alert a = new Alert(AlertType.WARNING, "nunu baby", ButtonType.OK);
+    		Alert a = new Alert(AlertType.WARNING, "Đồ ngu", ButtonType.OK);
     		a.setHeaderText(null);
     		a.showAndWait();
     		return;
     	}
+    	
     	
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	Parent login = null;

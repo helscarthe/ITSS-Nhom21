@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -19,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
@@ -56,7 +51,7 @@
                               <TableColumn prefWidth="98.0" text="Đơn vị" />
                           </columns>
                         </TableView>
-                        <Button fx:id="btnThemThucPhamTrongTuLanh" layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                        <Button fx:id="btnThemThucPhamTrongTuLanh" layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#addFoodIntoFridge" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Black" size="36.0" />
                            </font>
@@ -71,12 +66,12 @@
                   </AnchorPane>
                </content>
           </Tab>
-            <Tab fx:id="tabNhom" text="Nhóm">
+            <Tab fx:id="tabNhom" onSelectionChanged="#clickTabGroup" text="Nhóm">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="655.0" prefWidth="1062.0">
                      <children>
-                        <ComboBox fx:id="cbChonNhom" layoutX="66.0" layoutY="14.0" prefHeight="26.0" prefWidth="212.0" promptText="Chọn nhóm" />
-                        <TableView fx:id="tbDanhSachNhom" layoutX="4.0" layoutY="54.0" prefHeight="412.0" prefWidth="429.0">
+                        <ComboBox fx:id="cbChonNhom" layoutX="66.0" layoutY="14.0" onContextMenuRequested="#selectItemTeam" prefHeight="26.0" prefWidth="212.0" promptText="Chọn nhóm" />
+                        <TableView fx:id="tblThanhVienNhom" layoutX="4.0" layoutY="54.0" prefHeight="412.0" prefWidth="429.0">
                           <columns>
                             <TableColumn prefWidth="302.0" text="Tên" />
                             <TableColumn prefWidth="126.0" text="Vai trò" />
@@ -89,9 +84,9 @@
                               <TableColumn prefWidth="215.0" text="Ngày hết hạn" />
                           </columns>
                         </TableView>
-                        <Button fx:id="btnTaoNhom" layoutX="309.0" layoutY="14.0" mnemonicParsing="false" text="Tạo nhóm" />
-                        <Button fx:id="btnThayDoiThongTinNhom" layoutX="151.0" layoutY="490.0" mnemonicParsing="false" text="Thay đổi thông tin nhóm" />
-                        <Button fx:id="btnThemThucPham" layoutX="701.0" layoutY="491.0" mnemonicParsing="false" text="Thêm thực phẩm" />
+                        <Button fx:id="btnTaoNhom" layoutX="309.0" layoutY="14.0" mnemonicParsing="false" onAction="#createTeam" text="Tạo nhóm" />
+                        <Button fx:id="btnThayDoiThongTinNhom" layoutX="151.0" layoutY="490.0" mnemonicParsing="false" onAction="#changeInfoTeam" text="Thay đổi thông tin nhóm" />
+                        <Button fx:id="btnThemThucPhamTrongNhom" layoutX="701.0" layoutY="491.0" mnemonicParsing="false" text="Thêm thực phẩm" />
                      </children>
                   </AnchorPane>
               </content>
