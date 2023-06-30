@@ -16,17 +16,15 @@
          </font>
       </Text>
       <Text layoutX="46.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên nhóm" wrappingWidth="92.009765625" />
-      <Button id="btnThemThanhVien" fx:id="btnThemThanhVien" layoutX="299.0" layoutY="161.0" mnemonicParsing="false" onAction="#addMemberToGroup" text="Thêm thành viên" />
+      <Button id="btnThemThanhVien" fx:id="btnThemThanhVien" layoutX="299.0" layoutY="101.0" mnemonicParsing="false" onAction="#addMemberToGroup" text="Thêm thành viên" />
       <TextField id="txtTenNhom" fx:id="txtTenNhom" layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
-      <TableView id="btlThanhVienNhom" fx:id="tblThanhVienNhom" layoutX="46.0" layoutY="160.0" prefHeight="225.0" prefWidth="241.0">
+      <TableView id="btlThanhVienNhom" fx:id="tblThanhVienNhom" layoutX="46.0" layoutY="101.0" prefHeight="225.0" prefWidth="241.0">
          <columns>
             <TableColumn fx:id="colIdThanhVien" prefWidth="56.0" text="Id" />
             <TableColumn fx:id="colTenThanhVien" prefWidth="184.0" text="Tên" />
          </columns>
       </TableView>
-      <Button id="btnXoaThanhVien" fx:id="btnXoaThanhVien" layoutX="299.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xóa thành viên" />
-      <Button id="btnXacNhan" fx:id="btnXacNhan" layoutX="299.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
-      <Text layoutX="46.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trưởng nhóm" wrappingWidth="92.009765625" />
-      <TextField id="txtTenNhom" fx:id="txtTruongNhom" layoutX="148.0" layoutY="104.0" prefHeight="25.0" prefWidth="256.0" />
+      <Button id="btnXoaThanhVien" fx:id="btnXoaThanhVien" layoutX="299.0" layoutY="144.0" mnemonicParsing="false" onAction="#deleteMember" prefHeight="25.0" prefWidth="105.0" text="Xóa thành viên" />
+      <Button id="btnXacNhan" fx:id="btnXacNhan" layoutX="299.0" layoutY="186.0" mnemonicParsing="false" onAction="#submitFormGroup" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
    </children>
 </AnchorPane>

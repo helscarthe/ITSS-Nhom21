@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -191,7 +192,8 @@ public class DashboardHandler {
     // Tab Nhóm
     
     @FXML
-    public void clickTabGroup () throws SQLException {
+    public void clickTabGroup (ActionEvent event) throws SQLException {
+    	System.out.println(1);
     	Connection connection = SqliteConnection.Connector();
     	String query = "select group_name from groups";
     	
@@ -216,7 +218,8 @@ public class DashboardHandler {
     }
     
     @FXML
-    public void createTeam() {
+    public void createTeam(ActionEvent event) {
+    	
     	Stage stage = new Stage();
     	Parent formCreateTeam = null;
     	try {
@@ -227,8 +230,14 @@ public class DashboardHandler {
 			return;
 		}
     	
+    	Node node = (Node) event.getSource();
+    	Stage dashboardStage = (Stage) node.getScene().getWindow();
+    	
     	Scene scene = new Scene(formCreateTeam);
     	stage.setScene(scene);
+    	
+    	stage.setUserData(dashboardStage.getUserData());
+    	
     	stage.show();
     }
     
