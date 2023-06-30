@@ -55,7 +55,7 @@ public class LoginHandler {
     	
     	ResultSet rs = sttm.executeQuery(query);
     	
-    	if (rs.getObject("user_id") == null || rs.wasNull()) {
+    	if (rs.getObject("username") == null) {
 			Alert a = new Alert(AlertType.WARNING, "Tài khoản hoặc mật khẩu không chính xác!", ButtonType.OK);
 			a.setHeaderText(null);
 			a.showAndWait();
