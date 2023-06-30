@@ -9,6 +9,7 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -192,26 +193,25 @@ public class DashboardHandler {
     // Tab Nhóm
     
     @FXML
-    public void clickTabGroup (ActionEvent event) throws SQLException {
+    public void clickTabGroup(Event event){
     	System.out.println(1);
     	Connection connection = SqliteConnection.Connector();
     	String query = "select group_name from groups";
     	
     	Statement sttm = null;
-    	
-    	try {
-        	sttm = connection.createStatement();
-
-		} catch (NullPointerException e) {
-			// TODO: handle exception
+		ObservableList<String> li = null;
+		try {
+			sttm = connection.createStatement();
+			ResultSet rs = sttm.executeQuery(query);
+			
+			li = FXCollections.observableArrayList();
+			
+			while(rs.next()) {
+				li.add(rs.getString("group_name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	    ResultSet rs = sttm.executeQuery(query);
-    	
-    	ObservableList<String> li = FXCollections.observableArrayList();
-    	
-    	while(rs.next()) {
-    		li.add(rs.getString("group_name"));
-    	}
     	cbChonNhom.setValue(li.get(0));
     	cbChonNhom.setItems(li);
     	
