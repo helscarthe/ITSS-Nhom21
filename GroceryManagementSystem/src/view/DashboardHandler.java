@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import entity.UserEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import service.SqliteConnection;
 
@@ -125,7 +127,19 @@ public class DashboardHandler {
     private Tab tabTuLanh;
 
     @FXML
-    private TableColumn<?, ?> tbDanhSachThucPham;
+    private TableColumn<UserEntity, String> colIsAdmin;
+
+    @FXML
+    private TableColumn<UserEntity, String> colPasswordHash;
+
+    @FXML
+    private TableColumn<UserEntity, String> colUserID;
+
+    @FXML
+    private TableColumn<UserEntity, String> colUsername;
+
+    @FXML
+    private TableColumn<UserEntity, String> tbDanhSachThucPham;
 
     @FXML
     private TableView<?> tblDanhSachThucPham;
@@ -140,7 +154,7 @@ public class DashboardHandler {
     private TableView<?> tblQuanLyMonDinhNau;
 
     @FXML
-    private TableView<?> tblQuanLytaiKhoanNguoiDung;
+    private TableView<UserEntity> tblQuanLytaiKhoanNguoiDung;
 
     @FXML
     private TableView<?> tblThanhVienNhom;
@@ -265,28 +279,29 @@ public class DashboardHandler {
     	stage.show();
     }
     
-    @FXML
-    void getDishes(Event event) {
-    	//Tùng
-    	//Thực hiện lấy dữ liệu từ bảng dishes (cơ sở dữ liệu)
-    	//rồi đổ vào bảng id=btlQuanLyCongThucMonAn khi nhấn vào tab công thức nấu ăn
-    	//Giao diện của bảng đang sai hay sao ấy (đáng ra chỉ cần 3 cột thứ tự, tên món, công thức).
-    	//Thứ tự không nên lấy theo id vì lỡ xóa 1 món đi thì sẽ bị mất 1 id.
-    }
+//    @FXML
+//    void getDishes(Event event) {
+//    	//Tùng
+//    	//Thực hiện lấy dữ liệu từ bảng dishes (cơ sở dữ liệu)
+//    	//rồi đổ vào bảng id=btlQuanLyCongThucMonAn khi nhấn vào tab công thức nấu ăn
+//    	//Giao diện của bảng đang sai hay sao ấy (đáng ra chỉ cần 3 cột thứ tự, tên món, công thức).
+//    	//Thứ tự không nên lấy theo id vì lỡ xóa 1 món đi thì sẽ bị mất 1 id.
+//    }
 
-    @FXML
-    void addDish(ActionEvent event) {
-    	//Tùng
-    	//Thực hiện mở giao diện của màn thêm công thức nấu ăn 
-    }
+//    @FXML
+//    void addDish(ActionEvent event) {
+//    	//Tùng
+//    	//Thực hiện mở giao diện của màn thêm công thức nấu ăn 
+//    }
     
-    @FXML
-    void searchDish(ActionEvent event) {
-    	//Tùng
-    	//Thực hiện khi nhân vào nút tìm kiếm trong tab "công thức nấu ăn"
-    	//Lấy dữ liệu nhập vào của người dùng để tìm các món ăn đã lấy trước đó bằng hàm loadDishes
-    	//Đổ dữ liệu vào trong bảng hiển thị.
-    }
+//    @FXML
+//    void searchDish(ActionEvent event) {
+//    	//Tùng
+//    	//Thực hiện khi nhân vào nút tìm kiếm trong tab "công thức nấu ăn"
+//    	//Lấy dữ liệu nhập vào của người dùng để tìm các món ăn đã lấy trước đó bằng hàm loadDishes
+//    	//Đổ dữ liệu vào trong bảng hiển thị.
+//    }
+//	  Tuấn implement rồi nhá!
     
     
     @FXML
@@ -319,17 +334,91 @@ public class DashboardHandler {
     	//Tùng
     	//tìm kiếm món ăn trong các món ăn yêu thích, đổ thông tin vào bảng. Tương tự searchDish
     }
+
+    @FXML
+    void selectAccountTab(Event event) {
+    	Connection conn = SqliteConnection.Connector();
+    	String query = "select * from users";
+    	
+    	Statement sttm = null;
+		ObservableList<UserEntity> dataUsers = null;
+		colUserID.setCellValueFactory(
+				new PropertyValueFactory<UserEntity, String>("user_id")
+		);;
+		colUsername.setCellValueFactory(
+				new PropertyValueFactory<UserEntity, String>("username")
+		);;
+		colPasswordHash.setCellValueFactory(
+				new PropertyValueFactory<UserEntity, String>("password_hash")
+		);;
+		colIsAdmin.setCellValueFactory(
+				new PropertyValueFactory<UserEntity, String>("is_admin")
+		);;
+		try {
+			sttm = conn.createStatement();
+			ResultSet rs = sttm.executeQuery(query);
+			
+			dataUsers = FXCollections.observableArrayList();
+			
+			while(rs.next()) {
+				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
+						rs.getString("password_hash"), rs.getBoolean("is_admin"));
+				System.out.println(user);
+				dataUsers.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
+    	
+    	try {
+        	conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+
+    @FXML
+    void addUser(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchUser(ActionEvent event) {
+
+    }
+
+    @FXML
+    void selectFoodDataTab(Event event) {
+
+    }
     
+    @FXML
+    void addFood(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchFood(ActionEvent event) {
+
+    }
     
+    @FXML
+    void selectDishesTab(Event event) {
+    	
+    }
+
+    @FXML
+    void addDish(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchDish(ActionEvent event) {
+
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 }
