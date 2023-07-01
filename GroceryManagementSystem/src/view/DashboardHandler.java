@@ -5,10 +5,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.function.Predicate;
 
 import entity.UserEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -189,6 +191,8 @@ public class DashboardHandler {
     @FXML
     private TableColumn<?, ?> favDishTable;
     
+	ObservableList<UserEntity> dataUsers;
+    
     @FXML
     public void addFoodIntoFridge(ActionEvent event) {
     	Stage stage = new Stage();
@@ -341,7 +345,6 @@ public class DashboardHandler {
     	String query = "select * from users";
     	
     	Statement sttm = null;
-		ObservableList<UserEntity> dataUsers = null;
 		colUserID.setCellValueFactory(
 				new PropertyValueFactory<UserEntity, String>("user_id")
 		);;
@@ -363,7 +366,6 @@ public class DashboardHandler {
 			while(rs.next()) {
 				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
 						rs.getString("password_hash"), rs.getBoolean("is_admin"));
-				System.out.println(user);
 				dataUsers.add(user);
 			}
 		} catch (SQLException e) {
@@ -381,12 +383,29 @@ public class DashboardHandler {
 
     @FXML
     void addUser(ActionEvent event) {
+    	Stage stage = new Stage();
+    	Parent formAddUser = null;
+    	try {
+    		formAddUser = FXMLLoader.load(getClass().getResource("/fxml/UserInfoChangeForm.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+    	Scene scene = new Scene(formAddUser);
+    	stage.setScene(scene);
+    	stage.show();
 
     }
 
     @FXML
     void searchUser(ActionEvent event) {
-
+    	String filterKey = txtTimKiemTaiKhoanNguoiDung.getText();
+    	
+    	Predicate<UserEntity> containsKey = i -> i.getUsername().contains(filterKey);
+    	
+    	FilteredList<UserEntity> filteredUserList = dataUsers.filtered(containsKey);
+    	
+    	tblQuanLytaiKhoanNguoiDung.setItems(filteredUserList);
     }
 
     @FXML
