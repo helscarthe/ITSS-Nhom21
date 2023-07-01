@@ -29,7 +29,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import service.SqliteConnection;
 
-public class DashboardHandler {
+public class DashboardHandler{
 
 
     @FXML
@@ -451,6 +451,34 @@ public class DashboardHandler {
     @FXML
     void searchDish(ActionEvent event) {
 
+    }
+
+	public void checkAdmin(boolean isAdmin) {
+		if (isAdmin) {
+			return;
+		}
+		
+		tabQuanLyDanhSachCanMua.getTabPane().getTabs().remove(tabQuanLyDanhSachCanMua);
+		tabQuanLyDuLieuThucPham.getTabPane().getTabs().remove(tabQuanLyDuLieuThucPham);
+		tabQuanLyTaiKhoanNguoiDung.getTabPane().getTabs().remove(tabQuanLyTaiKhoanNguoiDung);
+	}
+
+    @FXML
+    void logOut(ActionEvent event) {
+    	// basic open new window (stage)
+    	Parent login = null;
+    	try {
+        	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        	stage.close();
+        	login = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+    	Stage stage = new Stage();
+    	Scene scene = new Scene(login);
+    	stage.setScene(scene);
+    	stage.show();
     }
     
 

@@ -1,13 +1,9 @@
 package controller;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import entity.UserEntity;
-import javafx.collections.FXCollections;
-import javafx.scene.control.cell.PropertyValueFactory;
 import service.SqliteConnection;
 
 public class AdminController {

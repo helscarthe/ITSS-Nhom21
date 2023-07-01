@@ -71,9 +71,11 @@ public class LoginHandler {
     	
     	
     	Parent dashboard = null;
+    	FXMLLoader loader = null;
 		try {
 	    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    	dashboard = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
+	    	loader = new FXMLLoader(getClass().getResource("/fxml/dashboard.fxml"));
+	    	dashboard = (Parent)loader.load();
 			stage.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -94,6 +96,9 @@ public class LoginHandler {
 			     rs.getString("password_hash"),
 			     Boolean.parseBoolean(rs.getString("is_admin"))
 			     ));
+		
+		DashboardHandler handler = (DashboardHandler)loader.getController();
+		handler.checkAdmin(rs.getBoolean("is_admin"));
 		
 		stage.show();
 		conn.close();

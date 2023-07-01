@@ -19,7 +19,7 @@
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
           <Button fx:id="btnThongTincaNhan" mnemonicParsing="false" text="Thông tin cá nhân" />
-            <Button fx:id="btnDangXuat" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutY="6.0" mnemonicParsing="false" text="Đăng xuất" />
+            <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutY="6.0" mnemonicParsing="false" onAction="#logOut" text="Đăng xuất" />
         </items>
       </ToolBar>
       <TabPane layoutX="5.0" layoutY="45.0" prefHeight="631.0" prefWidth="1062.0" tabClosingPolicy="UNAVAILABLE">
