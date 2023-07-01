@@ -197,14 +197,13 @@ public class DashboardHandler {
     
     @FXML
     public void clickTabGroup(Event event){
-    	System.out.println(1);
-    	Connection connection = SqliteConnection.Connector();
+    	Connection conn = SqliteConnection.Connector();
     	String query = "select group_name from groups";
     	
     	Statement sttm = null;
 		ObservableList<String> li = null;
 		try {
-			sttm = connection.createStatement();
+			sttm = conn.createStatement();
 			ResultSet rs = sttm.executeQuery(query);
 			
 			li = FXCollections.observableArrayList();
@@ -218,12 +217,17 @@ public class DashboardHandler {
     	cbChonNhom.setValue(li.get(0));
     	cbChonNhom.setItems(li);
     	
+    	try {
+        	conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
     
     @FXML
     public void createTeam(ActionEvent event) {
     	
-    	Stage stage = new Stage();
+    	Stage createTeamStage = new Stage();
     	Parent formCreateTeam = null;
     	try {
 			formCreateTeam = FXMLLoader.load(getClass().getResource("/fxml/GroupInfo.fxml"));
@@ -237,11 +241,11 @@ public class DashboardHandler {
     	Stage dashboardStage = (Stage) node.getScene().getWindow();
     	
     	Scene scene = new Scene(formCreateTeam);
-    	stage.setScene(scene);
+    	createTeamStage.setScene(scene);
     	
-    	stage.setUserData(dashboardStage.getUserData());
+    	createTeamStage.setUserData(dashboardStage.getUserData());
     	
-    	stage.show();
+    	createTeamStage.show();
     }
     
     @FXML

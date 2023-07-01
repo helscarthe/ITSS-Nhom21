@@ -88,7 +88,7 @@ public class LoginHandler {
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		
-		scene.setUserData(new UserEntity(
+		stage.setUserData(new UserEntity(
 			     Integer.parseInt(rs.getString("user_id")),
 			     rs.getString("username"),
 			     rs.getString("password_hash"),
@@ -96,6 +96,7 @@ public class LoginHandler {
 			     ));
 		
 		stage.show();
+		conn.close();
     }
 
 }
