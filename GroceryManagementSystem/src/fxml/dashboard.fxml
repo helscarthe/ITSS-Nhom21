@@ -123,17 +123,17 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="txtTimKiemTenThucPham" layoutX="29.0" layoutY="24.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tên thực phẩm" />
-                        <Button fx:id="btnTimKiem" layoutX="498.0" layoutY="24.0" mnemonicParsing="false" onAction="#searchFood" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
+                        <Button layoutX="498.0" layoutY="24.0" mnemonicParsing="false" onAction="#searchFood" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
                         <ComboBox fx:id="cbLoaiThucPham" layoutX="356.0" layoutY="24.0" prefHeight="26.0" prefWidth="131.0" promptText="Loại thực phẩm" />
                         <TableView fx:id="tblDulieuThucPham" layoutX="29.0" layoutY="77.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
-                              <TableColumn prefWidth="91.20003128051758" text="Thứ tự" />
-                              <TableColumn prefWidth="447.19993591308594" text="Tên" />
-                              <TableColumn prefWidth="260.0" text="Loại  thực phẩm" />
-                              <TableColumn prefWidth="212.7999267578125" text="Đơn vị" />
+                              <TableColumn fx:id="colFoodID" prefWidth="91.20003128051758" text="Thứ tự" />
+                              <TableColumn fx:id="colFoodName" prefWidth="447.19993591308594" text="Tên" />
+                              <TableColumn fx:id="colFoodType" prefWidth="260.0" text="Loại  thực phẩm" />
+                              <TableColumn fx:id="colUnit" prefWidth="212.7999267578125" text="Đơn vị" />
                            </columns>
                         </TableView>
-                        <Button fx:id="btnThemThucPham" layoutX="909.0" layoutY="24.0" mnemonicParsing="false" onAction="#addFood" prefHeight="26.0" prefWidth="127.0" text="Thêm thực phẩm" />
+                        <Button layoutX="909.0" layoutY="24.0" mnemonicParsing="false" onAction="#addFood" prefHeight="26.0" prefWidth="127.0" text="Thêm thực phẩm" />
                      </children>
                   </AnchorPane>
               </content>
@@ -171,12 +171,11 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <TableView fx:id="btlQuanLyCongThucMonAn" layoutX="32.0" layoutY="90.0" prefHeight="460.0" prefWidth="1007.0">
+                        <TableView fx:id="tblQuanLyCongThucMonAn" layoutX="32.0" layoutY="90.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
-                              <TableColumn prefWidth="91.20003128051758" text="Thứ tự" />
-                              <TableColumn prefWidth="447.19993591308594" text="Tên" />
-                              <TableColumn prefWidth="260.0" text="Loại  thực phẩm" />
-                              <TableColumn prefWidth="212.7999267578125" text="Đơn vị" />
+                              <TableColumn fx:id="colDishID" prefWidth="91.20003128051758" text="Thứ tự" />
+                              <TableColumn fx:id="colDishName" prefWidth="308.0" text="Tên" />
+                              <TableColumn fx:id="colRecipe" prefWidth="606.0" text="Công thức" />
                            </columns>
                         </TableView>
                         <Button fx:id="btnThemCongThuc" layoutX="910.0" layoutY="37.0" mnemonicParsing="false" onAction="#addDish" prefHeight="26.0" prefWidth="127.0" text="Thêm công thức" />
