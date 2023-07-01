@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -14,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
@@ -91,13 +96,13 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="tabCongThucMonAnYeuThich" text="Công thức món ăn yêu thích">
+            <Tab fx:id="tabCongThucMonAnYeuThich" onSelectionChanged="#loadFavDish" text="Công thức món ăn yêu thích">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="btlTenMonAnYeuThich" layoutX="5.0" layoutY="58.0" prefHeight="468.0" prefWidth="334.0">
                           <columns>
-                            <TableColumn prefWidth="333.0" text="Tên món ăn yêu thích" />
+                            <TableColumn fx:id="favDishTable" prefWidth="333.0" text="Tên món ăn yêu thích" />
                           </columns>
                         </TableView>
                         <TextArea fx:id="btlConThucMonAnYeuThich" layoutX="367.0" layoutY="84.0" prefHeight="442.0" prefWidth="687.0" />
@@ -106,10 +111,10 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <Button fx:id="btnThemCongThuc" layoutX="193.0" layoutY="550.0" mnemonicParsing="false" text="Thêm công thức" />
-                        <Button fx:id="btnXoaCongThuc" layoutX="39.0" layoutY="549.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Xóa công thức" />
+                        <Button fx:id="btnThemCongThuc" layoutX="193.0" layoutY="550.0" mnemonicParsing="false" onAction="#addFavDish" text="Thêm công thức" />
+                        <Button fx:id="btnXoaCongThuc" layoutX="39.0" layoutY="549.0" mnemonicParsing="false" onAction="#deleteFavDish" prefHeight="25.0" prefWidth="104.0" text="Xóa công thức" />
                         <TextField fx:id="txtTimKiemCongThucMonAnYeuThi" layoutX="5.0" layoutY="21.0" prefHeight="26.0" prefWidth="334.0" promptText="Tìm kiếm công thức món ăn" />
-                        <Button fx:id="btnTimKiemMonAnYeuThich" layoutX="301.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                        <Button fx:id="btnTimKiemMonAnYeuThich" layoutX="301.0" layoutY="21.0" mnemonicParsing="false" onAction="#searchFavDish" prefHeight="26.0" prefWidth="37.0" text="">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -161,12 +166,12 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="txtQuanLyCongThucMonAn" text="Công thức món ăn">
+            <Tab fx:id="txtQuanLyCongThucMonAn" onSelectionChanged="#getDishes" text="Công thức món ăn">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="txtTimKiemCongThucMonAn" layoutX="341.0" layoutY="39.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm công thức món ăn" />
-                        <Button fx:id="btnTimKiemCongThucMonAn" layoutX="622.0" layoutY="39.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                        <Button fx:id="btnTimKiemCongThucMonAn" layoutX="622.0" layoutY="39.0" mnemonicParsing="false" onAction="#searchDish" prefHeight="26.0" prefWidth="37.0" text="">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -179,7 +184,7 @@
                               <TableColumn prefWidth="212.7999267578125" text="Đơn vị" />
                            </columns>
                         </TableView>
-                        <Button fx:id="btnThemCongThuc" layoutX="910.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Thêm công thức" />
+                        <Button fx:id="btnThemCongThuc" layoutX="910.0" layoutY="37.0" mnemonicParsing="false" onAction="#addDish" prefHeight="26.0" prefWidth="127.0" text="Thêm công thức" />
                      </children>
                   </AnchorPane>
               </content>

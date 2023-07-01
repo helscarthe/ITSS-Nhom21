@@ -171,7 +171,10 @@ public class DashboardHandler {
 
     @FXML
     private TextField txtTimKiemThucPhamTrongTuLanh;
-        
+    
+    @FXML
+    private TableColumn<?, ?> favDishTable;
+    
     @FXML
     public void addFoodIntoFridge(ActionEvent event) {
     	Stage stage = new Stage();
@@ -258,10 +261,60 @@ public class DashboardHandler {
     	stage.show();
     }
     
+    @FXML
+    void getDishes(Event event) {
+    	//Tùng
+    	//Thực hiện lấy dữ liệu từ bảng dishes (cơ sở dữ liệu)
+    	//rồi đổ vào bảng id=btlQuanLyCongThucMonAn khi nhấn vào tab công thức nấu ăn
+    	//Giao diện của bảng đang sai hay sao ấy (đáng ra chỉ cần 3 cột thứ tự, tên món, công thức).
+    	//Thứ tự không nên lấy theo id vì lỡ xóa 1 món đi thì sẽ bị mất 1 id.
+    }
+
+    @FXML
+    void addDish(ActionEvent event) {
+    	//Tùng
+    	//Thực hiện mở giao diện của màn thêm công thức nấu ăn 
+    }
+    
+    @FXML
+    void searchDish(ActionEvent event) {
+    	//Tùng
+    	//Thực hiện khi nhân vào nút tìm kiếm trong tab "công thức nấu ăn"
+    	//Lấy dữ liệu nhập vào của người dùng để tìm các món ăn đã lấy trước đó bằng hàm loadDishes
+    	//Đổ dữ liệu vào trong bảng hiển thị.
+    }
     
     
+    @FXML
+    void loadFavDish(Event event) {
+    	//Tùng
+    	//Thực hiện lấy dữ liệu đổ vào bảng khi nhấn vào tab công thức món ăn yêu thích
+    	//Đổ tên các món ăn yêu thích vào tablecolumn có id là favDishTable.
+    	//TextArea "công thức" ban đầu để trống, Khi nhấn vào 1 hàng trong tablecolum trên
+    	//thì sẽ hiển thị công thức của món ăn đó.
+    	
+    }
     
+    @FXML
+    void addFavDish(ActionEvent event) {
+    	//Tùng
+    	//Thực hiện khi nhấn vào nút thêm công thức nấu ăn yêu thích.
+    	//Mở giao diện của màn thêm công thức nấu ăn yêu thích.
+    }
+
+    @FXML
+    void deleteFavDish(ActionEvent event) {
+    	//Tùng
+    	//Xóa món ăn đang được chọn( khi nhấn vào 1 dòng trong côt favDishTable thì 
+    	//dòng ý sẽ  bị bôi xanh). Viết logic lấy user_id và dish_id của dòng thông tin đó
+    	//rồi xóa ra khỏi bảng fav_dish (cơ sở dữ liệu)
+    }
     
+    @FXML
+    void searchFavDish(ActionEvent event) {
+    	//Tùng
+    	//tìm kiếm món ăn trong các món ăn yêu thích, đổ thông tin vào bảng. Tương tự searchDish
+    }
     
     
     
