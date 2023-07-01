@@ -69,7 +69,6 @@ public class LoginHandler {
 //    		return;
 //    	}
     	
-    	
     	Parent dashboard = null;
     	FXMLLoader loader = null;
 		try {
