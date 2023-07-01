@@ -402,7 +402,8 @@ public class DashboardHandler {
 		}
     	Scene scene = new Scene(formAddUser);
     	stage.setScene(scene);
-    	stage.show();
+    	stage.showAndWait();
+    	this.selectAccountTab(event);
     }
 
     @FXML

@@ -17,7 +17,7 @@
       <Text layoutX="38.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
       <Text layoutX="38.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mật khẩu" wrappingWidth="51.111328125" />
       <TextField id="txtHoVaTen" fx:id="tfUsername" layoutX="147.0" layoutY="58.0" prefHeight="25.0" prefWidth="205.0" />
-      <TextField id="txtMatKhau" fx:id="tfPassword" editable="false" layoutX="147.0" layoutY="104.0" prefHeight="25.0" prefWidth="205.0" />
+      <TextField id="txtMatKhau" fx:id="tfPassword" layoutX="147.0" layoutY="104.0" prefHeight="25.0" prefWidth="205.0" />
       <Button id="btnThoat" layoutX="282.0" layoutY="189.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="70.0" text="Thoát" />
       <Button id="btnXacNhan" layoutX="147.0" layoutY="189.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="70.0" text="Xác nhận" />
       <CheckBox fx:id="cbIsAdmin" layoutX="147.0" layoutY="152.0" mnemonicParsing="false" text="Cấp quyền admin" />
