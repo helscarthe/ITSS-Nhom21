@@ -341,10 +341,13 @@ public class DashboardHandler {
 
     @FXML
     void selectAccountTab(Event event) {
+    	
+    	// create db connection, query, and statement
     	Connection conn = SqliteConnection.Connector();
     	String query = "select * from users";
-    	
     	Statement sttm = null;
+    
+    	// important, set correct column to correct attribute
 		colUserID.setCellValueFactory(
 				new PropertyValueFactory<UserEntity, String>("user_id")
 		);;
@@ -357,10 +360,13 @@ public class DashboardHandler {
 		colIsAdmin.setCellValueFactory(
 				new PropertyValueFactory<UserEntity, String>("is_admin")
 		);;
+		
+		// execute query
 		try {
 			sttm = conn.createStatement();
 			ResultSet rs = sttm.executeQuery(query);
 			
+			// dataUsers is a class attribute
 			dataUsers = FXCollections.observableArrayList();
 			
 			while(rs.next()) {
@@ -371,6 +377,8 @@ public class DashboardHandler {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		// load values
     	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
     	
     	try {
@@ -383,6 +391,7 @@ public class DashboardHandler {
 
     @FXML
     void addUser(ActionEvent event) {
+    	// basic open new window (stage)
     	Stage stage = new Stage();
     	Parent formAddUser = null;
     	try {
@@ -394,17 +403,22 @@ public class DashboardHandler {
     	Scene scene = new Scene(formAddUser);
     	stage.setScene(scene);
     	stage.show();
-
     }
 
     @FXML
     void searchUser(ActionEvent event) {
+    	// get filter value
     	String filterKey = txtTimKiemTaiKhoanNguoiDung.getText();
     	
+    	// create predicate that says "Need this value"
+    	// i is the object chosen
+    	// Here, i is UserEntity
     	Predicate<UserEntity> containsKey = i -> i.getUsername().contains(filterKey);
     	
+    	// create filtered list
     	FilteredList<UserEntity> filteredUserList = dataUsers.filtered(containsKey);
     	
+    	// load list to table
     	tblQuanLytaiKhoanNguoiDung.setItems(filteredUserList);
     }
 
