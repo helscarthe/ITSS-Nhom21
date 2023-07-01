@@ -42,7 +42,7 @@ public class LoginHandler {
     	String pass = txtMatKhau.getText().toString();
     	String user = txtTenDangNhap.getText();
     	
-    	String query = "select * from users where username=" + "'" + user + "'" + "and password_hash=" + "'" + pass + "'";
+    	String query = "select * from users where username='" + user + "' and password_hash='" + pass + "'";
     	Statement sttm = null;
 
 		try {
