@@ -41,7 +41,7 @@ public class UserFormHandler extends BaseFormHandler implements Initializable{
 		adminController.setUser(user);
 		tfUsername.setText(user.getUsername());
 		tfPassword.setText(user.getPassword_hash());
-		if (user.isIs_admin()) {
+		if (user.isAdmin()) {
 			cbIsAdmin.setSelected(true);
 		}
 	}
