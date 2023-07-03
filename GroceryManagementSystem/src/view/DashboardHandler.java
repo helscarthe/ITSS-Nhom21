@@ -35,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import service.SqliteConnection;
+import view.admin.DishFormHandler;
 import view.admin.FoodFormHandler;
 import view.admin.UserFormHandler;
 
@@ -386,7 +387,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 				new PropertyValueFactory<UserEntity, String>("password_hash")
 		);;
 		colIsAdmin.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("is_admin")
+				new PropertyValueFactory<UserEntity, String>("admin")
 		);;
 		
 		// load values
@@ -565,10 +566,10 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     	Predicate<RawFoodEntity> filter = containsKey.and(ofType);
     	
     	// create filtered list
-    	FilteredList<RawFoodEntity> filteredUserList = dataFood.filtered(filter);
+    	FilteredList<RawFoodEntity> filteredFoodList = dataFood.filtered(filter);
     	
     	// load list to table
-    	tblDulieuThucPham.setItems(filteredUserList);
+    	tblDulieuThucPham.setItems(filteredFoodList);
     }
     
     @FXML
@@ -587,11 +588,57 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 		
 		// load values
     	tblQuanLyCongThucMonAn.setItems(dataDishes);
+    	
+    	// add cheeky editDish thing
+    	tblQuanLyCongThucMonAn.setRowFactory(tv -> {
+    		TableRow<DishEntity> row = new TableRow<>();
+    		row.setOnMouseClicked(mouseEvent -> {
+    			if (mouseEvent.getClickCount() == 2 && !row.isEmpty()) {
+    				DishEntity rowData = row.getItem();
+    				editDish(rowData);
+    			}
+    		});
+    		return row;
+    	});
     }
 
     @FXML
     void addDish(ActionEvent event) {
-
+    	// basic open new window (stage)
+    	Stage stage = new Stage();
+    	Parent formAddDish = null;
+    	try {
+    		formAddDish = FXMLLoader.load(getClass().getResource("/fxml/AddDishModel.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+    	Scene scene = new Scene(formAddDish);
+    	stage.setScene(scene);
+    	stage.showAndWait();
+    	loadData();
+    	tblQuanLyCongThucMonAn.setItems(dataDishes);
+    }
+    
+    void editDish(DishEntity rowData) {
+    	// basic open new window (stage)
+    	Stage stage = new Stage();
+    	Parent formAddDish = null;
+    	FXMLLoader loader = null;
+    	try {
+    		loader = new FXMLLoader(getClass().getResource("/fxml/AddDishModel.fxml"));
+    		formAddDish = (Parent)loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+    	Scene scene = new Scene(formAddDish);
+    	DishFormHandler handler = loader.getController();
+    	handler.editMode(rowData);
+    	stage.setScene(scene);
+    	stage.showAndWait();
+    	loadData();
+    	tblQuanLyCongThucMonAn.setItems(dataDishes);
     }
 
     @FXML
@@ -605,10 +652,10 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     	Predicate<DishEntity> containsKey = i -> i.getDish_name().contains(filterKey);
     	
     	// create filtered list
-    	FilteredList<DishEntity> filteredUserList = dataDishes.filtered(containsKey);
+    	FilteredList<DishEntity> filteredDishList = dataDishes.filtered(containsKey);
     	
     	// load list to table
-    	tblQuanLyCongThucMonAn.setItems(filteredUserList);
+    	tblQuanLyCongThucMonAn.setItems(filteredDishList);
 
     }
 
@@ -674,7 +721,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 			rs = sttm.executeQuery(query);
 			
 			while(rs.next()) {
-				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("username"),
+				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("dish_name"),
 						rs.getString("recipe"));
 				dataDishes.add(dish);
 			}
