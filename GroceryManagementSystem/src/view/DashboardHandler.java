@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 import entity.DishEntity;
 import entity.RawFoodEntity;
 import entity.UserEntity;
+import entity.UserSingleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -642,6 +643,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		loadData();
+		checkAdmin(UserSingleton.getInstance().isAdmin());
 	}
 	
 	private void loadData() {

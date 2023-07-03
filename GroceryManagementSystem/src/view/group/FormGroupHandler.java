@@ -88,18 +88,18 @@ public class FormGroupHandler {
 		Node node = (Node) event.getSource();
 		Stage dashboardStage = (Stage) node.getScene().getWindow();
 		UserEntity userLogin = (UserEntity) dashboardStage.getUserData();
-		
-		while (rs.next()) {
-			UserEntity user = new UserEntity(Integer.parseInt(rs.getString("user_id")), rs.getString("username"));
-			
-			if (contains(tblThanhVienNhom, user) || contains(userLogin, user)) {
-				Alert a = new Alert(AlertType.WARNING, "Thành viên đã có trong nhóm!", ButtonType.OK);
-				a.setHeaderText(null);
-				a.showAndWait();
-				return;
-			}
-			data.add(user);
-		}
+		// TODO: SỬAAAAAA
+//		while (rs.next()) {
+//			UserEntity user = new UserEntity(Integer.parseInt(rs.getString("user_id")), rs.getString("username"));
+//			
+//			if (contains(tblThanhVienNhom, user) || contains(userLogin, user)) {
+//				Alert a = new Alert(AlertType.WARNING, "Thành viên đã có trong nhóm!", ButtonType.OK);
+//				a.setHeaderText(null);
+//				a.showAndWait();
+//				return;
+//			}
+//			data.add(user);
+//		}
 
 		colIdThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, Integer>("user_id"));
 		colTenThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, String>("username"));

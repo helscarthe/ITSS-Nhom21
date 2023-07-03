@@ -75,11 +75,9 @@ public class LoginHandler {
 		UserSingleton.setInstance(user);
     	
     	Parent dashboard = null;
-    	FXMLLoader loader = null;
 		try {
 	    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    	loader = new FXMLLoader(getClass().getResource("/fxml/dashboard.fxml"));
-	    	dashboard = (Parent)loader.load();
+	    	dashboard = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
 			stage.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -93,9 +91,6 @@ public class LoginHandler {
 		
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
-		
-		DashboardHandler handler = (DashboardHandler)loader.getController();
-		handler.checkAdmin(rs.getBoolean("is_admin"));
 		
 		stage.show();
 		conn.close();
