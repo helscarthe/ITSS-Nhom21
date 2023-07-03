@@ -222,6 +222,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	ObservableList<DishEntity> dataDishes;
     
 	ObservableList<RawFoodEntity> dataFood;
+	
     
     @FXML
     public void addFoodIntoFridge(ActionEvent event) {
@@ -699,5 +700,11 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	}
     
 
+    @FXML
+    void loadMealPlan(ActionEvent event) {
+    	//Tung
+    	//Them
+    	
+    }
     
 }
