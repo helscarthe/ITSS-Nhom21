@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 import entity.DishEntity;
 import entity.RawFoodEntity;
 import entity.UserEntity;
+import entity.UserSingleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -222,7 +223,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	ObservableList<DishEntity> dataDishes;
     
 	ObservableList<RawFoodEntity> dataFood;
-	
     
     @FXML
     public void addFoodIntoFridge(ActionEvent event) {
@@ -370,7 +370,8 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     	//Tùng
     	//tìm kiếm món ăn trong các món ăn yêu thích, đổ thông tin vào bảng. Tương tự searchDish
     }
-
+    
+   
     @FXML
     void selectAccountTab(Event event) {
     
@@ -642,6 +643,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		loadData();
+		checkAdmin(UserSingleton.getInstance().isAdmin());
 	}
 	
 	private void loadData() {
@@ -700,11 +702,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	}
     
 
-    @FXML
-    void loadMealPlan(ActionEvent event) {
-    	//Tung
-    	//Them
-    	
-    }
     
 }
+
