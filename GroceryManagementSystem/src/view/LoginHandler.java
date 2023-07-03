@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import entity.UserEntity;
+import entity.UserSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,9 +41,9 @@ public class LoginHandler {
     @FXML
     void submit(ActionEvent event) throws SQLException {
     	String pass = txtMatKhau.getText().toString();
-    	String user = txtTenDangNhap.getText();
+    	String username = txtTenDangNhap.getText();
     	
-    	String query = "select * from users where username='" + user + "' and password_hash='" + pass + "'";
+    	String query = "select * from users where username='" + username + "' and password_hash='" + pass + "'";
     	Statement sttm = null;
 
 		try {
@@ -69,6 +70,10 @@ public class LoginHandler {
 //    		return;
 //    	}
     	
+		UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
+				rs.getString("password_hash"), rs.getBoolean("is_admin"));
+		UserSingleton.setInstance(user);
+    	
     	Parent dashboard = null;
     	FXMLLoader loader = null;
 		try {
@@ -88,13 +93,6 @@ public class LoginHandler {
 		
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
-		
-		stage.setUserData(new UserEntity(
-			     Integer.parseInt(rs.getString("user_id")),
-			     rs.getString("username"),
-			     rs.getString("password_hash"),
-			     Boolean.parseBoolean(rs.getString("is_admin"))
-			     ));
 		
 		DashboardHandler handler = (DashboardHandler)loader.getController();
 		handler.checkAdmin(rs.getBoolean("is_admin"));
