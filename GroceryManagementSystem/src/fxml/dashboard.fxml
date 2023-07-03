@@ -61,7 +61,7 @@
                         </Button>
                         <ComboBox fx:id="cbLoaiThucPhamTrongTuLanh" layoutX="209.0" layoutY="14.0" prefWidth="150.0" promptText="Loại thực phẩm" />
                         <TextField fx:id="txtTimKiemThucPhamTrongTuLanh" layoutX="6.0" layoutY="14.0" prefHeight="25.0" prefWidth="186.0" />
-                        <Button fx:id="btnTimKiem" layoutX="376.0" layoutY="14.0" mnemonicParsing="false" text="Tìm kiếm" />
+                        <Button fx:id="btnTimKiem" layoutX="376.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchFood" text="Tìm kiếm" />
                      </children>
                   </AnchorPane>
                </content>
@@ -243,6 +243,35 @@
                         </AnchorPane>
                      </children></AnchorPane>
               </content>
+            </Tab>
+            <Tab fx:id="tabTuLanh1" text="Tủ lạnh">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="btlTuLanhList1" layoutY="58.0" prefHeight="443.0" prefWidth="1062.0">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="Thứ tự" />
+                              <TableColumn prefWidth="331.3333435058594" text="Tên" />
+                              <TableColumn prefWidth="195.66668701171875" text="Loại  thực phẩm" />
+                              <TableColumn prefWidth="264.33331298828125" text="Ngày hết hạn" />
+                              <TableColumn prefWidth="101.0" text="Số lượng" />
+                              <TableColumn prefWidth="98.0" text="Đơn vị" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="btnThemThucPhamTrongTuLanh1" layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#addFoodIntoFridge" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Black" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="1.0" left="14.0" right="14.0" top="1.0" />
+                           </padding>
+                        </Button>
+                        <ComboBox fx:id="cbLoaiThucPhamTrongTuLanh1" layoutX="209.0" layoutY="14.0" prefWidth="150.0" promptText="Loại thực phẩm" />
+                        <TextField fx:id="txtTimKiemThucPhamTrongTuLanh1" layoutX="6.0" layoutY="14.0" prefHeight="25.0" prefWidth="186.0" />
+                        <Button fx:id="btnTimKiem1" layoutX="376.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchFood" text="Tìm kiếm" />
+                     </children>
+                  </AnchorPane>
+               </content>
             </Tab>
         </tabs>
       </TabPane>
