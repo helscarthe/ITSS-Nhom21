@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 import entity.DishEntity;
+import entity.MealPlanFood;
 import entity.RawFoodEntity;
 import entity.UserEntity;
 import entity.UserSingleton;
@@ -217,6 +218,18 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     
     @FXML
     private TableColumn<?, ?> favDishTable;
+    
+    @FXML
+    private TableColumn<MealPlanFood, Integer> colMealIndex;
+    
+    @FXML
+    private TableColumn<MealPlanFood, String> colMealPlanFood;
+    
+    @FXML
+    private TableColumn<MealPlanFood, Integer> colMealType;
+    
+    @FXML
+    private TableColumn<MealPlanFood, String> colMealDate;
     
 	ObservableList<UserEntity> dataUsers;
     
@@ -648,60 +661,99 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	
 	private void loadData() {
     	
-    	// create db connection, query, and statement
+//    	// create db connection, query, and statement
+//    	Connection conn = SqliteConnection.Connector();
+//    	Statement sttm = null;
+//		
+//		// execute query
+//		try {
+//	    	String query = "select * from users";
+//			sttm = conn.createStatement();
+//			ResultSet rs = sttm.executeQuery(query);
+//			
+//			// dataUsers is a class attribute
+//			dataUsers = FXCollections.observableArrayList();
+//			
+//			while(rs.next()) {
+//				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
+//						rs.getString("password_hash"), rs.getBoolean("is_admin"));
+//				dataUsers.add(user);
+//			}
+//			
+//	    	query = "select * from dishes";
+//			
+//			// dataDishes is a class attribute
+//			dataDishes = FXCollections.observableArrayList();
+//			rs = sttm.executeQuery(query);
+//			
+//			while(rs.next()) {
+//				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("username"),
+//						rs.getString("recipe"));
+//				dataDishes.add(dish);
+//			}
+//			
+//	    	query = "select * from raw_foods";
+//			
+//			// dataFood is a class attribute
+//			dataFood = FXCollections.observableArrayList();
+//			rs = sttm.executeQuery(query);
+//			
+//			while(rs.next()) {
+//				RawFoodEntity dish = new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
+//						rs.getInt("food_type"),rs.getString("unit"));
+//				dataFood.add(dish);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	try {
+//        	conn.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+	}
+    
+    @FXML
+    void loadMealPlan(ActionEvent event) {
+    	int userId = UserSingleton.getInstance().getUser_id();
     	Connection conn = SqliteConnection.Connector();
+    	String query = "select m.meal_plan_id as meal_plan_id, m.user_id as user_id, m.date as date, m.meal_number as meal_number, m.dish_id as dish_id, d.dish_name as dish_name from meal_plan m, dishes d where m.dish_id=d.dish_id and user_id = " + userId + ";";
     	Statement sttm = null;
-		
-		// execute query
+		ObservableList<MealPlanFood> mealPlanList = null;
 		try {
-	    	String query = "select * from users";
 			sttm = conn.createStatement();
 			ResultSet rs = sttm.executeQuery(query);
-			
-			// dataUsers is a class attribute
-			dataUsers = FXCollections.observableArrayList();
-			
+			mealPlanList = FXCollections.observableArrayList();
 			while(rs.next()) {
-				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
-						rs.getString("password_hash"), rs.getBoolean("is_admin"));
-				dataUsers.add(user);
-			}
-			
-	    	query = "select * from dishes";
-			
-			// dataDishes is a class attribute
-			dataDishes = FXCollections.observableArrayList();
-			rs = sttm.executeQuery(query);
-			
-			while(rs.next()) {
-				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("username"),
-						rs.getString("recipe"));
-				dataDishes.add(dish);
-			}
-			
-	    	query = "select * from raw_foods";
-			
-			// dataFood is a class attribute
-			dataFood = FXCollections.observableArrayList();
-			rs = sttm.executeQuery(query);
-			
-			while(rs.next()) {
-				RawFoodEntity dish = new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
-						rs.getInt("food_type"),rs.getString("unit"));
-				dataFood.add(dish);
+				MealPlanFood mealFood = new MealPlanFood(rs.getInt("meal_plan_id"), rs.getInt("user_id"), rs.getString("date"), rs.getInt("meal_number"), rs.getInt("dish_id"), rs.getString("dish_name"));
+				mealPlanList.add(mealFood);
+				System.out.println(rs.getInt("meal_plan_id")+" "+ rs.getInt("user_id")+ " "+ rs.getString("date")+" "+ rs.getInt("meal_number")+" "+ rs.getInt("dish_id")+"  "+ rs.getString("dish_name"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Looi");
 		}
-    	
+		
+//		colMealIndex.setCellValueFactory(
+//				new PropertyValueFactory<MealPlanFood, Integer>("mealPlanId")
+//		);
+//		colMealPlanFood.setCellValueFactory(
+//				new PropertyValueFactory<MealPlanFood, String>("foodName")
+//		);
+//		colMealDate.setCellValueFactory(
+//				new PropertyValueFactory<MealPlanFood, String>("date")
+//		);
+//		colMealType.setCellValueFactory(
+//				new PropertyValueFactory<MealPlanFood, Integer>("mealNumber")
+//		);
+//    	
     	try {
         	conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-    
-
+    }
     
 }
 
