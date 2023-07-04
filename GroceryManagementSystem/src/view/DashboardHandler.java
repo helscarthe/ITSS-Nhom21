@@ -660,58 +660,57 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	}
 	
 	private void loadData() {
+		// create db connection, query, and statement
+    	Connection conn = SqliteConnection.Connector();
+    	Statement sttm = null;
+		
+		// execute query
+		try {
+	    	String query = "select * from users";
+			sttm = conn.createStatement();
+			ResultSet rs = sttm.executeQuery(query);
+			
+			// dataUsers is a class attribute
+			dataUsers = FXCollections.observableArrayList();
+			
+			while(rs.next()) {
+				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
+						rs.getString("password_hash"), rs.getBoolean("is_admin"));
+				dataUsers.add(user);
+			}
+			
+	    	query = "select * from dishes";
+			
+			// dataDishes is a class attribute
+			dataDishes = FXCollections.observableArrayList();
+			rs = sttm.executeQuery(query);
+			
+			while(rs.next()) {
+				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("username"),
+						rs.getString("recipe"));
+				dataDishes.add(dish);
+			}
+			
+	    	query = "select * from raw_foods";
+			
+			// dataFood is a class attribute
+			dataFood = FXCollections.observableArrayList();
+			rs = sttm.executeQuery(query);
+			
+			while(rs.next()) {
+				RawFoodEntity dish = new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
+						rs.getInt("food_type"),rs.getString("unit"));
+				dataFood.add(dish);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     	
-//    	// create db connection, query, and statement
-//    	Connection conn = SqliteConnection.Connector();
-//    	Statement sttm = null;
-//		
-//		// execute query
-//		try {
-//	    	String query = "select * from users";
-//			sttm = conn.createStatement();
-//			ResultSet rs = sttm.executeQuery(query);
-//			
-//			// dataUsers is a class attribute
-//			dataUsers = FXCollections.observableArrayList();
-//			
-//			while(rs.next()) {
-//				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
-//						rs.getString("password_hash"), rs.getBoolean("is_admin"));
-//				dataUsers.add(user);
-//			}
-//			
-//	    	query = "select * from dishes";
-//			
-//			// dataDishes is a class attribute
-//			dataDishes = FXCollections.observableArrayList();
-//			rs = sttm.executeQuery(query);
-//			
-//			while(rs.next()) {
-//				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("username"),
-//						rs.getString("recipe"));
-//				dataDishes.add(dish);
-//			}
-//			
-//	    	query = "select * from raw_foods";
-//			
-//			// dataFood is a class attribute
-//			dataFood = FXCollections.observableArrayList();
-//			rs = sttm.executeQuery(query);
-//			
-//			while(rs.next()) {
-//				RawFoodEntity dish = new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
-//						rs.getInt("food_type"),rs.getString("unit"));
-//				dataFood.add(dish);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//    	
-//    	try {
-//        	conn.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+    	try {
+        	conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
     
     @FXML
@@ -735,19 +734,19 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 			System.out.println("Looi");
 		}
 		
-//		colMealIndex.setCellValueFactory(
-//				new PropertyValueFactory<MealPlanFood, Integer>("mealPlanId")
-//		);
-//		colMealPlanFood.setCellValueFactory(
-//				new PropertyValueFactory<MealPlanFood, String>("foodName")
-//		);
-//		colMealDate.setCellValueFactory(
-//				new PropertyValueFactory<MealPlanFood, String>("date")
-//		);
-//		colMealType.setCellValueFactory(
-//				new PropertyValueFactory<MealPlanFood, Integer>("mealNumber")
-//		);
-//    	
+		colMealIndex.setCellValueFactory(
+				new PropertyValueFactory<MealPlanFood, Integer>("mealPlanId")
+		);
+		colMealPlanFood.setCellValueFactory(
+				new PropertyValueFactory<MealPlanFood, String>("foodName")
+		);
+		colMealDate.setCellValueFactory(
+				new PropertyValueFactory<MealPlanFood, String>("date")
+		);
+		colMealType.setCellValueFactory(
+				new PropertyValueFactory<MealPlanFood, Integer>("mealNumber")
+		);
+    	
     	try {
         	conn.close();
 		} catch (Exception e) {
