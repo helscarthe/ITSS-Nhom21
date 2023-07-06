@@ -1,10 +1,9 @@
 package view.group;
 
-import java.sql.SQLException;
 import controller.GroupController;
+import entity.GroupEntity;
 import entity.UserEntity;
 import entity.UserSingleton;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class FormGroupHandler {
+public class ChangeInforGroupHandler {
 
 	@FXML
 	private Button btnThemThanhVien;
@@ -31,6 +30,9 @@ public class FormGroupHandler {
 	@FXML
 	private Button btnXoaThanhVien;
 
+	@FXML
+	private Button btnXoaNhom;
+	
 	@FXML
 	private TableColumn<UserEntity, Integer> colIdThanhVien;
 
@@ -44,11 +46,15 @@ public class FormGroupHandler {
 	private TextField txtTenNhom;
 
 
-	@FXML
-	public void addMemberToGroup(ActionEvent event) throws SQLException {
-		
-		ObservableList<UserEntity> data = FXCollections.observableArrayList();
+	private int groupIdCurrent;
 
+	@FXML
+	public void addMemberToGroup(ActionEvent event) {
+
+		ObservableList<UserEntity> userList = tblThanhVienNhom.getItems();
+
+		UserEntity userLogin = UserSingleton.getInstance();
+		
 		TextInputDialog findMember = new TextInputDialog();
 
 		findMember.setHeaderText("Nhập vào tên người dùng");
@@ -58,15 +64,13 @@ public class FormGroupHandler {
 
 		UserEntity user = GroupController.getUserByUsername(nameMember);
 		
+		
 		if (user == null) {
 			Alert a = new Alert(AlertType.WARNING, "Người dùng không tồn tại!", ButtonType.OK);
 			a.setHeaderText(null);
 			a.showAndWait();
 			return;
 		}
-
-		UserEntity userLogin = UserSingleton.getInstance();
-		
 		
 		if (contains(tblThanhVienNhom, user) || contains(userLogin, user)) {
 			Alert a = new Alert(AlertType.WARNING, "Thành viên đã có trong nhóm!", ButtonType.OK);
@@ -75,17 +79,28 @@ public class FormGroupHandler {
 			return;
 		}
 		
-		data.add(user);
-		colIdThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, Integer>("user_id"));
-		colTenThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, String>("username"));
-		tblThanhVienNhom.setItems(data);
+		
 
+		boolean addOk = GroupController.addGroupMember(groupIdCurrent, user.getUser_id());
+	
+		if (addOk == true) {
+			Alert a = new Alert(AlertType.WARNING, "Thêm người dùng thành công!", ButtonType.OK);
+			a.setHeaderText(null);
+			a.showAndWait();
+			
+			userList.add(user);
+			colIdThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, Integer>("user_id"));
+			colTenThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, String>("username"));
+			tblThanhVienNhom.setItems(userList);
+		}
+		
 	}
 
 	@FXML
-	public void deleteMember() throws SQLException {
-		UserEntity user = tblThanhVienNhom.getSelectionModel().getSelectedItem();
+	public void deleteMember() {
 		int userLogin = UserSingleton.getInstance().getUser_id();
+
+		UserEntity user = tblThanhVienNhom.getSelectionModel().getSelectedItem();
 		
 		if (user == null) {
 			Alert a = new Alert(AlertType.WARNING, "Vui lòng chọn thành viên muốn xóa!", ButtonType.OK);
@@ -101,7 +116,9 @@ public class FormGroupHandler {
 			a.showAndWait();
 			
 			return;
-		}
+		} 
+		
+		GroupController.deleteGroupMember(user.getUser_id(), groupIdCurrent);
 		
 		tblThanhVienNhom.getItems().remove(user);
 	}
@@ -109,35 +126,48 @@ public class FormGroupHandler {
 	
 
 	@FXML
-	public void submitFormGroup(ActionEvent event) throws SQLException {
+	public void submitFormGroup(ActionEvent event) {
 		
-		UserEntity userLogin = UserSingleton.getInstance();
-		
-    	int leaderId = userLogin.getUser_id();
-    	
-		String nameGroup = txtTenNhom.getText();
-		
-		if (nameGroup.isEmpty()) {
-			Alert a = new Alert(AlertType.WARNING, "Vui lòng điền tên nhóm!", ButtonType.OK);
-			a.setHeaderText(null);
-			a.showAndWait();
-			return;
-		}
-		
-		int createOk = GroupController.createGroupMember(nameGroup, tblThanhVienNhom.getItems(), leaderId);
-     	
-		if (createOk == 0) {
-			Alert a = new Alert(AlertType.WARNING, "Tên nhóm đã tồn tại!", ButtonType.OK);
-			a.setHeaderText(null);
-			a.showAndWait();
-			return;
-		}
-		
-     	Node node = (Node) event.getSource();
-		Stage formGroup = (Stage) node.getScene().getWindow();
-		
-		formGroup.close();
+     	close(event);
 	}
+	
+	@FXML
+	public void deleteGroup(ActionEvent event) {
+		
+		Alert delConfirm = new Alert(AlertType.CONFIRMATION, "Bạn có thực sự muốn xóa nhóm không?", ButtonType.YES, ButtonType.NO);
+		delConfirm.setHeaderText(null);
+		delConfirm.showAndWait();
+		
+		if (delConfirm.getResult() == ButtonType.YES) {
+			Boolean deleteOk = GroupController.deleteGroup(groupIdCurrent);
+			
+			if (deleteOk == true) {
+				Alert a = new Alert(AlertType.WARNING, "Xóa nhóm thành công!", ButtonType.OK);
+				a.setHeaderText(null);
+				a.showAndWait();
+			}
+		}
+		
+		
+		close(event);
+	}
+	
+	public void close(ActionEvent event) {
+		Node node = (Node) event.getSource();
+		Stage formChangeInfor = (Stage) node.getScene().getWindow();
+		
+		formChangeInfor.close();
+	}
+	
+	public void setGroupData(GroupEntity group) {
+		txtTenNhom.setText(group.getGroupName());
+		colIdThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, Integer>("user_id"));
+		colTenThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, String>("username"));
+		
+		tblThanhVienNhom.setItems(group.getMemberList());
+	}
+	
+	
 	
 	public static boolean contains(TableView<UserEntity> table, UserEntity obj){
         for(UserEntity item: table.getItems())
@@ -153,5 +183,9 @@ public class FormGroupHandler {
 
         return false;
     }
+	
+	public void setGroupId(int groupId) {
+		this.groupIdCurrent = groupId;
+	}
 
 }

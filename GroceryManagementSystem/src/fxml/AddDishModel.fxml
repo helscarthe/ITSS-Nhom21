@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button id="btnThemCongThucMonAn" layoutX="145.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Xác nhận" />
       <Text layoutX="109.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm công thức món ăn">

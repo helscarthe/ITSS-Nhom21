@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="411.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.group.FormGroupHandler">
+<AnchorPane prefHeight="411.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.group.ChangeInforGroupHandler">
    <children>
       <Text layoutX="168.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin nhóm">
          <font>
@@ -17,7 +17,7 @@
       </Text>
       <Text layoutX="46.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên nhóm" wrappingWidth="92.009765625" />
       <Button id="btnThemThanhVien" fx:id="btnThemThanhVien" layoutX="299.0" layoutY="101.0" mnemonicParsing="false" onAction="#addMemberToGroup" text="Thêm thành viên" />
-      <TextField id="txtTenNhom" fx:id="txtTenNhom" layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField id="txtTenNhom" fx:id="txtTenNhom" editable="false" layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="256.0" />
       <TableView id="btlThanhVienNhom" fx:id="tblThanhVienNhom" layoutX="46.0" layoutY="101.0" prefHeight="225.0" prefWidth="241.0">
          <columns>
             <TableColumn fx:id="colIdThanhVien" prefWidth="56.0" text="Id" />
@@ -26,5 +26,6 @@
       </TableView>
       <Button id="btnXoaThanhVien" fx:id="btnXoaThanhVien" layoutX="299.0" layoutY="144.0" mnemonicParsing="false" onAction="#deleteMember" prefHeight="25.0" prefWidth="105.0" text="Xóa thành viên" />
       <Button id="btnXacNhan" fx:id="btnXacNhan" layoutX="299.0" layoutY="186.0" mnemonicParsing="false" onAction="#submitFormGroup" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
+      <Button id="btnXacNhan" fx:id="btnXoaNhom" layoutX="299.0" layoutY="228.0" mnemonicParsing="false" onAction="#deleteGroup" prefHeight="25.0" prefWidth="105.0" text="Xóa nhóm" />
    </children>
 </AnchorPane>
