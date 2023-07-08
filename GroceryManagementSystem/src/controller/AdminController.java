@@ -5,15 +5,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import entity.DishEntity;
 import entity.RawFoodEntity;
 import entity.UserEntity;
 import service.SqliteConnection;
 
 public class AdminController {
 	
-	public UserEntity user;
+	private UserEntity user;
 	
-	public RawFoodEntity food;
+	private RawFoodEntity food;
+	
+	private DishEntity dish;
 
 	public void setUser(UserEntity user) {
 		this.user = user;
@@ -21,6 +24,10 @@ public class AdminController {
 
 	public void setFood(RawFoodEntity food) {
 		this.food = food;
+	}
+
+	public void setDish(DishEntity dish) {
+		this.dish = dish;
 	}
 
 	public void updateUser(String username, String password, int isAdmin) {
@@ -72,6 +79,38 @@ public class AdminController {
 					+ "food_type = '" + food_type + "'," 
 					+ "unit = '" + unit + "' "
 					+ "where raw_food_id = '" + food.getRaw_food_id() + "';";
+		}
+		
+    	// execute query
+		try {
+			sttm = conn.createStatement();
+			sttm.executeUpdate(query);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+    	try {
+        	conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void updateDish(String dish_name, String recipe) {
+
+    	// create db connection, query, and statement
+    	Connection conn = SqliteConnection.Connector();
+    	String query = null;
+    	Statement sttm = null;
+		
+		if (dish == null) {
+	    	query = "insert into dishes (dish_name, recipe) "
+	    			+ "values ('" + dish_name + "', '" + recipe + "');";
+		} else {
+			query = "update dishes "
+					+ "set dish_name = '" + dish_name + "', "
+					+ "recipe = '" + recipe + "'" 
+					+ "where dish_id = '" + dish.getDish_id() + "';";
 		}
 		
     	// execute query

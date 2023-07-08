@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddMealPlanFormHandle">
+   <children>
+      <Text fx:id="form_title" layoutX="367.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm món ăn định nấu">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button id="btnXacNhan(Them/Sua)ThongTinMonDinhNau" layoutX="336.0" layoutY="475.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="105.0" text="Xác nhận" />
+      <Text layoutX="449.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tìm món" wrappingWidth="69.0" />
+      <TextField id="txtMonDinhNau" fx:id="tf_meal" layoutX="531.0" layoutY="68.0" onKeyReleased="#search" prefHeight="38.0" prefWidth="294.0" />
+      <Text layoutX="54.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày" wrappingWidth="92.009765625" />
+      <Text layoutX="54.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giờ" wrappingWidth="27.009765625" />
+      <DatePicker id="dpNgayDinhNau" fx:id="dp_date_meal" layoutX="119.0" layoutY="70.0" prefHeight="31.0" prefWidth="248.0" />
+      <Button id="btnXoaThongTinMonDinhNau" layoutX="457.0" layoutY="475.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="105.0" text="Hủy" />
+      <TableView fx:id="tb_meal_search" layoutX="451.0" layoutY="138.0" onMouseClicked="#addMeal" prefHeight="287.0" prefWidth="375.0">
+        <columns>
+          <TableColumn fx:id="cl_search_name" prefWidth="374.0" text="Tên món" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tb_choose_plan" layoutX="54.0" layoutY="217.0" onMouseClicked="#minusMeal" prefHeight="209.0" prefWidth="375.0">
+        <columns>
+          <TableColumn fx:id="cl_meal_name" prefWidth="374.0" text="Tên món" />
+        </columns>
+      </TableView>
+      <Text layoutX="155.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phút" wrappingWidth="37.009765625" />
+      <Text layoutX="281.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giây" wrappingWidth="37.009765625" />
+      <ChoiceBox fx:id="cb_hour" layoutX="81.0" layoutY="123.0" prefHeight="31.0" prefWidth="50.0" />
+      <ChoiceBox fx:id="cb_minute" layoutX="192.0" layoutY="123.0" prefHeight="31.0" prefWidth="50.0" />
+      <ChoiceBox fx:id="cb_second" layoutX="318.0" layoutY="123.0" maxHeight="100.0" prefHeight="31.0" prefWidth="50.0" />
+   </children>
+</AnchorPane>

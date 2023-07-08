@@ -96,11 +96,11 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="tabCongThucMonAnYeuThich" onSelectionChanged="#loadFavDish" text="Công thức món ăn yêu thích">
+            <Tab fx:id="tabCongThucMonAnYeuThich" text="Công thức món ăn yêu thích">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="btlTenMonAnYeuThich" layoutX="5.0" layoutY="58.0" prefHeight="468.0" prefWidth="334.0">
+                        <TableView fx:id="btlTenMonAnYeuThich" layoutX="5.0" layoutY="58.0" onMouseClicked="#showRecipeFavDish" prefHeight="468.0" prefWidth="334.0">
                           <columns>
                             <TableColumn fx:id="favDishTable" prefWidth="333.0" text="Tên món ăn yêu thích" />
                           </columns>
@@ -111,14 +111,14 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <Button fx:id="btnThemCongThuc" layoutX="193.0" layoutY="550.0" mnemonicParsing="false" onAction="#addFavDish" text="Thêm công thức" />
-                        <Button fx:id="btnXoaCongThuc" layoutX="39.0" layoutY="549.0" mnemonicParsing="false" onAction="#deleteFavDish" prefHeight="25.0" prefWidth="104.0" text="Xóa công thức" />
-                        <TextField fx:id="txtTimKiemCongThucMonAnYeuThi" layoutX="5.0" layoutY="21.0" prefHeight="26.0" prefWidth="334.0" promptText="Tìm kiếm công thức món ăn" />
+                        <Button fx:id="btnCapNhatCongThuc" layoutX="191.0" layoutY="540.0" mnemonicParsing="false" onAction="#updateFavDish" text="Thêm món" />
+                        <TextField fx:id="txtTimKiemCongThucMonAnYeuThi" layoutX="5.0" layoutY="21.0" onKeyReleased="#searchFavDish" prefHeight="26.0" prefWidth="334.0" promptText="Tìm kiếm công thức món ăn" />
                         <Button fx:id="btnTimKiemMonAnYeuThich" layoutX="301.0" layoutY="21.0" mnemonicParsing="false" onAction="#searchFavDish" prefHeight="26.0" prefWidth="37.0" text="">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
+                        <Button fx:id="btn_xoamonanyeuthich" layoutX="69.0" layoutY="540.0" mnemonicParsing="false" onAction="#deleteFavDish" text="Xóa món" />
                      </children>
                   </AnchorPane>
               </content>
@@ -188,14 +188,14 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="tabQuanLyMonDinhNau" onSelectionChanged="#loadMealPlan" text="Món định nấu">
+            <Tab fx:id="tabQuanLyMonDinhNau" text="Món định nấu">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="btnThemMonDinhNau" layoutX="797.0" layoutY="41.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="238.0" text="Thêm món định nấu" />
-                              <TextField fx:id="txtTimKiemMonDinhNau" layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
+                              <Button fx:id="btnThemMonDinhNau" layoutX="797.0" layoutY="41.0" mnemonicParsing="false" onAction="#addMealPlan" prefHeight="31.0" prefWidth="238.0" text="Thêm món định nấu" />
+                              <TextField fx:id="txtTimKiemMonDinhNau" layoutX="380.0" layoutY="37.0" onKeyReleased="#searchMealPlan" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
                               <Button fx:id="btnTimKiemMonDinhNau" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
@@ -203,7 +203,7 @@
                               </Button>
                            </children>
                         </AnchorPane>
-                        <TableView fx:id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
+                        <TableView fx:id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" onMouseClicked="#deleteMealPlan" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn fx:id="colMealIndex" prefWidth="110.0" text="Thứ tự" />
                               <TableColumn fx:id="colMealPlanFood" prefWidth="425.0" text="Món định nấu" />
