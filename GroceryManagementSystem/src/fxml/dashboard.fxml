@@ -16,7 +16,6 @@
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
-          <Button mnemonicParsing="false" text="Thông tin cá nhân" />
             <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutY="6.0" mnemonicParsing="false" onAction="#logOut" text="Đăng xuất" />
         </items>
       </ToolBar>

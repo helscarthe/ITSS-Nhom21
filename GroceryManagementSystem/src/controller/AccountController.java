@@ -38,16 +38,24 @@ public class AccountController {
 		return ans;
 	}
 
-	public void signUp(String username, String pass) {
+	public int signUp(String username, String pass) {
 
     	// create db connection, query, and statement
     	Connection conn = SqliteConnection.Connector();
-    	String query = "insert into users (username, password_hash, is_admin) "
-    			+ "values ('" + username + "', '" + pass + "', false);";
+    	String query = "select * from users where username='" + username + "'";
     	Statement sttm = null;
 		
     	// execute query
 		try {
+			sttm = conn.createStatement();
+			
+			ResultSet rs = sttm.executeQuery(query);
+			
+			if (rs.getObject("username") != null) {
+				return -1;
+			}
+			query = "insert into users (username, password_hash, is_admin) "
+	    			+ "values ('" + username + "', '" + pass + "', false);";
 			sttm = conn.createStatement();
 			sttm.executeUpdate(query);
 		} catch (SQLException e1) {
@@ -58,6 +66,7 @@ public class AccountController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+    	return 1;
 	}
 
 	public void updatePassword(String username, String pass) {

@@ -33,6 +33,21 @@ public class ForgotPasswordHandler extends BaseHandler{
     	String passRep = tfPasswordRepeat.getText();
     	String username = tfUsername.getText();
     	
+    	if (username.isEmpty()) {
+    		errorAlert("Chưa nhập tên đăng nhập!");
+			return;
+    	}
+    	
+    	if (pass.isEmpty()) {
+    		errorAlert("Chưa nhập mật khẩu!");
+			return;
+    	}
+    	
+    	if (passRep.isEmpty()) {
+    		errorAlert("Chưa nhập mật khẩu lần 2!");
+			return;
+    	}
+    	
     	if (!pass.equals(passRep)) {
     		errorAlert("Mật khẩu nhập lại chưa khớp!");
 			return;

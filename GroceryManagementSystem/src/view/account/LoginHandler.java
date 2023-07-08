@@ -48,6 +48,16 @@ public class LoginHandler extends BaseHandler{
     	String pass = txtMatKhau.getText();
     	String username = txtTenDangNhap.getText();
     	
+    	if (username.isEmpty()) {
+    		errorAlert("Chưa nhập tên đăng nhập!");
+			return;
+    	}
+    	
+    	if (pass.isEmpty()) {
+    		errorAlert("Chưa nhập mật khẩu!");
+			return;
+    	}
+    	
     	UserEntity user = accountController.logIn(username, pass);
     	
     	if (user == null) {

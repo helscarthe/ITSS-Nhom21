@@ -32,12 +32,30 @@ public class SignupHandler extends BaseHandler {
     	String passRep = tfPasswordRepeat.getText();
     	String username = tfUsername.getText();
     	
+    	if (username.isEmpty()) {
+    		errorAlert("Chưa nhập tên đăng nhập!");
+			return;
+    	}
+    	
+    	if (pass.isEmpty()) {
+    		errorAlert("Chưa nhập mật khẩu!");
+			return;
+    	}
+    	
+    	if (passRep.isEmpty()) {
+    		errorAlert("Chưa nhập mật khẩu lần 2!");
+			return;
+    	}
+    	
+    	if (accountController.signUp(username, pass) == -1) {
+    		errorAlert("Tên người dùng đã tồn tại!");
+    		return;
+    	}
+    	
     	if (!pass.equals(passRep)) {
     		errorAlert("Mật khẩu nhập lại chưa khớp!");
 			return;
     	}
-    	
-    	accountController.signUp(username, pass);
     	
     	infoAlert("Tạo tài khoản thành công!\nChuyển hướng đến cửa sổ đăng nhập...");
     	
