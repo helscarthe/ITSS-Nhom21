@@ -80,9 +80,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Button btnThemMonDinhNau;
 
     @FXML
-    private Button btnThemNguoiDung;
-
-    @FXML
     private Button btnThemThucPhamTrongNhom;
 
     @FXML
@@ -92,26 +89,16 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Button btnThongTincaNhan;
 
     @FXML
-    private Button btnTimKiemCongThucMonAn;
-
-    @FXML
     private Button btnTimKiemMonAnYeuThich;
 
     @FXML
     private Button btnTimKiemMonDinhNau;
 
     @FXML
-    private Button btnTimKiemTaiKhoanNguoiDung;
-    
-
-    @FXML
     private Button btn_xoamonanyeuthich;
 
     @FXML
     private ComboBox<String> cbChonNhom;
-
-    @FXML
-    private ComboBox<String> cbLoaiThucPham;
 
     @FXML
     private ComboBox<String> cbLoaiThucPhamTrongTuLanh;
@@ -141,39 +128,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Tab tabTuLanh;
 
     @FXML
-    private TableColumn<UserEntity, String> colIsAdmin;
-
-    @FXML
-    private TableColumn<UserEntity, String> colPasswordHash;
-
-    @FXML
-    private TableColumn<UserEntity, String> colUserID;
-
-    @FXML
-    private TableColumn<UserEntity, String> colUsername;
-
-    @FXML
-    private TableColumn<DishEntity, String> colDishID;
-
-    @FXML
-    private TableColumn<DishEntity, String> colDishName;
-
-    @FXML
-    private TableColumn<DishEntity, String> colRecipe;
-
-    @FXML
-    private TableColumn<RawFoodEntity, String> colFoodID;
-
-    @FXML
-    private TableColumn<RawFoodEntity, String> colFoodName;
-
-    @FXML
-    private TableColumn<RawFoodEntity, String> colFoodType;
-
-    @FXML
-    private TableColumn<RawFoodEntity, String> colUnit;
-
-    @FXML
 	private TableColumn<FoodEntity, String> colTenThucPham;
 
 	@FXML
@@ -195,13 +149,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private TableView<?> tblDanhSachcanMua;
 
     @FXML
-    private TableView<RawFoodEntity> tblDulieuThucPham;
-
-    @FXML
-    private TableView<UserEntity> tblQuanLytaiKhoanNguoiDung;
-
-    @FXML
-    private TableView<DishEntity> tblQuanLyCongThucMonAn;
+    private TableView<MealPlanFood> tblQuanLyMonDinhNau;
 
     @FXML
     private TableView<UserEntity> tblThanhVienNhom;
@@ -219,9 +167,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Tab txtQuanLyCongThucMonAn;
 
     @FXML
-    private TextField txtTimKiemCongThucMonAn;
-
-    @FXML
     private TextField txtTimKiemCongThucMonAnYeuThi;
 
     @FXML
@@ -237,26 +182,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private TextField txtTimKiemMonDinhNau;
 
     @FXML
-    private TextField txtTimKiemTaiKhoanNguoiDung;
-
-    @FXML
     private TextField txtTimKiemThucPhamTrongTuLanh;
-
-    @FXML
-    private TextField txtTimKiemTenThucPham;
-    
-    
-    
-
-
-    
-	ObservableList<UserEntity> dataUsers;
-    
-	ObservableList<DishEntity> dataDishes;
-    
-	ObservableList<RawFoodEntity> dataFood;
-    
-
     
 	private int groupIdCurrent = 0;
 	@FXML
@@ -424,181 +350,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 	}
 	
 	/// End Tab Nhóm
-    @FXML
-    void selectAccountTab(Event event) {
-    
-    	// important, set correct column to correct attribute
-		colUserID.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("user_id")
-		);;
-		colUsername.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("username")
-		);;
-		colPasswordHash.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("password_hash")
-		);;
-		colIsAdmin.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("admin")
-		);;
-		
-		// load values
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
-    	
-    	// add cheeky editUser thing
-    	tblQuanLytaiKhoanNguoiDung.setRowFactory(tv -> {
-    		TableRow<UserEntity> row = new TableRow<>();
-    		row.setOnMouseClicked(mouseEvent -> {
-    			if (mouseEvent.getClickCount() == 2 && !row.isEmpty()) {
-    				UserEntity rowData = row.getItem();
-    				editUser(rowData);
-    			}
-    		});
-    		return row;
-    	});
-    }
-
-    @FXML
-    void addUser(ActionEvent event) {
-    	// basic open new window (stage)
-    	Stage stage = new Stage();
-    	Parent formAddUser = null;
-    	try {
-    		formAddUser = FXMLLoader.load(getClass().getResource("/fxml/UserInfoChangeForm.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-    	Scene scene = new Scene(formAddUser);
-    	stage.setScene(scene);
-    	stage.showAndWait();
-    	loadData();
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
-    }
-
-    void editUser(UserEntity rowData) {
-    	// basic open new window (stage)
-    	Stage stage = new Stage();
-    	Parent formEditUser = null;
-    	FXMLLoader loader = null;
-    	try {
-    		loader = new FXMLLoader(getClass().getResource("/fxml/UserInfoChangeForm.fxml"));
-    		formEditUser = (Parent)loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-    	Scene scene = new Scene(formEditUser);
-    	UserFormHandler handler = loader.getController();
-    	handler.editMode(rowData);
-    	stage.setScene(scene);
-    	stage.showAndWait();
-    	loadData();
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
-    }
-
-    @FXML
-    void searchUser(ActionEvent event) {
-    	// get filter value
-    	String filterKey = txtTimKiemTaiKhoanNguoiDung.getText();
-    	
-    	// create predicate that says "Need this value"
-    	// i is the object chosen
-    	// Here, i is UserEntity
-    	Predicate<UserEntity> containsKey = i -> i.getUsername().contains(filterKey);
-    	
-    	// create filtered list
-    	FilteredList<UserEntity> filteredUserList = dataUsers.filtered(containsKey);
-    	
-    	// load list to table
-    	tblQuanLytaiKhoanNguoiDung.setItems(filteredUserList);
-    }
-    
-    @FXML
-    void selectDishesTab(Event event) {
-    
-    	// important, set correct column to correct attribute
-		colDishID.setCellValueFactory(
-				new PropertyValueFactory<DishEntity, String>("dish_id")
-		);;
-		colDishName.setCellValueFactory(
-				new PropertyValueFactory<DishEntity, String>("dish_name")
-		);;
-		colRecipe.setCellValueFactory(
-				new PropertyValueFactory<DishEntity, String>("recipe")
-		);;
-		
-		// load values
-    	tblQuanLyCongThucMonAn.setItems(dataDishes);
-    	
-    	// add cheeky editDish thing
-    	tblQuanLyCongThucMonAn.setRowFactory(tv -> {
-    		TableRow<DishEntity> row = new TableRow<>();
-    		row.setOnMouseClicked(mouseEvent -> {
-    			if (mouseEvent.getClickCount() == 2 && !row.isEmpty()) {
-    				DishEntity rowData = row.getItem();
-    				editDish(rowData);
-    			}
-    		});
-    		return row;
-    	});
-    }
-
-    @FXML
-    void addDish(ActionEvent event) {
-    	// basic open new window (stage)
-    	Stage stage = new Stage();
-    	Parent formAddDish = null;
-    	try {
-    		formAddDish = FXMLLoader.load(getClass().getResource("/fxml/AddDishModel.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-    	Scene scene = new Scene(formAddDish);
-    	stage.setScene(scene);
-    	stage.showAndWait();
-    	loadData();
-    	tblQuanLyCongThucMonAn.setItems(dataDishes);
-    }
-    
-    void editDish(DishEntity rowData) {
-    	// basic open new window (stage)
-    	Stage stage = new Stage();
-    	Parent formAddDish = null;
-    	FXMLLoader loader = null;
-    	try {
-    		loader = new FXMLLoader(getClass().getResource("/fxml/AddDishModel.fxml"));
-    		formAddDish = (Parent)loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-    	Scene scene = new Scene(formAddDish);
-    	DishFormHandler handler = loader.getController();
-    	handler.editMode(rowData);
-    	stage.setScene(scene);
-    	stage.showAndWait();
-    	loadData();
-    	tblQuanLyCongThucMonAn.setItems(dataDishes);
-    }
-
-    @FXML
-    void searchDish(ActionEvent event) {
-    	// get filter value
-    	String filterKey = txtTimKiemCongThucMonAn.getText();
-    	
-    	// create predicate that says "Need this value"
-    	// i is the object chosen
-    	// Here, i is UserEntity
-    	Predicate<DishEntity> containsKey = i -> i.getDish_name().contains(filterKey);
-    	
-    	// create filtered list
-    	FilteredList<DishEntity> filteredDishList = dataDishes.filtered(containsKey);
-    	
-    	// load list to table
-    	tblQuanLyCongThucMonAn.setItems(filteredDishList);
-
-    }
 
 	public void checkAdmin(boolean isAdmin) {
 		if (isAdmin) {
@@ -630,63 +381,7 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		loadData();		
 		checkAdmin(UserSingleton.getInstance().isAdmin());
-	}
-	
-	private void loadData() {
-    	
-    	// create db connection, query, and statement
-    	Connection conn = SqliteConnection.Connector();
-    	Statement sttm = null;
-		
-		// execute query
-		try {
-	    	String query = "select * from users";
-			sttm = conn.createStatement();
-			ResultSet rs = sttm.executeQuery(query);
-			
-			// dataUsers is a class attribute
-			dataUsers = FXCollections.observableArrayList();
-			
-			while(rs.next()) {
-				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
-						rs.getString("password_hash"), rs.getBoolean("is_admin"));
-				dataUsers.add(user);
-			}
-			
-	    	query = "select * from dishes";
-			
-			// dataDishes is a class attribute
-			dataDishes = FXCollections.observableArrayList();
-			rs = sttm.executeQuery(query);
-			
-			while(rs.next()) {
-				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("dish_name"),
-						rs.getString("recipe"));
-				dataDishes.add(dish);
-			}
-			
-	    	query = "select * from raw_foods";
-			
-			// dataFood is a class attribute
-			dataFood = FXCollections.observableArrayList();
-			rs = sttm.executeQuery(query);
-			
-			while(rs.next()) {
-				RawFoodEntity dish = new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
-						rs.getInt("food_type"),rs.getString("unit"));
-				dataFood.add(dish);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	try {
-        	conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public void loadDataGroupComboBox() {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="631.0" prefWidth="1062.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/" fx:controller="view.admin.tab.DishTabHandler">
+   <children>
+      <TextField fx:id="txtTimKiemCongThucMonAn" layoutX="341.0" layoutY="39.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm công thức món ăn" />
+      <Button layoutX="622.0" layoutY="39.0" mnemonicParsing="false" onAction="#searchDish" prefHeight="26.0" prefWidth="37.0" text="">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tblQuanLyCongThucMonAn" layoutX="32.0" layoutY="90.0" prefHeight="460.0" prefWidth="1007.0">
+         <columns>
+            <TableColumn fx:id="colDishID" prefWidth="91.20003128051758" text="Thứ tự" />
+            <TableColumn fx:id="colDishName" prefWidth="308.0" text="Tên" />
+            <TableColumn fx:id="colRecipe" prefWidth="606.0" text="Công thức" />
+         </columns>
+      </TableView>
+      <Button layoutX="910.0" layoutY="37.0" mnemonicParsing="false" onAction="#addDish" prefHeight="26.0" prefWidth="127.0" text="Thêm công thức" />
+   </children>
+</AnchorPane>

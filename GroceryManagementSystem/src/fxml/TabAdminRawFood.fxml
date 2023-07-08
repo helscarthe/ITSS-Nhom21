@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="631.0" prefWidth="1062.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="view.admin.tab.FoodTabHandler">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="631.0" prefWidth="1062.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/" fx:controller="view.admin.tab.FoodTabHandler">
 	<children>
        <TextField fx:id="txtTimKiemTenThucPham" layoutX="29.0" layoutY="24.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm tên thực phẩm" />
        <Button layoutX="498.0" layoutY="24.0" mnemonicParsing="false" onAction="#searchFood" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
