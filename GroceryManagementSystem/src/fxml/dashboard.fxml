@@ -70,31 +70,7 @@
               <fx:include source="TabGroup.fxml" />
             </Tab>
             <Tab fx:id="tabCongThucMonAnYeuThich" text="Công thức món ăn yêu thích">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="btlTenMonAnYeuThich" layoutX="5.0" layoutY="58.0" onMouseClicked="#showRecipeFavDish" prefHeight="468.0" prefWidth="334.0">
-                          <columns>
-                            <TableColumn fx:id="favDishTable" prefWidth="333.0" text="Tên món ăn yêu thích" />
-                          </columns>
-                        </TableView>
-                        <TextArea fx:id="btlConThucMonAnYeuThich" layoutX="367.0" layoutY="84.0" prefHeight="442.0" prefWidth="687.0" />
-                        <Text layoutX="677.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Công thức">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Text>
-                        <Button fx:id="btnCapNhatCongThuc" layoutX="191.0" layoutY="540.0" mnemonicParsing="false" onAction="#updateFavDish" text="Thêm món" />
-                        <TextField fx:id="txtTimKiemCongThucMonAnYeuThi" layoutX="5.0" layoutY="21.0" onKeyReleased="#searchFavDish" prefHeight="26.0" prefWidth="334.0" promptText="Tìm kiếm công thức món ăn" />
-                        <Button fx:id="btnTimKiemMonAnYeuThich" layoutX="301.0" layoutY="21.0" mnemonicParsing="false" onAction="#searchFavDish" prefHeight="26.0" prefWidth="37.0" text="">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btn_xoamonanyeuthich" layoutX="69.0" layoutY="540.0" mnemonicParsing="false" onAction="#deleteFavDish" text="Xóa món" />
-                     </children>
-                  </AnchorPane>
-              </content>
+                <fx:include source="TabPersonalFavourite.fxml" />
             </Tab>
             <Tab fx:id="tabQuanLyDuLieuThucPham" text="Dữ liệu thực thẩm">
               <fx:include source="TabAdminRawFood.fxml" />
@@ -107,27 +83,7 @@
             </Tab>
             <Tab fx:id="tabQuanLyMonDinhNau" text="Món định nấu">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Button fx:id="btnThemMonDinhNau" layoutX="862.0" layoutY="41.0" mnemonicParsing="false" onAction="#addMealPlan" prefHeight="31.0" prefWidth="173.0" text="Thêm món định nấu" />
-                              <TextField fx:id="txtTimKiemMonDinhNau" layoutX="380.0" layoutY="37.0" onKeyReleased="#searchMealPlan" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
-                              <Button fx:id="btnTimKiemMonDinhNau" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                        <TableView fx:id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
-                           <columns>
-                              <TableColumn fx:id="colMealDate" prefWidth="346.0" text="Ngày " />
-                              <TableColumn fx:id="colMealPlanFood" prefWidth="660.0" text="Món định nấu" />
-                           </columns>
-                        </TableView>
-                        <Button fx:id="btnXoaMon" layoutX="748.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteMealPlan" text="Xóa món " />
-                     </children></AnchorPane>
+                <fx:include source="TabPersonalMealPlan.fxml" />
               </content>
             </Tab>
             <Tab fx:id="tabQuanLyDanhSachCanMua" text="Danh sách cần mua">
