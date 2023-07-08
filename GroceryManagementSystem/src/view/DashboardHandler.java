@@ -83,9 +83,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Button btnThemMonDinhNau;
 
     @FXML
-    private Button btnThemNguoiDung;
-
-    @FXML
     private Button btnThemThucPhamTrongNhom;
 
     @FXML
@@ -99,10 +96,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 
     @FXML
     private Button btnTimKiemMonDinhNau;
-
-    @FXML
-    private Button btnTimKiemTaiKhoanNguoiDung;
-    
 
     @FXML
     private Button btn_xoamonanyeuthich;
@@ -138,18 +131,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Tab tabTuLanh;
 
     @FXML
-    private TableColumn<UserEntity, String> colIsAdmin;
-
-    @FXML
-    private TableColumn<UserEntity, String> colPasswordHash;
-
-    @FXML
-    private TableColumn<UserEntity, String> colUserID;
-
-    @FXML
-    private TableColumn<UserEntity, String> colUsername;
-
-    @FXML
 	private TableColumn<FoodEntity, String> colTenThucPham;
 
 	@FXML
@@ -172,9 +153,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 
     @FXML
     private TableView<MealPlanFood> tblQuanLyMonDinhNau;
-
-    @FXML
-    private TableView<UserEntity> tblQuanLytaiKhoanNguoiDung;
 
     @FXML
     private TableView<UserEntity> tblThanhVienNhom;
@@ -207,9 +185,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private TextField txtTimKiemMonDinhNau;
 
     @FXML
-    private TextField txtTimKiemTaiKhoanNguoiDung;
-
-    @FXML
     private TextField txtTimKiemThucPhamTrongTuLanh;
     
     @FXML
@@ -220,8 +195,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     
     @FXML
     private TableColumn<MealPlanFood, String> colMealDate;
-    
-	ObservableList<UserEntity> dataUsers;
     
 	ObservableList<MealPlanFood> mealPlanList = FXCollections.observableArrayList();
 	ObservableList<MealPlanFood> mealPlanFilterList = FXCollections.observableArrayList();
@@ -488,96 +461,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     void searchFavDish(KeyEvent event) {
     	filterFavDish(((TextField)(event.getSource())).getText());
     }
-    
-   
-    @FXML
-    void selectAccountTab(Event event) {
-    
-    	// important, set correct column to correct attribute
-		colUserID.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("user_id")
-		);;
-		colUsername.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("username")
-		);;
-		colPasswordHash.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("password_hash")
-		);;
-		colIsAdmin.setCellValueFactory(
-				new PropertyValueFactory<UserEntity, String>("admin")
-		);;
-		
-		// load values
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
-    	
-    	// add cheeky editUser thing
-    	tblQuanLytaiKhoanNguoiDung.setRowFactory(tv -> {
-    		TableRow<UserEntity> row = new TableRow<>();
-    		row.setOnMouseClicked(mouseEvent -> {
-    			if (mouseEvent.getClickCount() == 2 && !row.isEmpty()) {
-    				UserEntity rowData = row.getItem();
-    				editUser(rowData);
-    			}
-    		});
-    		return row;
-    	});
-    }
-
-    @FXML
-    void addUser(ActionEvent event) {
-    	// basic open new window (stage)
-    	Stage stage = new Stage();
-    	Parent formAddUser = null;
-    	try {
-    		formAddUser = FXMLLoader.load(getClass().getResource("/fxml/UserInfoChangeForm.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-    	Scene scene = new Scene(formAddUser);
-    	stage.setScene(scene);
-    	stage.showAndWait();
-    	loadData();
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
-    }
-
-    void editUser(UserEntity rowData) {
-    	// basic open new window (stage)
-    	Stage stage = new Stage();
-    	Parent formEditUser = null;
-    	FXMLLoader loader = null;
-    	try {
-    		loader = new FXMLLoader(getClass().getResource("/fxml/UserInfoChangeForm.fxml"));
-    		formEditUser = (Parent)loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-    	Scene scene = new Scene(formEditUser);
-    	UserFormHandler handler = loader.getController();
-    	handler.editMode(rowData);
-    	stage.setScene(scene);
-    	stage.showAndWait();
-    	loadData();
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
-    }
-
-    @FXML
-    void searchUser(ActionEvent event) {
-    	// get filter value
-    	String filterKey = txtTimKiemTaiKhoanNguoiDung.getText();
-    	
-    	// create predicate that says "Need this value"
-    	// i is the object chosen
-    	// Here, i is UserEntity
-    	Predicate<UserEntity> containsKey = i -> i.getUsername().contains(filterKey);
-    	
-    	// create filtered list
-    	FilteredList<UserEntity> filteredUserList = dataUsers.filtered(containsKey);
-    	
-    	// load list to table
-    	tblQuanLytaiKhoanNguoiDung.setItems(filteredUserList);
-    }
 
 	public void checkAdmin(boolean isAdmin) {
 		if (isAdmin) {
@@ -609,7 +492,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		loadData();
 		loadMealPlan();
 		loadFavDish();
 		checkAdmin(UserSingleton.getInstance().isAdmin());
@@ -628,37 +510,6 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 		);
 		btlTenMonAnYeuThich.setItems(favDishFilterList);
 		
-	}
-	
-	private void loadData() {
-    	
-    	// create db connection, query, and statement
-    	Connection conn = SqliteConnection.Connector();
-    	Statement sttm = null;
-		
-		// execute query
-		try {
-	    	String query = "select * from users";
-			sttm = conn.createStatement();
-			ResultSet rs = sttm.executeQuery(query);
-			
-			// dataUsers is a class attribute
-			dataUsers = FXCollections.observableArrayList();
-			
-			while(rs.next()) {
-				UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
-						rs.getString("password_hash"), rs.getBoolean("is_admin"));
-				dataUsers.add(user);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	try {
-        	conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@FXML
