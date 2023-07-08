@@ -45,8 +45,9 @@ public class ChangeInforGroupHandler {
 	@FXML
 	private TextField txtTenNhom;
 
-
 	private int groupIdCurrent;
+    
+	private GroupController groupController;
 
 	@FXML
 	public void addMemberToGroup(ActionEvent event) {
@@ -62,7 +63,7 @@ public class ChangeInforGroupHandler {
 
 		String nameMember = findMember.getEditor().getText();
 
-		UserEntity user = GroupController.getUserByUsername(nameMember);
+		UserEntity user = groupController.getUserByUsername(nameMember);
 		
 		
 		if (user == null) {
@@ -81,7 +82,7 @@ public class ChangeInforGroupHandler {
 		
 		
 
-		boolean addOk = GroupController.addGroupMember(groupIdCurrent, user.getUser_id());
+		boolean addOk = groupController.addGroupMember(groupIdCurrent, user.getUser_id());
 	
 		if (addOk == true) {
 			Alert a = new Alert(AlertType.WARNING, "Thêm người dùng thành công!", ButtonType.OK);
@@ -118,7 +119,7 @@ public class ChangeInforGroupHandler {
 			return;
 		} 
 		
-		GroupController.deleteGroupMember(user.getUser_id(), groupIdCurrent);
+		groupController.deleteGroupMember(user.getUser_id(), groupIdCurrent);
 		
 		tblThanhVienNhom.getItems().remove(user);
 	}
@@ -139,7 +140,7 @@ public class ChangeInforGroupHandler {
 		delConfirm.showAndWait();
 		
 		if (delConfirm.getResult() == ButtonType.YES) {
-			Boolean deleteOk = GroupController.deleteGroup(groupIdCurrent);
+			Boolean deleteOk = groupController.deleteGroup(groupIdCurrent);
 			
 			if (deleteOk == true) {
 				Alert a = new Alert(AlertType.WARNING, "Xóa nhóm thành công!", ButtonType.OK);
@@ -186,6 +187,11 @@ public class ChangeInforGroupHandler {
 	
 	public void setGroupId(int groupId) {
 		this.groupIdCurrent = groupId;
+	}
+	
+	@FXML
+	private void initialize() {
+		groupController = new GroupController();
 	}
 
 }

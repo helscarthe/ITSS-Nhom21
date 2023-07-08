@@ -15,9 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import service.SqliteConnection;
 
-public final class GroupController {
+public class GroupController {
 
-	public static String getGroupNameById(int groupId) {
+	public String getGroupNameById(int groupId) {
 
 		String query = "select group_name from groups where group_id =" + String.valueOf(groupId) + ";";
 
@@ -35,7 +35,7 @@ public final class GroupController {
 		return null;
 	}
 
-	public static int getGroupIdByNameGroup(String nameGroup) {
+	public int getGroupIdByNameGroup(String nameGroup) {
 
 		String query = "select group_id from groups where group_name='" + nameGroup + "';";
 
@@ -54,7 +54,7 @@ public final class GroupController {
 		return groupId;
 	}
 	
-	public static GroupEntity getGroupOfUserByGroupId(int groupId) {
+	public GroupEntity getGroupOfUserByGroupId(int groupId) {
 
 		GroupEntity group = null;
 
@@ -97,7 +97,7 @@ public final class GroupController {
 		return group;
 	}
 
-	public static int createGroup(String leaderId, String groupName) {
+	public int createGroup(String leaderId, String groupName) {
 
 		int groupId = 0;
 		String groupQuery = "insert into groups (leader_id, group_name) values (" + leaderId + ", '" + groupName
@@ -123,7 +123,7 @@ public final class GroupController {
 		return groupId;
 	}
 
-	public static boolean deleteGroup(int groupId) {
+	public boolean deleteGroup(int groupId) {
 
 	
 		String groupName = getGroupNameById(groupId);
@@ -160,7 +160,7 @@ public final class GroupController {
 		return false;
 	}
 
-	public static void updateGroup(String leaderId, String groupName) {
+	public void updateGroup(String leaderId, String groupName) {
 		Connection conn = SqliteConnection.Connector();
 
 		String groupQuery = "update groups " + "set leader_id=" + String.valueOf(leaderId) + ", " + "group_name = '"
@@ -190,7 +190,7 @@ public final class GroupController {
 		}
 	}
 
-	public static int createGroupMember(String groupName, ObservableList<UserEntity> memberList, int leaderId) {
+	public int createGroupMember(String groupName, ObservableList<UserEntity> memberList, int leaderId) {
 
 		String insert = "insert into group_member (group_id, user_id) values (?, ?)";
 
@@ -221,7 +221,7 @@ public final class GroupController {
 		return 1;
 	}
 
-	public static ArrayList<Integer> getMemberIdByGroupId (int groupId) {
+	public ArrayList<Integer> getMemberIdByGroupId (int groupId) {
 		
 		ArrayList<Integer> memberList = new ArrayList<Integer>();
 		
@@ -242,7 +242,7 @@ public final class GroupController {
 		return memberList;
 	}
 	
-	public static boolean addGroupMember(int groupId, int userId) {
+	public boolean addGroupMember(int groupId, int userId) {
 		String insertQuery = "INSERT INTO group_member (group_id, user_id) VALUES (?, ?)";
 		try (Connection conn = SqliteConnection.Connector();
 				PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
@@ -257,7 +257,7 @@ public final class GroupController {
 		}
 	}
 
-	public static boolean deleteGroupMember(int userId, int groupId) {
+	public boolean deleteGroupMember(int userId, int groupId) {
 
 		Connection conn = SqliteConnection.Connector();
 
@@ -289,7 +289,7 @@ public final class GroupController {
 		return false;
 	}
 
-	public static ObservableList<String> getGroupNameOfUser() {
+	public ObservableList<String> getGroupNameOfUser() {
 
 		UserEntity userLogin = UserSingleton.getInstance();
 
@@ -314,7 +314,7 @@ public final class GroupController {
 		return li;
 	}
 
-	public static UserEntity getUserByUsername(String username) {
+	public UserEntity getUserByUsername(String username) {
 
 		String query = "select user_id, username from users where username = " + "'" + username + "'";
 
@@ -333,7 +333,7 @@ public final class GroupController {
 		return null;
 	}
 
-	public static FoodEntity getFoodByName(String nameFood) {
+	public FoodEntity getFoodByName(String nameFood) {
 
 		String query = "select * from raw_foods where raw_food_name= '" + nameFood + "' collate nocase;";
 
@@ -353,7 +353,7 @@ public final class GroupController {
 		return null;
 	}
 
-	public static ObservableList<FoodEntity> getFoodInGroup(String nameGroup) {
+	public ObservableList<FoodEntity> getFoodInGroup(String nameGroup) {
 
 		ObservableList<FoodEntity> foodList = FXCollections.observableArrayList();
 
@@ -375,7 +375,7 @@ public final class GroupController {
 		return foodList;
 	}
 
-	public static boolean insertFoodIntoGroup(int foodId, int groupId, int soLuong) {
+	public boolean insertFoodIntoGroup(int foodId, int groupId, int soLuong) {
 
 		String foodExists = "select * from group_shopping_list where group_id = ? and food_id = ?";
 
@@ -407,7 +407,7 @@ public final class GroupController {
 		return true;
 	}
 
-	public static void updateFoodInGroup(int foodId, int groupId, int soLuong) {
+	public void updateFoodInGroup(int foodId, int groupId, int soLuong) {
 
 		String query = "update group_shopping_list set number = ? where food_id = ? and group_id = ?;";
 
@@ -423,7 +423,7 @@ public final class GroupController {
 		}
 	}
 
-	public static boolean deleteFoodInGroup(int foodId, int groupId) {
+	public boolean deleteFoodInGroup(int foodId, int groupId) {
 
 		try (Connection conn = SqliteConnection.Connector(); Statement sttm = conn.createStatement();) {
 

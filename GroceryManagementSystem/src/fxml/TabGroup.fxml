@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="631.0" prefWidth="1062.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="view.group.tab.GroupTabHandler">
+   <children>
+      <ComboBox fx:id="cbChonNhom" layoutX="66.0" layoutY="14.0" onAction="#selectGroupComboBox" prefHeight="26.0" prefWidth="212.0" promptText="Chọn nhóm" />
+      <TableView fx:id="tblThanhVienNhom" layoutX="4.0" layoutY="54.0" prefHeight="412.0" prefWidth="429.0">
+        <columns>
+          <TableColumn fx:id="colTenThanhVien" prefWidth="302.0" text="Tên" />
+          <TableColumn fx:id="colVaiTro" prefWidth="126.0" text="Vai trò" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblDanhSachThucPham" layoutX="440.0" layoutY="54.0" prefHeight="412.0" prefWidth="616.0">
+        <columns>
+          <TableColumn fx:id="colTenThucPham" prefWidth="238.0" text="Tên thực phẩm" />
+            <TableColumn fx:id="colLoaiThucPham" prefWidth="176.0" text="Loại thực phẩm" />
+            <TableColumn fx:id="colSoLuongInGroup" minWidth="0.0" prefWidth="103.0" text="Số lượng" />
+            <TableColumn fx:id="colDonVi" prefWidth="97.0" text="Đơn vị" />
+        </columns>
+      </TableView>
+      <Button layoutX="309.0" layoutY="14.0" mnemonicParsing="false" onAction="#createTeam" text="Tạo nhóm" />
+      <Button fx:id="btnThayDoiThongTinNhom" layoutX="151.0" layoutY="490.0" mnemonicParsing="false" onAction="#changeInfoTeam" text="Thay đổi thông tin nhóm" />
+      <Button fx:id="btnThemThucPhamTrongNhom" layoutX="701.0" layoutY="491.0" mnemonicParsing="false" onAction="#addFoodNeedBuyGroup" text="Thêm thực phẩm" />
+   </children>
+</AnchorPane>

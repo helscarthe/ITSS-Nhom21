@@ -42,6 +42,8 @@ public class FoodNeedBuyHandler {
 	
 	private int type;
 
+	private GroupController groupController;
+
 	public void close(ActionEvent event) {
 		Node node = (Node) event.getSource();
 		Stage formAddFood = (Stage) node.getScene().getWindow();
@@ -51,7 +53,7 @@ public class FoodNeedBuyHandler {
 	
 	@FXML
 	void delete(ActionEvent event) {
-		boolean deleteOk = GroupController.deleteFoodInGroup(food.getRaw_food_id(), groupIdCurrent);
+		boolean deleteOk = groupController.deleteFoodInGroup(food.getRaw_food_id(), groupIdCurrent);
 		
 		if (deleteOk == false) {
 			Alert a = new Alert(AlertType.WARNING, "Thực phẩm không có!", ButtonType.OK);
@@ -75,7 +77,7 @@ public class FoodNeedBuyHandler {
 
 		String nameFood = addFood.getEditor().getText();
 
-		food = GroupController.getFoodByName(nameFood);
+		food = groupController.getFoodByName(nameFood);
 
 		if (food == null) {
 			Alert a = new Alert(AlertType.WARNING, "Thực phẩm không có!", ButtonType.OK);
@@ -106,7 +108,7 @@ public class FoodNeedBuyHandler {
 				return;
 			}
 
-			Boolean insertOk = GroupController.insertFoodIntoGroup(food.getRaw_food_id(), groupIdCurrent,
+			Boolean insertOk = groupController.insertFoodIntoGroup(food.getRaw_food_id(), groupIdCurrent,
 					Integer.parseInt(txtSoLuong.getText()));
 			
 			if (insertOk == false) {
@@ -121,7 +123,7 @@ public class FoodNeedBuyHandler {
 				return;
 			}
 		} else {
-			GroupController.updateFoodInGroup(food.getRaw_food_id(), groupIdCurrent, Integer.parseInt(txtSoLuong.getText()));
+			groupController.updateFoodInGroup(food.getRaw_food_id(), groupIdCurrent, Integer.parseInt(txtSoLuong.getText()));
 		} 
 		
 		
@@ -147,6 +149,11 @@ public class FoodNeedBuyHandler {
 		if (type == 1) {
 			btnXoa.setDisable(true);
 		} 
+	}
+	
+	@FXML
+	private void initialize() {
+		groupController = new GroupController();
 	}
 
 }

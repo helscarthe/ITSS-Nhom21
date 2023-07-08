@@ -43,6 +43,8 @@ public class FormGroupHandler {
 	@FXML
 	private TextField txtTenNhom;
 
+	private GroupController groupController;
+
 
 	@FXML
 	public void addMemberToGroup(ActionEvent event) throws SQLException {
@@ -56,7 +58,7 @@ public class FormGroupHandler {
 
 		String nameMember = findMember.getEditor().getText();
 
-		UserEntity user = GroupController.getUserByUsername(nameMember);
+		UserEntity user = groupController.getUserByUsername(nameMember);
 		
 		if (user == null) {
 			Alert a = new Alert(AlertType.WARNING, "Người dùng không tồn tại!", ButtonType.OK);
@@ -124,7 +126,7 @@ public class FormGroupHandler {
 			return;
 		}
 		
-		int createOk = GroupController.createGroupMember(nameGroup, tblThanhVienNhom.getItems(), leaderId);
+		int createOk = groupController.createGroupMember(nameGroup, tblThanhVienNhom.getItems(), leaderId);
      	
 		if (createOk == 0) {
 			Alert a = new Alert(AlertType.WARNING, "Tên nhóm đã tồn tại!", ButtonType.OK);
@@ -153,5 +155,10 @@ public class FormGroupHandler {
 
         return false;
     }
+	
+	@FXML
+	private void initialize() {
+		groupController = new GroupController();
+	}
 
 }
