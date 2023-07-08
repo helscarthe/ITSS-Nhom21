@@ -11,5 +11,11 @@ public class BaseHandler {
 		a.setHeaderText(null);
 		a.showAndWait();
     }
+    
+    protected void infoAlert(String info) {
+		Alert a = new Alert(AlertType.INFORMATION, info, ButtonType.OK);
+		a.setHeaderText(null);
+		a.showAndWait();
+    }
 
 }

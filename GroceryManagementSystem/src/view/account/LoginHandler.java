@@ -1,4 +1,4 @@
-package view;
+package view.account;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import controller.AccountController;
 import entity.UserEntity;
 import entity.UserSingleton;
 import javafx.event.ActionEvent;
@@ -22,8 +23,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.SqliteConnection;
+import view.BaseHandler;
 
-public class LoginHandler {
+public class LoginHandler extends BaseHandler{
 
     @FXML
     private Button btnDangNhap;
@@ -38,40 +40,21 @@ public class LoginHandler {
     private TextField txtMatKhau;
 
     private Connection conn = SqliteConnection.Connector();
+
+    private AccountController accountController;
+
     @FXML
     void submit(ActionEvent event) throws SQLException {
-    	String pass = txtMatKhau.getText().toString();
+    	String pass = txtMatKhau.getText();
     	String username = txtTenDangNhap.getText();
     	
-    	String query = "select * from users where username='" + username + "' and password_hash='" + pass + "'";
-    	Statement sttm = null;
-
-		try {
-			sttm = conn.createStatement();
-
-		} catch (Exception e) {
-			e.printStackTrace();
+    	UserEntity user = accountController.logIn(username, pass);
+    	
+    	if (user == null) {
+    		errorAlert("Tài khoản hoặc mật khẩu không chính xác!");
 			return;
 		}
     	
-    	ResultSet rs = sttm.executeQuery(query);
-    	
-    	if (rs.getObject("username") == null) {
-			Alert a = new Alert(AlertType.WARNING, "Tài khoản hoặc mật khẩu không chính xác!", ButtonType.OK);
-			a.setHeaderText(null);
-			a.showAndWait();
-			return;
-		}
-		
-//    	if(!pass.equals("2042002") || !user.equals("minh")) {
-//    		Alert a = new Alert(AlertType.WARNING, "Đồ ngu", ButtonType.OK);
-//    		a.setHeaderText(null);
-//    		a.showAndWait();
-//    		return;
-//    	}
-    	
-		UserEntity user = new UserEntity(rs.getInt("user_id"), rs.getString("username"),
-				rs.getString("password_hash"), rs.getBoolean("is_admin"));
 		UserSingleton.setInstance(user);
     	
     	Parent dashboard = null;
@@ -80,20 +63,55 @@ public class LoginHandler {
 	    	dashboard = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
 			stage.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
 		
 		Stage stage = new Stage();
 		Scene scene = new Scene(dashboard);
-		
-		
-//		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
 		stage.setScene(scene);
-		
+
 		stage.show();
 		conn.close();
+    }
+
+    @FXML
+    void forgotPassword(ActionEvent event) {
+    	Stage stage = new Stage();
+    	Parent formForgot = null;
+    	try {
+    		formForgot = FXMLLoader.load(getClass().getResource("/fxml/ForgotPassword.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+    	Scene scene = new Scene(formForgot);
+    	stage.setScene(scene);
+    	((Stage)((Node)event.getSource()).getScene().getWindow()).close();
+    	stage.show();
+    }
+
+    @FXML
+    void signUp(ActionEvent event) {
+    	Stage stage = new Stage();
+    	Parent formSignup = null;
+    	try {
+    		formSignup = FXMLLoader.load(getClass().getResource("/fxml/Signup.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+    	Scene scene = new Scene(formSignup);
+    	stage.setScene(scene);
+    	((Stage)((Node)event.getSource()).getScene().getWindow()).close();
+    	stage.show();
+
+    }
+
+    @FXML
+    private void initialize() {
+    	accountController = new AccountController();
     }
 
 }
