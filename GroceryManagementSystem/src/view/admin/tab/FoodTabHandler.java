@@ -55,7 +55,7 @@ public class FoodTabHandler extends BaseHandler{
     @FXML
     private TextField txtTimKiemTenThucPham;
     
-	ObservableList<RawFoodEntity> dataFood;
+    private ObservableList<RawFoodEntity> dataFood;
     
     @FXML
     void addFood(ActionEvent event) {
@@ -106,10 +106,6 @@ public class FoodTabHandler extends BaseHandler{
     				food_type = i;
     			}
     		}
-    		if (food_type == -1) {
-    			errorAlert("Invalid food type somehow? Report to devs! code:food_type_invalid");
-    			return;
-    		};
     	}
     	String filterKey = txtTimKiemTenThucPham.getText();
     	int food_type_final = food_type; // jank workaround please ignore
@@ -120,6 +116,9 @@ public class FoodTabHandler extends BaseHandler{
     	Predicate<RawFoodEntity> containsKey = i -> i.getRaw_food_name().contains(filterKey);
     	Predicate<RawFoodEntity> ofType = i -> i.getFood_type() == food_type_final;
     	Predicate<RawFoodEntity> filter = containsKey.and(ofType);
+		if (food_type == -1) {
+			filter = containsKey;
+		};
     	
     	// create filtered list
     	FilteredList<RawFoodEntity> filteredFoodList = dataFood.filtered(filter);
@@ -176,9 +175,9 @@ public class FoodTabHandler extends BaseHandler{
 		
 		// execute query
 		try {
-	    	String query = "select * from users";
+	    	String query;
 			sttm = conn.createStatement();
-			ResultSet rs = sttm.executeQuery(query);
+			ResultSet rs;
 	    	query = "select * from raw_foods";
 			
 			// dataFood is a class attribute
