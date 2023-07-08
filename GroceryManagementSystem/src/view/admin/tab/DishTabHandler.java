@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.function.Predicate;
 
 import entity.DishEntity;
-import entity.UserEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

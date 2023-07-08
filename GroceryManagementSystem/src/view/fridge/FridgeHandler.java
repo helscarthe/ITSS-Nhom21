@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import controller.FridgeFoodController;
 import entity.FridgeEntity;
+import entity.RawFoodEntity;
 import entity.UserEntity;
 import entity.UserSingleton;
 import javafx.event.ActionEvent;
@@ -19,31 +20,31 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class FridgeHandler {
-	 @FXML
-	    private Button btnChon;
+	@FXML
+    private Button btnChon;
 
-	    @FXML
-	    private Button btnXacNhan;
+    @FXML
+    private Button btnXacNhan;
 
-	    @FXML
-	    private Button btnXoa;
+    @FXML
+    private Button btnXoa;
 
-	    @FXML
-	    private DatePicker dpNgayHetHan;
+    @FXML
+    private DatePicker dpNgayHetHan;
 
-	    @FXML
-	    private TextField txtDonVi;
+    @FXML
+    private TextField txtDonVi;
 
-	    @FXML
-	    private TextField txtLoaiThucPham;
+    @FXML
+    private TextField txtLoaiThucPham;
 
-	    @FXML
-	    private TextField txtSoLuong;
+    @FXML
+    private TextField txtSoLuong;
 
-	    @FXML
-	    private TextField txtTenThucPham;
-	    
-	    private FridgeEntity food;
+    @FXML
+    private TextField txtTenThucPham;
+    
+    private RawFoodEntity food;
 
 	private int type;
 
@@ -63,7 +64,7 @@ public class FridgeHandler {
 		
 		int userId = userLogin.getUser_id();
 
-		boolean deleteOk = controller.deleteFood(food.getFood_id(), userId);
+		boolean deleteOk = controller.deleteFood(food.getRaw_food_id(), userId);
 
 		if (deleteOk == false) {
 			Alert a = new Alert(AlertType.WARNING, "Thực phẩm không có!", ButtonType.OK);
@@ -125,8 +126,8 @@ public class FridgeHandler {
 				return;
 			}
 
-			Boolean insertOk = controller.insertFoodIntoFridge(food.getRaw_food_name(), 
-															   userLogin.getUser_id(), 
+			Boolean insertOk = controller.insertFoodIntoFridge(userLogin.getUser_id(), 
+															   food.getRaw_food_id(),
 															   Integer.parseInt(txtSoLuong.getText()), 
 															   dpNgayHetHan.getValue().toString());
 
@@ -143,7 +144,7 @@ public class FridgeHandler {
 			}
 			
 		} else {
-			controller.updateFood(food.getFood_id(), userLogin.getUser_id(),
+			controller.updateFood(food.getRaw_food_id(), userLogin.getUser_id(),
 					Integer.parseInt(txtSoLuong.getText()));
 		}
 
@@ -154,9 +155,9 @@ public class FridgeHandler {
 		this.food = foodCurrent;
 		txtTenThucPham.setText(food.getRaw_food_name());
 		txtLoaiThucPham.setText(food.getFood_typeString());
-		dpNgayHetHan.setValue(LocalDate.parse(food.getExpiry_date()));
+		dpNgayHetHan.setValue(LocalDate.parse(((FridgeEntity)food).getExpiry_date()));
 		txtDonVi.setText(food.getUnit());
-		txtSoLuong.setText(String.valueOf(food.getNumber()));
+		txtSoLuong.setText(String.valueOf(((FridgeEntity)food).getNumber()));
 	}
 
 	public void setChangeOrAdd(int type) {

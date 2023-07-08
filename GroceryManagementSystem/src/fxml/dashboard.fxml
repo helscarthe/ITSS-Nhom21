@@ -19,13 +19,13 @@
             <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutY="6.0" mnemonicParsing="false" onAction="#logOut" text="Đăng xuất" />
         </items>
       </ToolBar>
-      <TabPane layoutX="5.0" layoutY="45.0" prefHeight="631.0" prefWidth="1062.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="45.0" prefHeight="632.0" prefWidth="1071.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Đồ ăn sắp hết hạn">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tdDoAnSapHetHan" prefHeight="598.0" prefWidth="1062.0">
+                        <TableView fx:id="tdDoAnSapHetHan" layoutX="5.0" layoutY="3.0" prefHeight="598.0" prefWidth="1062.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Thứ tự" />
                             <TableColumn prefWidth="374.0" text="Tên" />
@@ -38,21 +38,20 @@
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab text="Tủ lạnh">
+          <Tab onSelectionChanged="#selectTuLanhTab" text="Tủ lạnh">
                <content>
                   <AnchorPane>
                      <children>
-                        <TableView fx:id="btlTuLanhList" layoutY="58.0" prefHeight="443.0" prefWidth="1062.0">
+                        <TableView fx:id="tblThucPhamTrongTuLanh" layoutX="5.0" layoutY="56.0" prefHeight="443.0" prefWidth="1062.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Thứ tự" />
-                            <TableColumn prefWidth="331.3333435058594" text="Tên" />
-                              <TableColumn prefWidth="195.66668701171875" text="Loại  thực phẩm" />
-                              <TableColumn prefWidth="264.33331298828125" text="Ngày hết hạn" />
-                              <TableColumn prefWidth="101.0" text="Số lượng" />
-                              <TableColumn prefWidth="98.0" text="Đơn vị" />
+                            <TableColumn fx:id="colTenThucPhamTuLanh" prefWidth="429.0" text="Tên" />
+                              <TableColumn fx:id="colLoaiThucPhamTuLanh" prefWidth="191.0" text="Loại  thực phẩm" />
+                              <TableColumn fx:id="colNgayHetHanTuLanh" prefWidth="173.0" text="Ngày hết hạn" />
+                              <TableColumn fx:id="colSoLuongTuLanh" prefWidth="125.0" text="Số lượng" />
+                              <TableColumn fx:id="colDonViTuLanh" prefWidth="143.0" text="Đơn vị" />
                           </columns>
                         </TableView>
-                        <Button layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#addFoodIntoFridge" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                        <Button layoutX="510.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#addFoodIntoFridge" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Black" size="36.0" />
                            </font>
@@ -62,7 +61,7 @@
                         </Button>
                         <ComboBox fx:id="cbLoaiThucPhamTrongTuLanh" layoutX="209.0" layoutY="14.0" prefWidth="150.0" promptText="Loại thực phẩm" />
                         <TextField fx:id="txtTimKiemThucPhamTrongTuLanh" layoutX="6.0" layoutY="14.0" prefHeight="25.0" prefWidth="186.0" />
-                        <Button layoutX="376.0" layoutY="14.0" mnemonicParsing="false" text="Tìm kiếm" />
+                        <Button layoutX="376.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchFoodFridge" text="Tìm kiếm" />
                      </children>
                   </AnchorPane>
                </content>
@@ -100,14 +99,22 @@
             <Tab text="Món định nấu">
               <fx:include source="TabPersonalMealPlan.fxml" />
             </Tab>
-            <Tab fx:id="tabQuanLyTaiKhoanNguoiDung" text="Tài khoản người dùng">
-              <fx:include source="TabAdminUser.fxml" />
-            </Tab>
-            <Tab fx:id="txtQuanLyCongThucMonAn" text="Công thức món ăn">
-              <fx:include source="TabAdminDish.fxml" />
-            </Tab>
-            <Tab fx:id="tabQuanLyDuLieuThucPham" text="Dữ liệu thực phẩm">
-              <fx:include source="TabAdminRawFood.fxml" />
+            <Tab fx:id="adminTab" text="Chức năng admin">
+              <content>
+                  <TabPane>
+                     <tabs>
+                        <Tab text="Tài khoản người dùng">
+                          <fx:include source="TabAdminUser.fxml" />
+                        </Tab>
+                        <Tab text="Công thức món ăn">
+                          <fx:include source="TabAdminDish.fxml" />
+                        </Tab>
+                        <Tab text="Dữ liệu thực phẩm">
+                          <fx:include source="TabAdminRawFood.fxml" />
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+              </content>
             </Tab>
         </tabs>
       </TabPane>

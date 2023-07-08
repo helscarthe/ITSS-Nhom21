@@ -1,7 +1,8 @@
 package view.group;
 
 import controller.GroupController;
-import entity.FoodEntity;
+import entity.RawFoodEntity;
+import entity.ShoppingItemEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -36,7 +37,7 @@ public class FoodNeedBuyHandler {
 	@FXML
 	private TextField txtTenThucPham;
 
-	private FoodEntity food;
+	private RawFoodEntity food;
 
 	private int groupIdCurrent;
 	
@@ -135,12 +136,12 @@ public class FoodNeedBuyHandler {
 		this.groupIdCurrent = groupId;
 	}
 	
-	public void setFoodData(FoodEntity foodCurrent) {
+	public void setFoodData(ShoppingItemEntity foodCurrent) {
 		this.food = foodCurrent;
 		txtTenThucPham.setText(food.getRaw_food_name());
 		txtLoaiThucPham.setText(food.getFood_typeString());
 		txtDonVi.setText(food.getUnit());
-		txtSoLuong.setText(String.valueOf(food.getNumber()));
+		txtSoLuong.setText(String.valueOf(((ShoppingItemEntity)food).getNumber()));
 	}
 	
 	public void setChangeOrAdd(int type) {

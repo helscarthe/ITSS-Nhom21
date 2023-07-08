@@ -2,10 +2,6 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -14,9 +10,7 @@ import entity.FridgeEntity;
 import entity.RawFoodEntity;
 import entity.UserEntity;
 import entity.UserSingleton;
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -27,16 +21,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import view.fridge.FridgeHandler;
@@ -68,12 +59,6 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 	private TableColumn<FridgeEntity, String> colTenThucPhamTuLanh;
 
 	@FXML
-	private Tab tabQuanLyDuLieuThucPham;
-
-	@FXML
-	private Tab tabQuanLyTaiKhoanNguoiDung;
-
-	@FXML
 	private TableView<?> tblDanhSachcanMua;
 
 	@FXML
@@ -86,7 +71,7 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 	private TableView<?> tdDoAnSapHetHan;
 
 	@FXML
-	private Tab txtQuanLyCongThucMonAn;
+	private Tab adminTab;
 
 	@FXML
 	private TextField txtTimKiemDocanMua;
@@ -103,6 +88,8 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 		int userId = userLogin.getUser_id();
 
 		data = controller.getFoodListByUserId(userId);
+		
+		System.out.println(colTenThucPhamTuLanh);
 
 		colTenThucPhamTuLanh.setCellValueFactory(new PropertyValueFactory<FridgeEntity, String>("raw_food_name"));
 		colLoaiThucPhamTuLanh.setCellValueFactory(new PropertyValueFactory<FridgeEntity, String>("food_typeString"));
@@ -152,6 +139,8 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 		typeFood.add("Thịt");
 		typeFood.add("Hoa quả");
 
+		loadDataFridge();
+
 		cbLoaiThucPhamTrongTuLanh.setItems(typeFood);
 
 		tblThucPhamTrongTuLanh.setRowFactory(tv -> {
@@ -166,8 +155,6 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 
 			return row;
 		});
-
-		loadDataFridge();
 	}
 
 	@FXML
@@ -225,9 +212,7 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 			return;
 		}
 
-		txtQuanLyCongThucMonAn.getTabPane().getTabs().remove(txtQuanLyCongThucMonAn);
-		tabQuanLyDuLieuThucPham.getTabPane().getTabs().remove(tabQuanLyDuLieuThucPham);
-		tabQuanLyTaiKhoanNguoiDung.getTabPane().getTabs().remove(tabQuanLyTaiKhoanNguoiDung);
+		adminTab.getTabPane().getTabs().remove(adminTab);
 	}
 
 	@FXML

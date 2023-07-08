@@ -58,7 +58,6 @@ public class PersonalFavoriteTabHandle {
     	String query = "select f.dish_id dish_id, d.dish_name dish_name, d.recipe recipe from fav_dish as f, dishes as d where f.dish_id = d.dish_id and f.user_id = "+userId+";";
     	
     	Statement sttm = null;
-		ObservableList<String> li = null;
 		try {
 			sttm = conn.createStatement();
 			ResultSet rs = sttm.executeQuery(query);

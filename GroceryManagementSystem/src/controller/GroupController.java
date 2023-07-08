@@ -8,7 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import entity.GroupEntity;
-import entity.FoodEntity;
+import entity.RawFoodEntity;
+import entity.ShoppingItemEntity;
 import entity.UserEntity;
 import entity.UserSingleton;
 import javafx.collections.FXCollections;
@@ -129,9 +130,9 @@ public class GroupController {
 		String groupName = getGroupNameById(groupId);
 		
 		if (groupName != null) {
-			ObservableList<FoodEntity> foodList = getFoodInGroup(groupName);
+			ObservableList<ShoppingItemEntity> foodList = getFoodInGroup(groupName);
 
-			for (FoodEntity food : foodList) {
+			for (ShoppingItemEntity food : foodList) {
 				deleteFoodInGroup(food.getRaw_food_id(), groupId);
 			}
 			
@@ -333,7 +334,7 @@ public class GroupController {
 		return null;
 	}
 
-	public FoodEntity getFoodByName(String nameFood) {
+	public RawFoodEntity getFoodByName(String nameFood) {
 
 		String query = "select * from raw_foods where raw_food_name= '" + nameFood + "' collate nocase;";
 
@@ -342,7 +343,7 @@ public class GroupController {
 			ResultSet rs = sttm.executeQuery(query);
 
 			if (rs.next()) {
-				return new FoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"), rs.getInt("food_type"),
+				return new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"), rs.getInt("food_type"),
 						rs.getString("unit"));
 			}
 		} catch (Exception e) {
@@ -353,9 +354,9 @@ public class GroupController {
 		return null;
 	}
 
-	public ObservableList<FoodEntity> getFoodInGroup(String nameGroup) {
+	public ObservableList<ShoppingItemEntity> getFoodInGroup(String nameGroup) {
 
-		ObservableList<FoodEntity> foodList = FXCollections.observableArrayList();
+		ObservableList<ShoppingItemEntity> foodList = FXCollections.observableArrayList();
 
 		String foodListQuery = "select rf.raw_food_id, rf.raw_food_name, rf.food_type, rf.unit, gsl.number from groups as gr, group_shopping_list as gsl, raw_foods as rf where gr.group_id = gsl.group_id and gsl.food_id = rf.raw_food_id and group_name ='"
 				+ nameGroup + "';";
@@ -365,8 +366,8 @@ public class GroupController {
 			ResultSet rs = sttm.executeQuery(foodListQuery);
 
 			while (rs.next()) {
-				foodList.add(new FoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
-						rs.getInt("food_type"), rs.getInt("number"), rs.getString("unit")));
+				foodList.add(new ShoppingItemEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"),
+						rs.getInt("food_type"), rs.getString("unit"), rs.getInt("number")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

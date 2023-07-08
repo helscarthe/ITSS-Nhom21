@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 
 import entity.FridgeEntity;
+import entity.RawFoodEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import service.SqliteConnection;
@@ -121,7 +122,7 @@ public class FridgeFoodController {
 
 	}
 	
-	public FridgeEntity getFoodModelByName(String nameFood) {
+	public RawFoodEntity getFoodModelByName(String nameFood) {
 
 
 		String query = "select * from raw_foods where raw_food_name= '" + nameFood + "' collate nocase;";
@@ -131,7 +132,7 @@ public class FridgeFoodController {
 			ResultSet rs = sttm.executeQuery(query);
 
 			if (rs.next()) {
-				return new FridgeEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"), rs.getInt("food_type"),
+				return new RawFoodEntity(rs.getInt("raw_food_id"), rs.getString("raw_food_name"), rs.getInt("food_type"),
 						rs.getString("unit"));
 			}
 		} catch (Exception e) {
@@ -142,29 +143,8 @@ public class FridgeFoodController {
 		return null;
 
 	}
-
-	public int getFoodIdByName(String nameFood) {
-
-		String query = "select raw_food_id from raw_foods where raw_food_name= '" + nameFood + "' collate nocase;";
-
-		try (Connection conn = SqliteConnection.Connector(); Statement sttm = conn.createStatement();) {
-
-			ResultSet rs = sttm.executeQuery(query);
-
-			if (rs.next()) {
-				return rs.getInt("raw_food_id");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
-
-		return 0;
-	}
 	
-	public boolean insertFoodIntoFridge(String nameFood, int userId, int number, String expiry_date) {
-
-		int foodId = getFoodIdByName(nameFood);
+	public boolean insertFoodIntoFridge(int userId, int foodId, int number, String expiry_date) {
 		
 		if (foodId != 0) {
 			String insertIntoFridge = "insert into fridge_food (user_id, food_id, number, expiry_date) values (?, ?, ?, ?);";

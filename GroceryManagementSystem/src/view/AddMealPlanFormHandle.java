@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,7 +23,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import service.SqliteConnection;
 public class AddMealPlanFormHandle extends BaseHandler {
 	@FXML
@@ -158,9 +156,7 @@ public class AddMealPlanFormHandle extends BaseHandler {
 			try {
 				sttm = conn.createStatement();
 				ResultSet rs = sttm.executeQuery(query);
-				int index = 0;
 				while(rs.next()) {
-					index++;
 					DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("dish_name"), " ");
 					dishList.add(dish);
 				}

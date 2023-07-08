@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import entity.DishEntity;
 import entity.MealPlanFood;
 import entity.UserSingleton;
 import javafx.collections.FXCollections;

@@ -2,10 +2,9 @@ package view.group.tab;
 
 import java.io.IOException;
 
-import controller.AdminController;
 import controller.GroupController;
-import entity.FoodEntity;
 import entity.GroupEntity;
+import entity.ShoppingItemEntity;
 import entity.UserEntity;
 import entity.UserSingleton;
 import javafx.collections.ObservableList;
@@ -36,25 +35,25 @@ public class GroupTabHandler {
     private ComboBox<String> cbChonNhom;
 
 	@FXML
-	private TableColumn<FoodEntity, String> colDonVi;
+	private TableColumn<ShoppingItemEntity, String> colDonVi;
 
 	@FXML
-	private TableColumn<FoodEntity, String> colLoaiThucPham;
+	private TableColumn<ShoppingItemEntity, String> colLoaiThucPham;
 
 	@FXML
-	private TableColumn<FoodEntity, Integer> colSoLuongInGroup;
+	private TableColumn<ShoppingItemEntity, Integer> colSoLuongInGroup;
 
 	@FXML
 	private TableColumn<UserEntity, String> colTenThanhVien;
 
     @FXML
-	private TableColumn<FoodEntity, String> colTenThucPham;
+	private TableColumn<ShoppingItemEntity, String> colTenThucPham;
 
 	@FXML
 	private TableColumn<UserEntity, String> colVaiTro;
 
     @FXML
-    private TableView<FoodEntity> tblDanhSachThucPham;
+    private TableView<ShoppingItemEntity> tblDanhSachThucPham;
 
     @FXML
     private TableView<UserEntity> tblThanhVienNhom;
@@ -152,10 +151,10 @@ public class GroupTabHandler {
 		loadDataGroupComboBox();
 		
 		tblDanhSachThucPham.setRowFactory(tv -> {
-			TableRow<FoodEntity> row = new TableRow<FoodEntity>() {};
+			TableRow<ShoppingItemEntity> row = new TableRow<ShoppingItemEntity>() {};
 			row.setOnMouseClicked(me -> {
 				if(me.getClickCount() == 2 && !row.isEmpty()) {
-					FoodEntity food = row.getItem();
+					ShoppingItemEntity food = row.getItem();
 					editFoodInGroup(food);
 				}
 			});
@@ -164,7 +163,7 @@ public class GroupTabHandler {
 		});
 	}
 	
-	void editFoodInGroup(FoodEntity food) {
+	void editFoodInGroup(ShoppingItemEntity food) {
 		Stage ChangeFoodInGroup = new Stage();
 
 		FXMLLoader loader = new FXMLLoader();
@@ -215,16 +214,16 @@ public class GroupTabHandler {
 			btnThemThucPhamTrongNhom.setDisable(true);
 		}
 
-		ObservableList<FoodEntity> foodList = groupController.getFoodInGroup(group.getGroupName());
+		ObservableList<ShoppingItemEntity> foodList = groupController.getFoodInGroup(group.getGroupName());
 
 		colTenThanhVien.setCellValueFactory(new PropertyValueFactory<UserEntity, String>("username"));
 		colVaiTro.setCellValueFactory(new PropertyValueFactory<UserEntity, String>("role"));
 		tblThanhVienNhom.setItems(group.getMemberList());
 
-		colTenThucPham.setCellValueFactory(new PropertyValueFactory<FoodEntity, String>("raw_food_name"));
-		colLoaiThucPham.setCellValueFactory(new PropertyValueFactory<FoodEntity, String>("food_typeString"));
-		colSoLuongInGroup.setCellValueFactory(new PropertyValueFactory<FoodEntity, Integer>("number"));
-		colDonVi.setCellValueFactory(new PropertyValueFactory<FoodEntity, String>("unit"));
+		colTenThucPham.setCellValueFactory(new PropertyValueFactory<ShoppingItemEntity, String>("raw_food_name"));
+		colLoaiThucPham.setCellValueFactory(new PropertyValueFactory<ShoppingItemEntity, String>("food_typeString"));
+		colSoLuongInGroup.setCellValueFactory(new PropertyValueFactory<ShoppingItemEntity, Integer>("number"));
+		colDonVi.setCellValueFactory(new PropertyValueFactory<ShoppingItemEntity, String>("unit"));
 		tblDanhSachThucPham.setItems(foodList);
 	}
 	    

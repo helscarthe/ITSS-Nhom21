@@ -58,9 +58,7 @@ public class AddFavouriteDishHandle extends BaseHandler{
 		try {
 			sttm = conn.createStatement();
 			ResultSet rs = sttm.executeQuery(query);
-			int index = 0;
 			while(rs.next()) {
-				index++;
 				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("dish_name"), rs.getString("recipe"));
 				dishList.add(dish);
 			}
