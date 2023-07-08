@@ -112,7 +112,6 @@ public class AddFavouriteDishHandle extends BaseHandler{
 			sttm = conn.createStatement();
 			sttm.executeUpdate(query);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			System.out.println("Looi");
 			errorAlert("Món đã có trong danh sách yêu thích");
 			return;

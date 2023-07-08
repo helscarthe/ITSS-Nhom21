@@ -206,10 +206,8 @@
                         </AnchorPane>
                         <TableView fx:id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
-                              <TableColumn fx:id="colMealIndex" prefWidth="110.0" text="Thứ tự" />
-                              <TableColumn fx:id="colMealPlanFood" prefWidth="425.0" text="Món định nấu" />
                               <TableColumn fx:id="colMealDate" prefWidth="346.0" text="Ngày " />
-                              <TableColumn fx:id="colMealType" prefWidth="125.0" text="Bữa" />
+                              <TableColumn fx:id="colMealPlanFood" prefWidth="660.0" text="Món định nấu" />
                            </columns>
                         </TableView>
                         <Button fx:id="btnXoaMon" layoutX="748.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteMealPlan" text="Xóa món " />

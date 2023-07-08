@@ -254,15 +254,8 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     @FXML
     private TableColumn<DishEntity, String> favDishTable;
     
-    
-    @FXML
-    private TableColumn<MealPlanFood, Integer> colMealIndex;
-    
     @FXML
     private TableColumn<MealPlanFood, String> colMealPlanFood;
-    
-    @FXML
-    private TableColumn<MealPlanFood, Integer> colMealType;
     
     @FXML
     private TableColumn<MealPlanFood, String> colMealDate;
@@ -860,17 +853,11 @@ public class DashboardHandler extends BaseHandler implements Initializable{
 		loadMealPlan();
 		loadFavDish();
 		checkAdmin(UserSingleton.getInstance().isAdmin());
-		colMealIndex.setCellValueFactory(
-				new PropertyValueFactory<MealPlanFood, Integer>("mealPlanId")
-		);
 		colMealPlanFood.setCellValueFactory(
 				new PropertyValueFactory<MealPlanFood, String>("foodName")
 		);
 		colMealDate.setCellValueFactory(
 				new PropertyValueFactory<MealPlanFood, String>("date")
-		);
-		colMealType.setCellValueFactory(
-				new PropertyValueFactory<MealPlanFood, Integer>("mealNumber")
 		);
     	
 		// load values
