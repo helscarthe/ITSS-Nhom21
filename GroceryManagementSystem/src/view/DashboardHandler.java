@@ -2,139 +2,44 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
-import controller.GroupController;
-import javafx.collections.transformation.FilteredList;
-
-import entity.DishEntity;
-import entity.FoodEntity;
-import entity.GroupEntity;
-import entity.MealPlanFood;
-import entity.RawFoodEntity;
-import entity.UserEntity;
 import entity.UserSingleton;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import service.SqliteConnection;
-import view.admin.DishFormHandler;
-import view.admin.FoodFormHandler;
-import view.admin.UserFormHandler;
-import view.admin.FoodFormHandler;
-import view.admin.UserFormHandler;
-import view.group.ChangeInforGroupHandler;
-import view.group.FoodNeedBuyHandler;
 
 public class DashboardHandler extends BaseHandler implements Initializable{
-
-
-    @FXML
-    private TextArea btlConThucMonAnYeuThich;
 
     @FXML
     private TableView<?> btlTuLanhList;
 
     @FXML
-    private Button btnCapNhatCongThuc;
-
-    @FXML
-    private Button btnThemDoCanMua;
-
-    @FXML
-    private Button btnThemMonDinhNau;
-
-    @FXML
-    private Button btnThemThucPhamTrongTuLanh;
-
-    @FXML
-    private Button btnThongTincaNhan;
-
-    @FXML
-    private Button btnTimKiemMonAnYeuThich;
-
-    @FXML
-    private Button btnTimKiemMonDinhNau;
-
-    @FXML
-    private Button btn_xoamonanyeuthich;
-
-    @FXML
     private ComboBox<String> cbLoaiThucPhamTrongTuLanh;
-
-    @FXML
-    private Tab taDoAnSapHetHan;
-
-    @FXML
-    private Tab tabCongThucMonAnYeuThich;
-
-    @FXML
-    private Tab tabNhom;
-
-    @FXML
-    private Tab tabQuanLyDanhSachCanMua;
-
-    @FXML
-    private Tab tabQuanLyDuLieuThucPham;
-
-    @FXML
-    private Tab tabQuanLyMonDinhNau;
-
-    @FXML
-    private Tab tabQuanLyTaiKhoanNguoiDung;
-
-    @FXML
-    private Tab tabTuLanh;
-    
-    @FXML
-    private TableColumn<UserEntity, String> tbDanhSachThucPham;
-
-    @FXML
-    private TableView<?> tblDanhSachcanMua;
-
-    @FXML
-    private TableView<MealPlanFood> tblQuanLyMonDinhNau;
-    
-    @FXML
-    private TableView<?> tdDoAnSapHetHan;
 
     @FXML
     private Tab txtQuanLyCongThucMonAn;
 
     @FXML
-    private TextField txtTimKiemCongThucMonAnYeuThi;
+    private Tab tabQuanLyDuLieuThucPham;
 
     @FXML
-    private Button txtTimKiemDoCanMua;
+    private Tab tabQuanLyTaiKhoanNguoiDung;
 
     @FXML
-    private Button btnXoaMon;
+    private TableView<?> tblDanhSachcanMua;
+    
+    @FXML
+    private TableView<?> tdDoAnSapHetHan;
     
     @FXML
     private TextField txtTimKiemDocanMua;
@@ -163,16 +68,12 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     	stage.show();
     }
 
-    // Tab Nhóm
-	
-	/// End Tab Nhóm
-
 	public void checkAdmin(boolean isAdmin) {
 		if (isAdmin) {
 			return;
 		}
 		
-		tabQuanLyDanhSachCanMua.getTabPane().getTabs().remove(tabQuanLyDanhSachCanMua);
+		txtQuanLyCongThucMonAn.getTabPane().getTabs().remove(txtQuanLyCongThucMonAn);
 		tabQuanLyDuLieuThucPham.getTabPane().getTabs().remove(tabQuanLyDuLieuThucPham);
 		tabQuanLyTaiKhoanNguoiDung.getTabPane().getTabs().remove(tabQuanLyTaiKhoanNguoiDung);
 	}

@@ -7,39 +7,41 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
-          <Button fx:id="btnThongTincaNhan" mnemonicParsing="false" text="Thông tin cá nhân" />
+          <Button mnemonicParsing="false" text="Thông tin cá nhân" />
             <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutY="6.0" mnemonicParsing="false" onAction="#logOut" text="Đăng xuất" />
         </items>
       </ToolBar>
       <TabPane layoutX="5.0" layoutY="45.0" prefHeight="631.0" prefWidth="1062.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="taDoAnSapHetHan" text="Đồ ăn sắp hết hạn">
+            <Tab text="Đồ ăn sắp hết hạn">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tdDoAnSapHetHan" prefHeight="598.0" prefWidth="1062.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Thứ tự" />
+                            <TableColumn prefWidth="374.0" text="Tên" />
+                              <TableColumn prefWidth="397.0" text="Thời gian còn lại" />
+                              <TableColumn prefWidth="108.0" text="số lượng" />
+                              <TableColumn prefWidth="108.0" text="Đơn vị" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Tủ lạnh">
                <content>
-                  <TableView fx:id="tdDoAnSapHetHan" prefHeight="486.0" prefWidth="934.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Thứ tự" />
-                      <TableColumn prefWidth="374.0" text="Tên" />
-                        <TableColumn prefWidth="397.0" text="Thời gian còn lại" />
-                        <TableColumn prefWidth="108.0" text="số lượng" />
-                        <TableColumn prefWidth="108.0" text="Đơn vị" />
-                    </columns>
-                  </TableView>
-               </content>
-          </Tab>
-          <Tab fx:id="tabTuLanh" text="Tủ lạnh">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane>
                      <children>
                         <TableView fx:id="btlTuLanhList" layoutY="58.0" prefHeight="443.0" prefWidth="1062.0">
                           <columns>
@@ -51,7 +53,7 @@
                               <TableColumn prefWidth="98.0" text="Đơn vị" />
                           </columns>
                         </TableView>
-                        <Button fx:id="btnThemThucPhamTrongTuLanh" layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#addFoodIntoFridge" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
+                        <Button layoutX="512.0" layoutY="516.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#addFoodIntoFridge" style="-fx-border-radius: 50%; -fx-background-radius: 50%;" text="+" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Black" size="36.0" />
                            </font>
@@ -66,14 +68,38 @@
                   </AnchorPane>
                </content>
           </Tab>
-            <Tab fx:id="tabNhom" text="Nhóm">
+            <Tab text="Danh sách cần mua">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblDanhSachcanMua" layoutX="28.0" layoutY="71.0" prefHeight="460.0" prefWidth="1007.0">
+                           <columns>
+                              <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
+                              <TableColumn prefWidth="68.00003814697266" text="ID" />
+                              <TableColumn prefWidth="291.46669006347656" text="Tên người dùng" />
+                              <TableColumn prefWidth="209.33334350585938" text="Loại thực phẩm" />
+                              <TableColumn prefWidth="131.7332763671875" text="Đơn vị" />
+                              <TableColumn prefWidth="251.7333984375" text="Số lượng" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="960.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
+                        <TextField fx:id="txtTimKiemDocanMua" layoutX="372.0" layoutY="26.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
+                        <Button layoutX="653.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Nhóm">
               <fx:include source="TabGroup.fxml" />
             </Tab>
-            <Tab fx:id="tabCongThucMonAnYeuThich" text="Công thức món ăn yêu thích">
+            <Tab text="Công thức món ăn yêu thích">
                 <fx:include source="TabPersonalFavourite.fxml" />
             </Tab>
-            <Tab fx:id="tabQuanLyDuLieuThucPham" text="Dữ liệu thực thẩm">
-              <fx:include source="TabAdminRawFood.fxml" />
+            <Tab text="Món định nấu">
+              <fx:include source="TabPersonalMealPlan.fxml" />
             </Tab>
             <Tab fx:id="tabQuanLyTaiKhoanNguoiDung" text="Tài khoản người dùng">
               <fx:include source="TabAdminUser.fxml" />
@@ -81,42 +107,8 @@
             <Tab fx:id="txtQuanLyCongThucMonAn" text="Công thức món ăn">
               <fx:include source="TabAdminDish.fxml" />
             </Tab>
-            <Tab fx:id="tabQuanLyMonDinhNau" text="Món định nấu">
-              <content>
-                <fx:include source="TabPersonalMealPlan.fxml" />
-              </content>
-            </Tab>
-            <Tab fx:id="tabQuanLyDanhSachCanMua" text="Danh sách cần mua">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="btnThemDoCanMua" layoutX="960.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
-                                    <TextField fx:id="txtTimKiemDocanMua" layoutX="380.0" layoutY="37.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
-                                    <Button fx:id="txtTimKiemDoCanMua" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                              <TableView fx:id="tblDanhSachcanMua" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
-                                 <columns>
-                                    <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
-                                    <TableColumn prefWidth="68.00003814697266" text="ID" />
-                                    <TableColumn prefWidth="291.46669006347656" text="Tên người dùng" />
-                                    <TableColumn prefWidth="209.33334350585938" text="Loại thực phẩm" />
-                                    <TableColumn prefWidth="131.7332763671875" text="Đơn vị" />
-                                    <TableColumn prefWidth="251.7333984375" text="Số lượng" />
-                                 </columns>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </children></AnchorPane>
-              </content>
+            <Tab fx:id="tabQuanLyDuLieuThucPham" text="Dữ liệu thực phẩm">
+              <fx:include source="TabAdminRawFood.fxml" />
             </Tab>
         </tabs>
       </TabPane>
