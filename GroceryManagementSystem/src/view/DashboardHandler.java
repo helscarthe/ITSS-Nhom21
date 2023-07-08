@@ -234,6 +234,9 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     private Button txtTimKiemDoCanMua;
 
     @FXML
+    private Button btnXoaMon;
+    
+    @FXML
     private TextField txtTimKiemDocanMua;
 
     @FXML
@@ -989,30 +992,24 @@ public class DashboardHandler extends BaseHandler implements Initializable{
     	mealPlanFilterList.addAll(matchs);
     }
     @FXML
-    void deleteMealPlan(MouseEvent event) {
-    	tblQuanLyMonDinhNau.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-            	if(event.getClickCount() == 2) {
-            		 Connection conn = SqliteConnection.Connector();
-            		 String query = "DELETE FROM meal_plan WHERE meal_plan_id="+tblQuanLyMonDinhNau.getSelectionModel().getSelectedItem().getMealPlanId()+";";
-            		 Statement sttm = null;
-            		 try {
-            				sttm = conn.createStatement();
-            				sttm.executeUpdate(query);
-            			} catch (SQLException e) {
-            				e.printStackTrace();
-            				System.out.println("Error query database");
-            			}
-            	    	try {
-            	        	conn.close();
-            			} catch (Exception e) {
-            				e.printStackTrace();
-            			}
-            	}
-            	loadMealPlan();
-            }
-        });
+    void deleteMealPlan(ActionEvent event) {
+        Connection conn = SqliteConnection.Connector();
+        if(tblQuanLyMonDinhNau.getSelectionModel() == null) return;
+        String query = "DELETE FROM meal_plan WHERE meal_plan_id="+tblQuanLyMonDinhNau.getSelectionModel().getSelectedItem().getMealPlanId()+";";
+        Statement sttm = null;
+        try {
+            	sttm = conn.createStatement();
+            	sttm.executeUpdate(query);
+           } catch (SQLException e) {
+            	e.printStackTrace();
+            	System.out.println("Error query database");
+           }
+        try {
+          	conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+   		}
+        loadMealPlan();
     }
 	public void loadDataGroupComboBox() {
 		

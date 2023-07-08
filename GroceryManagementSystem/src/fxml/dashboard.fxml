@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
@@ -195,7 +195,7 @@
                      <children>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="btnThemMonDinhNau" layoutX="797.0" layoutY="41.0" mnemonicParsing="false" onAction="#addMealPlan" prefHeight="31.0" prefWidth="238.0" text="Thêm món định nấu" />
+                              <Button fx:id="btnThemMonDinhNau" layoutX="862.0" layoutY="41.0" mnemonicParsing="false" onAction="#addMealPlan" prefHeight="31.0" prefWidth="173.0" text="Thêm món định nấu" />
                               <TextField fx:id="txtTimKiemMonDinhNau" layoutX="380.0" layoutY="37.0" onKeyReleased="#searchMealPlan" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm món định nấu" />
                               <Button fx:id="btnTimKiemMonDinhNau" layoutX="661.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
                                  <font>
@@ -204,7 +204,7 @@
                               </Button>
                            </children>
                         </AnchorPane>
-                        <TableView fx:id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" onMouseClicked="#deleteMealPlan" prefHeight="460.0" prefWidth="1007.0">
+                        <TableView fx:id="tblQuanLyMonDinhNau" layoutX="27.0" layoutY="96.0" prefHeight="460.0" prefWidth="1007.0">
                            <columns>
                               <TableColumn fx:id="colMealIndex" prefWidth="110.0" text="Thứ tự" />
                               <TableColumn fx:id="colMealPlanFood" prefWidth="425.0" text="Món định nấu" />
@@ -212,6 +212,7 @@
                               <TableColumn fx:id="colMealType" prefWidth="125.0" text="Bữa" />
                            </columns>
                         </TableView>
+                        <Button fx:id="btnXoaMon" layoutX="748.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteMealPlan" text="Xóa món " />
                      </children></AnchorPane>
               </content>
             </Tab>

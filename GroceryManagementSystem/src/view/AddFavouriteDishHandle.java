@@ -100,7 +100,9 @@ public class AddFavouriteDishHandle extends BaseHandler{
     @FXML
     void submit(ActionEvent event) {
     	int userId = UserSingleton.getInstance().getUser_id();
-    	if(tb_match.getSelectionModel() == null) return;
+    	if(tb_match.getSelectionModel() == null) {
+    		errorAlert("Vui lòng chọn món");
+    	};
 		int dishId = tb_match.getSelectionModel().getSelectedItem().getDish_id();
     	String values = "("+dishId+","+userId+")";
     	Connection conn = SqliteConnection.Connector();
@@ -112,6 +114,8 @@ public class AddFavouriteDishHandle extends BaseHandler{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Looi");
+			errorAlert("Món đã có trong danh sách yêu thích");
+			return;
 		}
     	try {
         	conn.close();
