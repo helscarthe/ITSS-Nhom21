@@ -194,6 +194,7 @@ public class GroupTabHandler {
 	private void initialize() {
 		groupController = new GroupController();
 		loadGroupComboBox();
+		loadDataGroupComboBox();
 	}
     
 	public void loadDataGroupComboBox() {
