@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="631.0" prefWidth="1071.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="view.user.tab.ExpiringTabHandler">
+   <children>
+      <TableView fx:id="tdDoAnSapHetHan" layoutX="5.0" layoutY="3.0" prefHeight="598.0" prefWidth="1062.0">
+        <columns>
+          <TableColumn fx:id="colFoodName" prefWidth="438.0" text="Tên" />
+          <TableColumn fx:id="colFoodType" prefWidth="181.0" text="Loại thực phẩm" />
+          <TableColumn fx:id="colRemainingTime" prefWidth="191.0" text="Thời gian còn lại" />
+          <TableColumn fx:id="colFoodCount" prefWidth="136.0" text="Số lượng" />
+          <TableColumn fx:id="colUnit" prefWidth="115.0" text="Đơn vị" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

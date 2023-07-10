@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import view.admin.tab.DishTabHandler;
 import view.admin.tab.FoodTabHandler;
 import view.admin.tab.UserTabHandler;
+import view.user.tab.ExpiringTabHandler;
 
 public class DashboardHandler extends BaseHandler{
 
@@ -34,13 +35,13 @@ public class DashboardHandler extends BaseHandler{
 	private Tab tblTuLanh;
 
 	@FXML
-	private TableView<?> tdDoAnSapHetHan;
-
-	@FXML
 	private Tab adminTab;
 
 	@FXML
 	private TextField txtTimKiemDocanMua;
+	
+	@FXML
+	private ExpiringTabHandler expiringFoodController;
 	
 	@FXML
 	private DishTabHandler adminDishController;
@@ -50,6 +51,11 @@ public class DashboardHandler extends BaseHandler{
 	
 	@FXML
 	private UserTabHandler adminUserController;
+
+	@FXML
+	void loadExpiringFoodTab(Event event) {
+		expiringFoodController.refreshData();
+	}
 
 	@FXML
 	void loadAdminFoodTab(Event event) {
