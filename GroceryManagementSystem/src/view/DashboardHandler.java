@@ -30,6 +30,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import view.admin.tab.DishTabHandler;
+import view.admin.tab.FoodTabHandler;
+import view.admin.tab.UserTabHandler;
 import view.fridge.FridgeHandler;
 
 public class DashboardHandler extends BaseHandler implements Initializable {
@@ -80,6 +83,15 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 	private TextField txtTimKiemThucPhamTrongTuLanh;
 
 	private FridgeFoodController controller;
+	
+	@FXML
+	private DishTabHandler adminDishController;
+	
+	@FXML
+	private FoodTabHandler adminFoodController;
+	
+	@FXML
+	private UserTabHandler adminUserController;
 
 	private ObservableList<FridgeEntity> data = FXCollections.observableArrayList();
 	
@@ -88,8 +100,6 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 		int userId = userLogin.getUser_id();
 
 		data = controller.getFoodListByUserId(userId);
-		
-		System.out.println(colTenThucPhamTuLanh);
 
 		colTenThucPhamTuLanh.setCellValueFactory(new PropertyValueFactory<FridgeEntity, String>("raw_food_name"));
 		colLoaiThucPhamTuLanh.setCellValueFactory(new PropertyValueFactory<FridgeEntity, String>("food_typeString"));
@@ -128,7 +138,7 @@ public class DashboardHandler extends BaseHandler implements Initializable {
     	FilteredList<FridgeEntity> filteredFoodList = data.filtered(filter);
     	
     	// load list to table
-    	tblThucPhamTrongTuLanh.setItems(filteredFoodList);	
+    	tblThucPhamTrongTuLanh.setItems(filteredFoodList);
 	}
 
 	@FXML
@@ -205,6 +215,21 @@ public class DashboardHandler extends BaseHandler implements Initializable {
 		ChangeFoodInGroup.showAndWait();
 
 		loadDataFridge();
+	}
+
+	@FXML
+	void loadAdminFoodTab(Event event) {
+		adminFoodController.refreshData();
+	}
+
+	@FXML
+	void loadAdminDishTab(Event event) {
+		adminDishController.refreshData();
+	}
+
+	@FXML
+	void loadAdminUserTab(Event event) {
+		adminUserController.refreshData();
 	}
 
 	public void checkAdmin(boolean isAdmin) {

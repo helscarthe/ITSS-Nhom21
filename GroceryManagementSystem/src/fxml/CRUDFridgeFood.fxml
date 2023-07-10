@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,7 +19,7 @@
       <Button id="btnXacNhan(Them/Sua)ThongTinDoCanMua" fx:id="btnXacNhan" layoutX="147.0" layoutY="323.0" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="106.0" text="Xác nhận " />
       <Button id="btnXoaThongTinDoCanMua" fx:id="btnXoa" layoutX="298.0" layoutY="324.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="105.0" text="Xóa" />
       <Text layoutX="46.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại thực phẩm" wrappingWidth="92.009765625" />
-      <TextField id="txtSoMon" fx:id="txtLoaiThucPham" editable="false" layoutX="148.0" layoutY="137.0" prefHeight="25.0" prefWidth="256.0" />
+      <ComboBox fx:id="txtLoaiThucPham" editable="true" layoutX="149.0" layoutY="137.0" prefHeight="26.0" prefWidth="256.0" />
       <TextField id="txtSoMon" fx:id="txtTenThucPham" editable="false" layoutX="147.0" layoutY="89.0" prefHeight="25.0" prefWidth="196.0" />
       <Button fx:id="btnChon" layoutX="337.0" layoutY="89.0" mnemonicParsing="false" onAction="#selectFoodNeedAdd" prefHeight="25.0" prefWidth="67.0" text="Chọn" />
       <Text layoutX="46.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị" wrappingWidth="92.009765625" />

@@ -15,12 +15,11 @@ import service.SqliteConnection;
 
 public class FridgeFoodController {
 
-	public boolean deleteFood(int foodId, int userId) {
+	public boolean deleteFood(int foodId) {
 
 		try (Connection conn = SqliteConnection.Connector(); Statement sttm = conn.createStatement();) {
 
-			sttm.executeUpdate("delete from fridge_food where user_id=" + String.valueOf(userId)
-					+ " and food_id=" + String.valueOf(foodId) + ";");
+			sttm.executeUpdate("delete from fridge_food where fridge_food_id=" + foodId + ";");
 
 			return true;
 		} catch (Exception e) {
@@ -144,31 +143,44 @@ public class FridgeFoodController {
 
 	}
 	
-	public boolean insertFoodIntoFridge(int userId, int foodId, int number, String expiry_date) {
+	public ObservableList<String> getAvailableFoods() {
+		ObservableList<String> res = FXCollections.observableArrayList();
 		
-		if (foodId != 0) {
-			String insertIntoFridge = "insert into fridge_food (user_id, food_id, number, expiry_date) values (?, ?, ?, ?);";
+		String query = "select raw_food_name from raw_foods;";
 
-			try (Connection conn = SqliteConnection.Connector();
-					PreparedStatement psttm = conn.prepareStatement(insertIntoFridge);) {
-				psttm.setInt(1, userId);
-				psttm.setInt(2, foodId);
-				psttm.setInt(3, number);
-				psttm.setString(4, expiry_date);
-				
+		try (Connection conn = SqliteConnection.Connector(); Statement sttm = conn.createStatement();) {
 
-				if (psttm.execute()) {
-					return true;
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
+			ResultSet rs = sttm.executeQuery(query);
+			
+			while (rs.next()) {
+				String food_name = rs.getString("raw_food_name");
+				res.add(food_name);
 			}
-		} 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		
-		return false;
+		return res;
+	}
+	
+	public void insertFoodIntoFridge(int userId, int foodId, int number, String expiry_date) {
+		
+		String insertIntoFridge = "insert into fridge_food (user_id, food_id, number, expiry_date) values (?, ?, ?, ?);";
 
+		try (Connection conn = SqliteConnection.Connector();
+			PreparedStatement psttm = conn.prepareStatement(insertIntoFridge);) {
+			psttm.setInt(1, userId);
+			psttm.setInt(2, foodId);
+			psttm.setInt(3, number);
+			psttm.setString(4, expiry_date);
+			
+
+			psttm.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void updateFood(int foodId, int userId, int soLuong) {

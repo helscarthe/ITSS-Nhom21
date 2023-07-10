@@ -103,14 +103,14 @@
               <content>
                   <TabPane>
                      <tabs>
-                        <Tab text="Tài khoản người dùng">
-                          <fx:include source="TabAdminUser.fxml" />
+                        <Tab onSelectionChanged="#loadAdminUserTab" text="Tài khoản người dùng">
+                          <fx:include fx:id="adminUser" source="TabAdminUser.fxml" />
                         </Tab>
-                        <Tab text="Công thức món ăn">
-                          <fx:include source="TabAdminDish.fxml" />
+                        <Tab onSelectionChanged="#loadAdminDishTab" text="Công thức món ăn">
+                          <fx:include fx:id="adminDish" source="TabAdminDish.fxml" />
                         </Tab>
-                        <Tab text="Dữ liệu thực phẩm">
-                          <fx:include source="TabAdminRawFood.fxml" />
+                        <Tab onSelectionChanged="#loadAdminFoodTab" text="Dữ liệu thực phẩm">
+                          <fx:include fx:id="adminFood" source="TabAdminRawFood.fxml" />
                         </Tab>
                      </tabs>
                   </TabPane>

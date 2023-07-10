@@ -61,8 +61,7 @@ public class UserTabHandler {
     	Scene scene = new Scene(formAddUser);
     	stage.setScene(scene);
     	stage.showAndWait();
-    	loadData();
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
+    	refreshData();
     }
 
     void editUser(UserEntity rowData) {
@@ -82,8 +81,7 @@ public class UserTabHandler {
     	handler.editMode(rowData);
     	stage.setScene(scene);
     	stage.showAndWait();
-    	loadData();
-    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
+    	refreshData();
     }
 
     @FXML
@@ -135,6 +133,11 @@ public class UserTabHandler {
     		});
     		return row;
     	});
+    }
+    
+    public void refreshData() {
+    	loadData();
+    	tblQuanLytaiKhoanNguoiDung.setItems(dataUsers);
     }
 	
 	private void loadData() {

@@ -6,7 +6,7 @@ public class RawFoodEntity {
 	private int food_type;
 	private String unit;
 	
-	public static final String[] food_type_enum = {"Rau", "Thịt", "Hoa quả"};
+	public static final String[] food_type_enum = {"Rau", "Đạm", "Hoa quả", "Tinh bột", "Gia vị"};
 	
 	public RawFoodEntity(int raw_food_id, String raw_food_name, int food_type, String unit) {
 		this.raw_food_id = raw_food_id;
@@ -33,6 +33,15 @@ public class RawFoodEntity {
 	
 	public String getFood_typeString() {
 		return food_type_enum[food_type];
+	}
+	
+	public static int getFood_typeStringToID(String type) {
+		for (int i = 0; i < food_type_enum.length; i++) {
+			if (type.equals(food_type_enum[i])) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 	public int food_type_stringToIndex(String food_typeStr) {

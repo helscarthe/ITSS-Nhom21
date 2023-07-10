@@ -53,7 +53,6 @@ public class PersonalMealPlanTabHandle {
     @FXML
     void loadMealPlan() {
     	int userId = UserSingleton.getInstance().getUser_id();
-		System.out.println("2");
     	Connection conn = SqliteConnection.Connector();
     	String query = "select m.meal_plan_id as meal_plan_id, m.user_id as user_id, m.date as date, m.meal_number as meal_number, m.dish_id as dish_id, d.dish_name as dish_name from meal_plan m, dishes d where m.dish_id=d.dish_id and user_id = " + userId + ";";
     	Statement sttm = null;

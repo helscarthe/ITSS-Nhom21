@@ -66,8 +66,7 @@ public class FoodTabHandler extends BaseHandler{
     	Scene scene = new Scene(formAddFood);
     	stage.setScene(scene);
     	stage.showAndWait();
-    	loadData();
-    	tblDulieuThucPham.setItems(dataFood);
+    	refreshData();
     }
     
     void editFood(RawFoodEntity rowData) {
@@ -87,8 +86,7 @@ public class FoodTabHandler extends BaseHandler{
     	handler.editMode(rowData);
     	stage.setScene(scene);
     	stage.showAndWait();
-    	loadData();
-    	tblDulieuThucPham.setItems(dataFood);
+    	refreshData();
     }
 
 	@FXML
@@ -161,6 +159,11 @@ public class FoodTabHandler extends BaseHandler{
     		return row;
     	});
 	}
+    
+    public void refreshData() {
+    	loadData();
+    	tblDulieuThucPham.setItems(dataFood);
+    }
 
     private void loadData() {
     	

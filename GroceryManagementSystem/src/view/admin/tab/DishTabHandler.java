@@ -58,8 +58,7 @@ public class DishTabHandler {
     	Scene scene = new Scene(formAddDish);
     	stage.setScene(scene);
     	stage.showAndWait();
-    	loadData();
-    	tblQuanLyCongThucMonAn.setItems(dataDishes);
+    	refreshData();
     }
     
     void editDish(DishEntity rowData) {
@@ -79,8 +78,7 @@ public class DishTabHandler {
     	handler.editMode(rowData);
     	stage.setScene(scene);
     	stage.showAndWait();
-    	loadData();
-    	tblQuanLyCongThucMonAn.setItems(dataDishes);
+    	refreshData();
     }
 
     @FXML
@@ -130,6 +128,11 @@ public class DishTabHandler {
     		});
     		return row;
     	});
+    }
+    
+    public void refreshData() {
+    	loadData();
+    	tblQuanLyCongThucMonAn.setItems(dataDishes);
     }
 
 	private void loadData() {
