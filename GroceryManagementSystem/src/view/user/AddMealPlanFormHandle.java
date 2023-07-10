@@ -1,4 +1,4 @@
-package view;
+package view.user;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import service.SqliteConnection;
+import view.BaseHandler;
 public class AddMealPlanFormHandle extends BaseHandler {
 	@FXML
 	    private ChoiceBox<Integer> cb_minute;

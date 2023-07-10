@@ -89,7 +89,7 @@ public class DishTabHandler {
     	// create predicate that says "Need this value"
     	// i is the object chosen
     	// Here, i is UserEntity
-    	Predicate<DishEntity> containsKey = i -> i.getDish_name().contains(filterKey);
+    	Predicate<DishEntity> containsKey = i -> i.getDish_name().toLowerCase().contains(filterKey.toLowerCase());
     	
     	// create filtered list
     	FilteredList<DishEntity> filteredDishList = dataDishes.filtered(containsKey);

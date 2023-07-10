@@ -1,4 +1,4 @@
-package view.tab;
+package view.user.tab;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -98,7 +98,7 @@ public class PersonalMealPlanTabHandle {
     	mealPlanFilterList.clear();
     	ObservableList<MealPlanFood> matchs = FXCollections.observableArrayList();
     	for(MealPlanFood food: mealPlanList) {
-    		if(food.getFoodName().contains(searchKey))
+    		if(food.getFoodName().toLowerCase().contains(searchKey.toLowerCase()))
     		matchs.add(food);
     	}
     	mealPlanFilterList.addAll(matchs);

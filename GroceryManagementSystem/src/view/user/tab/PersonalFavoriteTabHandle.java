@@ -1,4 +1,4 @@
-package view.tab;
+package view.user.tab;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -85,7 +85,7 @@ public class PersonalFavoriteTabHandle {
     	favDishFilterList.clear();
     	ObservableList<DishEntity> matchs = FXCollections.observableArrayList();
     	for(DishEntity dish: favDishList) {
-    		if(dish.getDish_name().contains(searchKey))
+    		if(dish.getDish_name().toLowerCase().contains(searchKey.toLowerCase()))
     		matchs.add(dish);
     	}
     	favDishFilterList.addAll(matchs);

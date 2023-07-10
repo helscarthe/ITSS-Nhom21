@@ -106,7 +106,7 @@ public class FoodTabHandler extends BaseHandler{
     	// create predicate that says "Need this value"
     	// i is the object chosen
     	// Here, i is UserEntity
-    	Predicate<RawFoodEntity> containsKey = i -> i.getRaw_food_name().contains(filterKey);
+    	Predicate<RawFoodEntity> containsKey = i -> i.getRaw_food_name().toLowerCase().contains(filterKey.toLowerCase());
     	Predicate<RawFoodEntity> ofType = i -> i.getFood_type() == food_type_final;
     	Predicate<RawFoodEntity> filter = containsKey.and(ofType);
 		if (food_type == -1) {

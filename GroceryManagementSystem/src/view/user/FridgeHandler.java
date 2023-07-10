@@ -1,4 +1,4 @@
-package view.fridge;
+package view.user;
 
 import java.time.LocalDate;
 import java.util.Optional;

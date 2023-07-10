@@ -1,4 +1,4 @@
-package view;
+package view.user;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import service.SqliteConnection;
+import view.BaseHandler;
 public class AddFavouriteDishHandle extends BaseHandler{
 	  @FXML
 	    private TextField tf_search;
