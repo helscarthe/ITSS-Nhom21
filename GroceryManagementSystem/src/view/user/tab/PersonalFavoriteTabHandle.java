@@ -1,13 +1,9 @@
 package view.user.tab;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
+import controller.DishController;
 import entity.DishEntity;
-import entity.UserSingleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import service.SqliteConnection;
 
 public class PersonalFavoriteTabHandle {
 
@@ -49,36 +44,13 @@ public class PersonalFavoriteTabHandle {
 
     @FXML
     private Button btn_xoamonanyeuthich;
+    private DishController controllerFavFood;
 	
 	ObservableList<DishEntity> favDishList = FXCollections.observableArrayList();
 	ObservableList<DishEntity> favDishFilterList = FXCollections.observableArrayList();
     void loadFavDish() {
-    	Connection conn = SqliteConnection.Connector();
-    	int userId = UserSingleton.getInstance().getUser_id();
-    	String query = "select f.dish_id dish_id, d.dish_name dish_name, d.recipe recipe from fav_dish as f, dishes as d where f.dish_id = d.dish_id and f.user_id = "+userId+";";
-    	
-    	Statement sttm = null;
-		try {
-			sttm = conn.createStatement();
-			ResultSet rs = sttm.executeQuery(query);
-			favDishList.clear();
-			ObservableList<DishEntity> list = FXCollections.observableArrayList();
-			while(rs.next()) {
-				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("dish_name"), rs.getString("recipe"));
-				list.add(dish);
-			}
-			favDishList.addAll(list);
-			filterFavDish(txtTimKiemCongThucMonAnYeuThi.getText());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	try {
-        	conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
+    	favDishList = controllerFavFood.loadFavDishList();
+		filterFavDish(txtTimKiemCongThucMonAnYeuThi.getText());
     }
     
     void filterFavDish(String searchKey) {
@@ -103,24 +75,9 @@ public class PersonalFavoriteTabHandle {
     }
     @FXML
     void deleteFavDish(ActionEvent event) {
-		int userId = UserSingleton.getInstance().getUser_id();
 		if(btlTenMonAnYeuThich.getSelectionModel() == null) return;
 		int dishId = btlTenMonAnYeuThich.getSelectionModel().getSelectedItem().getDish_id();
-		Connection conn = SqliteConnection.Connector();
-		String query = "DELETE FROM fav_dish WHERE user_id="+userId+" and dish_id="+dishId+";";
-		Statement sttm = null;
-		 try {
-				sttm = conn.createStatement();
-				sttm.executeUpdate(query);
-			} catch (SQLException e) {
-				e.printStackTrace();
-				System.out.println("Error query database");
-			}
-	    	try {
-	        	conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		controllerFavFood.removeFavDish(dishId);
 	    loadFavDish();
     }
     @FXML
@@ -146,6 +103,7 @@ public class PersonalFavoriteTabHandle {
     
     @FXML
     void initialize() {
+    	controllerFavFood = new DishController();
     	loadFavDish();		
     	favDishTable.setCellValueFactory(
     		new PropertyValueFactory<DishEntity, String>("dish_name")

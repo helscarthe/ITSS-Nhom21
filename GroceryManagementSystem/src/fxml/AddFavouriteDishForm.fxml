@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddFavouriteDishHandle">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.user.AddFavouriteDishHandle">
    <children>
       <TextField id="txtTimKiemMonAn" fx:id="tf_search" layoutX="32.0" layoutY="58.0" onKeyReleased="#search" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm công thức món ăn" />
       <Button id="btnTimKiemMonAn" layoutX="313.0" layoutY="58.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">

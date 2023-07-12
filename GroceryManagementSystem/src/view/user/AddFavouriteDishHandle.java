@@ -1,11 +1,6 @@
 package view.user;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import controller.DishController;
 import entity.DishEntity;
-import entity.UserSingleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import service.SqliteConnection;
 import view.BaseHandler;
 public class AddFavouriteDishHandle extends BaseHandler{
 	  @FXML
@@ -40,9 +34,10 @@ public class AddFavouriteDishHandle extends BaseHandler{
 	    private TableColumn<DishEntity, String> cl_match_name;
     ObservableList<DishEntity> dishList = FXCollections.observableArrayList();
     ObservableList<DishEntity> dishMatchedList = FXCollections.observableArrayList();
-    
+    private DishController controllerFavFood;
     @FXML
     public void initialize() {
+    	controllerFavFood = new DishController();
     	loadData();
     	cl_match_name.setCellValueFactory(
     			new PropertyValueFactory<DishEntity, String>("dish_name")
@@ -53,26 +48,8 @@ public class AddFavouriteDishHandle extends BaseHandler{
     }
     
     void loadData() {
-    	Connection conn = SqliteConnection.Connector();
-    	String query = "select dish_id, dish_name, recipe from dishes;";
-    	Statement sttm = null;
-		try {
-			sttm = conn.createStatement();
-			ResultSet rs = sttm.executeQuery(query);
-			while(rs.next()) {
-				DishEntity dish = new DishEntity(rs.getInt("dish_id"), rs.getString("dish_name"), rs.getString("recipe"));
-				dishList.add(dish);
-			}
-			dishMatchedList.addAll(dishList);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Error query database");
-		}
-    	try {
-        	conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    	dishList = controllerFavFood.loadDishList();
+		dishMatchedList.addAll(dishList);
     }
     
     @FXML
@@ -98,28 +75,14 @@ public class AddFavouriteDishHandle extends BaseHandler{
     }
     @FXML
     void submit(ActionEvent event) {
-    	int userId = UserSingleton.getInstance().getUser_id();
     	if(tb_match.getSelectionModel() == null) {
     		errorAlert("Vui lòng chọn món");
     	};
 		int dishId = tb_match.getSelectionModel().getSelectedItem().getDish_id();
-    	String values = "("+dishId+","+userId+")";
-    	Connection conn = SqliteConnection.Connector();
-    	String query = "insert into fav_dish(dish_id, user_id) values"+values+";";
-    	Statement sttm = null;
-		try {
-			sttm = conn.createStatement();
-			sttm.executeUpdate(query);
-		} catch (SQLException e) {
-			System.out.println("Looi");
+    	boolean status = controllerFavFood.addFavDish(dishId);
+    	if(status == false) {
 			errorAlert("Món đã có trong danh sách yêu thích");
-			return;
-		}
-    	try {
-        	conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    	}
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	stage.close();
     }
