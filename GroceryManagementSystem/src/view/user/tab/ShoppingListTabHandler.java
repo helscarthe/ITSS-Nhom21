@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.function.Predicate;
 
 import controller.ShoppingListController;
-import entity.DishEntity;
 import entity.ShoppingItemEntity;
 import entity.UserSingleton;
 import javafx.collections.ObservableList;
