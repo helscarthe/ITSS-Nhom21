@@ -167,6 +167,7 @@ public class FridgeHandler extends BaseFormHandler {
 			btnXoa.setDisable(true);
 		} else {
 			dpNgayHetHan.setDisable(true);
+			btnChon.setDisable(true);
 		}
 	}
 

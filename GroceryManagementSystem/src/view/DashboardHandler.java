@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import view.admin.tab.DishTabHandler;
 import view.admin.tab.FoodTabHandler;
@@ -23,22 +20,10 @@ import view.user.tab.ExpiringTabHandler;
 public class DashboardHandler extends BaseHandler{
 
 	@FXML
-	private Button btnThemThucPhamTrongTulanh;
-
-	@FXML
-	private Button btnTimKiemTuLanh;
-
-	@FXML
-	private TableView<?> tblDanhSachcanMua;
-
-	@FXML
 	private Tab tblTuLanh;
 
 	@FXML
 	private Tab adminTab;
-
-	@FXML
-	private TextField txtTimKiemDocanMua;
 	
 	@FXML
 	private ExpiringTabHandler expiringFoodController;

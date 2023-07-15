@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DashboardHandler">
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="1071.0">
         <items>
@@ -25,56 +25,35 @@
           <Tab text="Tủ lạnh">
              <fx:include source="TabFridge.fxml" />
           </Tab>
-            <Tab text="Danh sách cần mua">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                   <children>
-                      <TableView fx:id="tblDanhSachcanMua" layoutX="28.0" layoutY="71.0" prefHeight="460.0" prefWidth="1007.0">
-                         <columns>
-                            <TableColumn prefWidth="55.73331832885742" text="Thứ tự" />
-                            <TableColumn prefWidth="68.00003814697266" text="ID" />
-                            <TableColumn prefWidth="291.46669006347656" text="Tên người dùng" />
-                            <TableColumn prefWidth="209.33334350585938" text="Loại thực phẩm" />
-                            <TableColumn prefWidth="131.7332763671875" text="Đơn vị" />
-                            <TableColumn prefWidth="251.7333984375" text="Số lượng" />
-                         </columns>
-                      </TableView>
-                      <Button layoutX="960.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
-                      <TextField fx:id="txtTimKiemDocanMua" layoutX="372.0" layoutY="26.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
-                      <Button layoutX="653.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="">
-                         <font>
-                            <Font name="System Bold" size="12.0" />
-                         </font>
-                      </Button>
-                   </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Nhóm">
-              <fx:include source="TabGroup.fxml" />
-            </Tab>
-            <Tab text="Công thức món ăn yêu thích">
-                <fx:include source="TabPersonalFavourite.fxml" />
-            </Tab>
-            <Tab text="Món định nấu">
-              <fx:include source="TabPersonalMealPlan.fxml" />
-            </Tab>
-            <Tab fx:id="adminTab" text="Chức năng admin">
-              <content>
-                  <TabPane>
-                     <tabs>
-                        <Tab onSelectionChanged="#loadAdminUserTab" text="Tài khoản người dùng">
-                          <fx:include fx:id="adminUser" source="TabAdminUser.fxml" />
-                        </Tab>
-                        <Tab onSelectionChanged="#loadAdminDishTab" text="Công thức món ăn">
-                          <fx:include fx:id="adminDish" source="TabAdminDish.fxml" />
-                        </Tab>
-                        <Tab onSelectionChanged="#loadAdminFoodTab" text="Dữ liệu thực phẩm">
-                          <fx:include fx:id="adminFood" source="TabAdminRawFood.fxml" />
-                        </Tab>
-                     </tabs>
-                  </TabPane>
-              </content>
-            </Tab>
+          <Tab text="Danh sách cần mua">
+            <fx:include source="TabShoppingList.fxml" />
+          </Tab>
+          <Tab text="Nhóm">
+            <fx:include source="TabGroup.fxml" />
+          </Tab>
+          <Tab text="Công thức món ăn yêu thích">
+              <fx:include source="TabPersonalFavourite.fxml" />
+          </Tab>
+          <Tab text="Món định nấu">
+            <fx:include source="TabPersonalMealPlan.fxml" />
+          </Tab>
+          <Tab fx:id="adminTab" text="Chức năng admin">
+            <content>
+                <TabPane>
+                   <tabs>
+                      <Tab onSelectionChanged="#loadAdminUserTab" text="Tài khoản người dùng">
+                        <fx:include fx:id="adminUser" source="TabAdminUser.fxml" />
+                      </Tab>
+                      <Tab onSelectionChanged="#loadAdminDishTab" text="Công thức món ăn">
+                        <fx:include fx:id="adminDish" source="TabAdminDish.fxml" />
+                      </Tab>
+                      <Tab onSelectionChanged="#loadAdminFoodTab" text="Dữ liệu thực phẩm">
+                        <fx:include fx:id="adminFood" source="TabAdminRawFood.fxml" />
+                      </Tab>
+                   </tabs>
+                </TabPane>
+            </content>
+          </Tab>
         </tabs>
       </TabPane>
    </children>

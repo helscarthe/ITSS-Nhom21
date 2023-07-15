@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="631.0" prefWidth="1071.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/" fx:controller="view.user.tab.ShoppingListTabHandler">
+    <children>
+       <TableView fx:id="tblDanhSachcanMua" layoutX="28.0" layoutY="71.0" prefHeight="460.0" prefWidth="1007.0">
+          <columns>
+            <TableColumn fx:id="colFoodName" prefWidth="595.1999626159668" text="Tên thực phẩm" />
+             <TableColumn fx:id="colFoodType" prefWidth="115.20004272460938" text="Loại thực phẩm" />
+             <TableColumn fx:id="colFoodUnit" prefWidth="152.0" text="Đơn vị" />
+             <TableColumn fx:id="colFoodAmount" prefWidth="146.39996337890625" text="Số lượng" />
+          </columns>
+       </TableView>
+       <Button layoutX="960.0" layoutY="26.0" mnemonicParsing="false" onAction="#addFoodToShoppingList" prefHeight="26.0" prefWidth="75.0" text="Thêm" />
+       <TextField fx:id="txtTimKiemDocanMua" layoutX="372.0" layoutY="26.0" prefHeight="26.0" prefWidth="318.0" promptText="Tìm kiếm đồ cần mua" />
+       <Button layoutX="653.0" layoutY="26.0" mnemonicParsing="false" onAction="#searchFoodInShoppingList" prefHeight="26.0" prefWidth="37.0" text="">
+          <font>
+             <Font name="System Bold" size="12.0" />
+          </font>
+       </Button>
+    </children>
+</AnchorPane>
